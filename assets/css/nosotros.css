@@ -185,11 +185,78 @@
   -o-border-radius: 50%;
 }
 
+/* --------------------------------*/
+/*: GALERÍA Fotos de proveedores   */
+/* --------------------------------*/
+
+section.proveedores {
+  padding: 6rem 0;
+}
+
+.container__width {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.proveedores {
+  margin-top: 0;
+}
+
+.proveedores__container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, 80px);
+  grid-auto-rows: max-content;
+  gap: 3rem;
+  background-image: url("../img/bg-texture.jpg");
+  justify-content: center;
+  align-items: center;
+}
+
+article.proveedor {
+  width: 80px;
+  height: 80px;
+  transition: var(--transition);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.proveedor:hover {
+  box-shadow: 5px 10px 10px rgba(124, 104, 62, 0.25);
+  transform: scale(1.1);
+  border: 1px solid transparent;
+}
+
+/*! Media queries & Responsive Design -Proveedores */
+
+@media screen and (max-width: 1024px) {
+  .proveedores__container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .proveedores__container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  /* .proveedores__container {
+    grid-template-columns: repeat(3, 1fr);
+    
+  } */
+  section.proveedores {
+    display: none;
+  }
+}
 /* --------------*/
 /*: Profile CEO  */
 /* --------------*/
 
-.profile {
+/* .profile {
   text-align: justify;
   max-width: 1200px;
   display: flex;
@@ -230,13 +297,13 @@
   margin: 20px 0;
   color: var(--text-color);
   font-family: var(--font-texto);
-}
+} */
 
 /* .profile-details small {
   color: var(--color-logo);
 } */
 
-.profile-details a {
+/* .profile-details a {
   color: var(--color-logo);
   font-style: italic;
 }
@@ -247,22 +314,22 @@
 
 .profile-details span {
   font-size: 0.5rem;
-}
+} */
 
-.profile-img-section {
+/* .profile-img-section {
   position: relative;
-  /*: Convertir el width de la línea de bloque a inline para que abarque solo el size de la foto */
+  : Convertir el width de la línea de bloque a inline para que abarque solo el size de la foto
   display: inline;
-}
+} */
 
-.profile-img {
+/* .profile-img {
   width: 100%;
   max-width: 200px;
   max-height: 300px;
   margin-top: 70px;
   border-radius: 50%;
   box-shadow: 0 5px 25px 10px rgba(0, 0, 0, 0.5);
-}
+} */
 
 /*: copyright   */
 .copyright {
