@@ -477,18 +477,6 @@
 
 /*! PC in smallest viewport mode */
 @media screen and (max-width: 500px) {
-  .servicios .container-all {
-    position: absolute;
-    width: 80%;
-    top: 45%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-35%);
-    perspective: 1000px;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -o-transform: translateX(-50%) translateY(-50%);
-  }
   .servicios .title h2 {
     margin: 3rem 0 0 0;
     font-size: 1.5rem;
@@ -517,7 +505,7 @@
 /*! iPhone XS Max */
 @media screen and (max-width: 414px) {
   .services {
-    /* width: 100%; */
+    width: 100%;
     height: 896px;
     min-height: 100vh;
   }
