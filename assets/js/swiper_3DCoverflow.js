@@ -23,8 +23,8 @@ var swiper = new Swiper(".slideshow1", {
     prevEl: ".swiper-button-prev",
   },
   loop: true,
-  // autoplay: {
-  //   delay: 2000,
-  //   disableOnInteraction: true,
-  // },
+  autoplay: {
+    delay: 1500,
+    disableOnInteraction: true,
+  },
 });
