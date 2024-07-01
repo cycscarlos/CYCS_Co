@@ -379,8 +379,13 @@ input {
 }
 .nav__logo span {
   color: var(--color-logo);
-  font-size: var(--normal-font-size);
+  /* font-size: var(--normal-font-size); */
+  font-size: var(--step-0);
   font-style: italic;
+}
+.nav__logo small {
+  font-size: var(--step--5);
+  font-family: "Roboto";
 }
 .nav__menu {
   position: relative;
