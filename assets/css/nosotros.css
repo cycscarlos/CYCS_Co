@@ -429,6 +429,9 @@ article.proveedor {
   .muro-lema {
     font-size: 1.2rem;
   }
+  section.muro .fas.fa-arrow-circle-down {
+    display: none;
+  }
   /* .equipo .titulo h2 {
     font-size: 1.5rem;
   } */
@@ -458,6 +461,7 @@ article.proveedor {
     font-size: 1rem;
     margin: 0 0 10px 0;
   }
+
   /* .equipo .titulo h2 {
     font-size: 1rem;
   } */
