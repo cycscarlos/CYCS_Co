@@ -455,6 +455,9 @@
 
 /*! Samsung Galaxy J2 */
 @media screen and (max-width: 540px) {
+  .servicios {
+    display: none;
+  }
   .servicios .title h2 {
     font-size: 2.5rem;
   }
@@ -477,6 +480,9 @@
 
 /*! PC in smallest viewport mode */
 @media screen and (max-width: 500px) {
+  .servicios {
+    display: none;
+  }
   .servicios .title h2 {
     margin: 3rem 0 0 0;
     font-size: 1.5rem;
@@ -504,6 +510,9 @@
 
 /*! iPhone XS Max */
 @media screen and (max-width: 414px) {
+  .servicios {
+    display: none;
+  }
   .services {
     width: 100%;
     height: 896px;
@@ -534,6 +543,9 @@
 /*! iPhone 12 Pro */
 @media screen and (max-width: 390px) {
   .servicios {
+    display: none;
+  }
+  .servicios {
     height: 844px;
   }
   .servicios .title h2 {
@@ -555,6 +567,9 @@
 
 /*! iPhone 6/7/8 */
 @media screen and (max-width: 375px) {
+  .servicios {
+    display: none;
+  }
   .services {
     height: 667px;
     min-height: 100vh;
@@ -585,6 +600,9 @@
 }
 /*! samsung Galaxy S5 */
 @media screen and (max-width: 360px) {
+  .servicios {
+    display: none;
+  }
   .services {
     height: 640px;
     min-height: 100vh;
