@@ -1418,8 +1418,8 @@ section.cards {
     padding: 8px 40px;
   }
 }
-@media (max-width: 540px) {
+/* @media (max-width: 540px) {
   .servicios_link {
     display: none;
   }
-}
+} */

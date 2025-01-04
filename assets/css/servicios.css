@@ -8,7 +8,7 @@
 .servicios {
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   min-height: var(--section-height);
   margin: auto;
   padding: 10px;
@@ -94,7 +94,7 @@
 
 .servicios .container-all {
   position: absolute;
-  width: 210px;
+  /* width: 210px; */
   top: 45%;
   left: 50%;
   transform: translateX(-50%) translateY(-35%);
@@ -331,9 +331,9 @@
   transform: scale(1);
 }
 
-.servicesRD {
+/* .servicesRD {
   display: none;
-}
+} */
 
 /*! iPad Pro o iPad in landscape mode  */
 @media screen and (max-width: 1024px) {
@@ -418,7 +418,7 @@
 
   .servicios .container-all {
     position: absolute;
-    width: 210px;
+    /* width: 210px; */
     top: 35%;
     left: 50%;
   }
@@ -442,7 +442,7 @@
   } */
   .servicios .container-all {
     position: absolute;
-    width: 210px;
+    /* width: 210px; */
     top: 45%;
     left: 50%;
   }
@@ -455,9 +455,9 @@
 
 /*! Samsung Galaxy J2 */
 @media screen and (max-width: 540px) {
-  .servicios {
+  /* .servicios {
     display: none;
-  }
+  } */
   .servicios .title h2 {
     font-size: 2.5rem;
   }
@@ -480,9 +480,9 @@
 
 /*! PC in smallest viewport mode */
 @media screen and (max-width: 500px) {
-  .servicios {
+  /* .servicios {
     display: none;
-  }
+  } */
   .servicios .title h2 {
     margin: 3rem 0 0 0;
     font-size: 1.5rem;
@@ -510,9 +510,9 @@
 
 /*! iPhone XS Max */
 @media screen and (max-width: 414px) {
-  .servicios {
+  /* .servicios {
     display: none;
-  }
+  } */
   .services {
     width: 100%;
     height: 896px;
@@ -542,9 +542,9 @@
 
 /*! iPhone 12 Pro */
 @media screen and (max-width: 390px) {
-  .servicios {
+  /* .servicios {
     display: none;
-  }
+  } */
   .servicios {
     height: 844px;
   }
@@ -567,9 +567,9 @@
 
 /*! iPhone 6/7/8 */
 @media screen and (max-width: 375px) {
-  .servicios {
+  /* .servicios {
     display: none;
-  }
+  } */
   .services {
     height: 667px;
     min-height: 100vh;
@@ -600,9 +600,9 @@
 }
 /*! samsung Galaxy S5 */
 @media screen and (max-width: 360px) {
-  .servicios {
+  /* .servicios {
     display: none;
-  }
+  } */
   .services {
     height: 640px;
     min-height: 100vh;
