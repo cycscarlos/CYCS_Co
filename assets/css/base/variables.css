@@ -1,0 +1,184 @@
+/*: CSS Variables and Custom Properties */
+
+/*: General styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /* CYCS & Co website colors */
+  --color-pagina: #ff4c00;
+  --color-logo: #9d8d6c;
+  --scroll-link-color: #9d8d6c;
+  --color-azulObscuro: #27607c;
+  --color-azulMedio: #283c48;
+  --color-azulClaro: #1e5271;
+  --color-test: rgb(30, 82, 113);
+  --color-header: #284150;
+
+  /* Social Media colors */
+  --color-social-icons: #000;
+  --color-twitter: #1da1f2;
+  --color-instagram: #833ab4;
+  --color-linkedin: #0a66c2;
+  --color-whatsapp: #00bd2c;
+
+  /* Fonts */
+  --font-titulos: "Times New Roman", "Open Sans Condensed", sans-serif;
+  --font-proyectos: "Poppins", "Roboto", sans-serif;
+  --font-logo: "Times New Roman", "Open Sans Condensed", sans-serif;
+  --font-muro: "DancingScript", sans-serif;
+  --font-lightbox: "Open Sans Condensed", sans-serif;
+  --font-texto: "Times New Roman", "Open Sans Condensed", sans-serif;
+  --font-menu: "Font Awesome 5 Free", "Times New Roman";
+  --font-footer: Helvetica, Arial, sans-serif;
+}
+
+/*: Base styles  */
+
+:root {
+  /* Custom properties */
+  --step--5: clamp(0.48rem, 0.47rem + 0.06vw, 0.51rem);
+  --step--4: clamp(0.58rem, 0.55rem + 0.12vw, 0.64rem);
+  --step--3: clamp(0.69rem, 0.65rem + 0.21vw, 0.8rem);
+  --step--2: clamp(0.75rem, 0.71rem + 0.27vw, 0.9rem);
+  --step--1: clamp(0.83rem, 0.77rem + 0.33vw, 1rem);
+  --step-0: clamp(1rem, 0.9rem + 0.49vw, 1.25rem);
+  --step-1: clamp(1.2rem, 1.06rem + 0.71vw, 1.56rem);
+  --step-2: clamp(1.44rem, 1.24rem + 1vw, 1.95rem);
+  --step-3: clamp(1.73rem, 1.45rem + 1.39vw, 2.44rem);
+  --step-4: clamp(2.07rem, 1.69rem + 1.91vw, 3.05rem);
+  --step-5: clamp(2.49rem, 1.97rem + 2.59vw, 3.82rem);
+  --h2: clamp(1rem, 0.0282rem + 3.7559vw, 2rem); /* 2em */
+  --subtitle: clamp(0.4rem, -0.007rem + 1.57vw, 1rem); /* .4em */
+  --hero: clamp(0.625rem, 0.519rem + 0.41vw, 0.781rem); /* 0.75em; */
+  --h4: clamp(0.875rem, 0.722rem + 0.59vw, 1.1rem); /* 1.1em; */
+
+  --header-height: 3rem;
+  --section-height: 100vh;
+  --section-services-height: 35.1875rem; /* 563px */
+
+  /* Colors */
+  --hue-color: 200;
+  --body-color: hsl(var(--hue-color), 100%, 99%); /* Casi blanco #fafdfe */
+  --title-color: hsl(
+    var(--hue-color),
+    100%,
+    18%
+  ); /* Azul muy Obscuro # 003d5c */
+  --text-color: hsl(var(--hue-color), 24%, 35%); /* Azul grisaceo #44606f */
+
+  --swiper-bg-color-show1: hsl(
+    var(--hue-color),
+    100%,
+    99%
+  ); /* Casi blanco #fafdfe */
+  --swiper-bg-color: hsl(
+    var(--hue-color),
+    24%,
+    35%
+  ); /* Azul grisaceo #44606f */
+  --muro-color: hsl(var(--hue-color), 100%, 99%); /* Casi blanco #fafdfe */
+  --muro-bg-color: #273b47;
+  --elegantShadow-bg-color: transparent;
+  --animation-bg-color: hsl(
+    var(--hue-color),
+    24%,
+    35%
+  ); /* Azul grisaceo #44606f */
+  --profile-link-color: #ff4c00;
+  --footer-color: hsl(var(--hue-color), 100%, 99%); /* Casi blanco #fafdfe */
+  --footer-bg-color: rgba(40, 60, 72, 0.5);
+  --white-color: #fff;
+  --black-color: #000;
+  --color-btn-form: #6c63ff;
+
+  /* Font weight */
+  --font-regular: 300;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /* Tag sizes */
+  --biggest-font-size: 2.5rem;
+  --exception-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.79rem;
+  --minimal-font-size: 0.715rem;
+
+  /* Margenes Bottom */
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-25: 1.25rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mt-2-5: 2.5rem;
+
+  /* z-index */
+  --z-tooltip: 10;
+  --z-fixed: 100;
+
+  /* Hover overlay */
+  --img-transition: 0.3s;
+  --img-hidden: hidden;
+  --img-scale: scale(1.1);
+
+  /* Contact Form variables */
+  --container-width-lg: 80%;
+  --container-width-md: 90%;
+  --container-width-sm: 94%;
+  --transition: all 400ms ease;
+}
+
+/*! Desktop viewport styles */
+
+@media screen and (min-width: 968px) {
+  :root {
+    --biggest-font-size: 3rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.75rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
+  }
+}
+
+/*: Variables Dark theme */
+
+body.dark-theme {
+  --body-color: hsl(
+    var(--hue-color),
+    29%,
+    12%
+  ); /* Gris súper obscuro #162227 */
+  --title-color: hsl(var(--hue-color), 24%, 95%); /* Casi blanco #eff3f5 */
+  --text-color: hsl(var(--hue-color), 8%, 75%); /* Gris claro #bac1c4 */
+
+  --swiper-bg-color: hsl(var(--hue-color), 8%, 75%); /* Gris claro #bac1c4 */
+  --muro-color: hsl(var(--hue-color), 8%, 75%); /* Gris claro #bac1c4 */
+  --footer-color: hsl(var(--hue-color), 8%, 75%); /* Gris claro #bac1c4 */
+  --elegantShadow-color: hsl(
+    var(--hue-color),
+    29%,
+    12%
+  ); /* Gris súper obscuro #162227 */
+  --animation-bg-color: hsl(
+    var(--hue-color),
+    29%,
+    12%
+  ); /* Gris súper obscuro #162227 */
+  --profile-link-color: hsl(
+    var(--hue-color),
+    24%,
+    95%
+  ); /* Casi blanco #eff3f5 */
+}
+

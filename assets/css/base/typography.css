@@ -1,0 +1,36 @@
+/*: Typography and Font Definitions */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Poppins:wght@100;400;500&display=swap");
+
+/* El formato .eot ( Embedded Open Typestar ) fue desarrollado por Microsoft y es el único formato reconocido por los navegadores de tipo IE8 y más antiguos. */
+/* el formato woff ( Web Open Font Formatstar ) soportado por la mayoría de los navegadores modernos incluso IE > 8 */
+/* los formatos .ttf ( TrueType Fontstar ) y .otf ( OpenType Fontstar) muy interesantes sobre todo para los tipógrafos, y el formato .svg ( Scalabe Vector Graphics ) para Safari móvil. */
+
+@font-face {
+  font-family: "Bailey";
+  font-display: swap;
+  src: url(../../fonts/Bailey.otf);
+}
+@font-face {
+  font-family: "DancingScript";
+  font-display: swap;
+  font-weight: 400;
+  src: url(../../fonts/DancingScript-Medium.ttf);
+}
+@font-face {
+  font-family: "Roboto";
+  font-display: swap;
+  src: url(../../fonts/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: "OpenSans";
+  font-display: swap;
+  src: url(../../fonts/OpenSans-Regular.ttf), url(../../fonts/OpenSans-SemiBold.ttf);
+}
+@font-face {
+  font-family: "Raleway";
+  font-display: swap;
+  src: url(../../fonts/Raleway-Medium.ttf), url(../../fonts/Raleway-SemiBold.ttf),
+    url(../../fonts/Raleway-Bold.ttf);
+}
+

@@ -49,7 +49,7 @@
   <!-- Meta tags de Datos Estructurados -->
   <meta itemprop="name" content="CYCS! & Co. | Ingeniería y Proyectos" />
 
-  <meta itempro="description"
+  <meta itemprop="description"
     content="Suministro, instalación y mantenimiento de sistemas de seguridad electrónica, control de accesos, tecnología y redes de telecomunicaciones" />
   <meta itemprop="image" content="https://cycs.netlify.app/img/about.png" />
   <link rel="canonical" href="https://cycs.netlify.app" />
@@ -58,10 +58,10 @@
   <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon" />
 
   <!--: Remix Icons  -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
 
   <!--: Swiper CSS Library -->
-  <link rel="stylesheet" href="./assets/Swiper/swiper-bundle.css" />
   <link rel="stylesheet" href="./assets/Swiper/swiper-bundle.min.css" />
 
   <!--: CSS General Styles -->
@@ -104,7 +104,6 @@
 
           <!--: Theme change button -->
           <div class="nav__dark">
-            <!-- <span class="change-theme-name">Modo Obscuro</span> -->
             <span class="change-theme-name"></span>
             <i class="ri-moon-line change-theme" id="theme-button"></i>
           </div>
@@ -119,30 +118,6 @@
       </nav>
     </header>
 
-    <!--------------------------->
-    <!--* Social medias icons  -->
-    <!--------------------------->
-
-    <!-- <div class="social_Icon">
-        <a
-          href="https://twitter.com/@zCYCS?lang=en"
-          target="_blank"
-          class="social_Icon_Link"
-          ><span class="fab fa-twitter"></span
-        ></a>
-        <a
-          href="https://www.instagram.com/z_cycs/?hl=es"
-          target="_blank"
-          class="social_Icon_Link"
-          ><span class="fab fa-instagram"></span
-        ></a>
-        <a
-          href="https://www.linkedin.com/in/zcoder/"
-          target="_blank"
-          class="social_Icon_Link"
-          ><span class="fab fa-linkedin-in"></span
-        ></a>
-      </div> -->
 
     <!----------------------->
     <!-- whatsapp icon     -->
@@ -217,41 +192,32 @@
 
   <section class="cards" id="cards">
     <div class="title">
-      <h3 class="scroll-title">Suministro e Instalación<br /></h3>
-      <!-- <h2 class="scroll-title">
-          <span>S</span><span>I</span><span>S</span><span>T</span><span>E</span
-          ><span>M</span><span>A</span><span>S</span>
-          <small>de...</small>
-        </h2> -->
+      <h3 class="scroll-title">Soluciones de Ingeniería<br /></h3>
     </div>
+    
     <div class="cardsBx">
       <div class="card">
-        <img loading="lazy" itemprop="image" src="./assets/img/cards/CCTV.png" alt="camaras de video seguridad" />
-        <h3><span>S</span>EGURIDAD ELECTRÓNICA</h3>
-
+        <img loading="lazy" itemprop="image" src="./assets/img/cards/Automatizacion.png" alt="Orquestación de IA y Automatización" />
+        <h3><span>IA</span> & AUTOMATIZACIÓN</h3>
         <div>
-          <a style="cursor: pointer" title="" class="boton_mostrar" href="./assets/html/security.html">Leer Más</a>
+          <a  title="" class="boton_mostrar" href="./assets/html/security.html">Leer Más</a>
         </div>
       </div>
-
+  
       <div class="card">
-        <img loading="lazy" itemprop="image" src="./assets/img/cards/CA.png"
-          alt="torniquetes y barreras vehiculares de control de accesos" />
-        <h3><span>C</span>ONTROL ACCESOS</h3>
-
+        <img loading="lazy" itemprop="image" src="./assets/img/cards/SistemasCriticos.png" alt="Modernización de Infraestructura Crítica" />
+        <h3><span>S</span>ISTEMAS CRÍTICOS</h3> 
+        <!-- <h3 style="font-size: 1.1rem;"><span>S</span>ISTEMAS CRÍTICOS</h3> -->
         <div>
-          <a style="cursor: pointer" title="" class="boton_mostrar" href="./assets/html/ctrlAcceso.html">Leer Más</a>
+          <a  title="" class="boton_mostrar" href="./assets/html/ctrlAcceso.html">Leer Más</a>
         </div>
       </div>
-
+  
       <div class="card">
-        <img loading="lazy" itemprop="image" src="./assets/img/cards/Telco.png"
-          alt="antenas y enlaces microondas para conexion inalambrica" />
-        <!-- <h3><span>R</span>EDES MICROONDAS</h3> -->
-        <h3 class="telco-subtitulo"><span>T</span>ELECOMUNICACIONES</h3>
-
+        <img loading="lazy" itemprop="image" src="./assets/img/cards/Seguridad.png" alt="Seguridad Electrónica y Telecomunicaciones" />
+        <h3 class="telco-subtitulo"><span>S</span>EGURIDAD & REDES</h3>
         <div>
-          <a style="cursor: pointer" title="" class="boton_mostrar" href="./assets/html/telco.html">Leer Más</a>
+          <a  title="" class="boton_mostrar" href="./assets/html/telco.html">Leer Más</a>
         </div>
       </div>
     </div>
@@ -870,9 +836,6 @@
   <!--: Footer section  -->
 
   <div class="footer" id="footer">
-    <!-- <div class="title">
-        <h2 class="scroll-title">Contacto</h2>
-      </div> -->
     <div class="main">
       <div class="contenedor">
         <div class="comun nosotros">
@@ -888,7 +851,7 @@
             <li>
               <a href="./assets/html/nosotros.html#muro" class="uno">Nosotros</a>
             </li>
-            <li class"servicios_link">
+            <li class="servicios_link">
               <a href="./assets/html/servicios.html" class="dos">Portafolio Servicios</a>
             </li>
             <li>
@@ -946,28 +909,21 @@
     <i class="ri-arrow-up-line scrollup__icon"></i>
   </a>
 
-  <!--: swiper.JS library-->
-  <script src="./assets/Swiper/swiper-bundle.js"></script>
-  <script src="./assets/Swiper/swiper-bundle.min.js"></script>
-  <script src="./assets/js/swiper_3DCoverflow.js"></script>
-  <script src="./assets/js/swiper_pagination-fraction.js"></script>
+  <!--: Swiper JS Library -->
+  <script src="./assets/Swiper/swiper-bundle.min.js" defer></script>
+  <script src="./assets/js/swiper/swiper.js" defer></script>
 
-  <!--: CSS Animation for Galeria de fotos de Obras -->
-  <script src="./assets/js/mouseHover.js"></script>
+  <!--: Core Functionality -->
+  <script src="./assets/js/core/menuNav.js" defer></script>
+  <script src="./assets/js/core/darkTheme.js" defer></script>
 
-  <!--: Change header background color when scroll -->
-  <script src="./assets/js/scrollHeader.js"></script>
+  <!--: Scroll Functionality -->
+  <script src="./assets/js/scrollreveal.min.js" defer></script>
+  <script src="./assets/js/scroll/scrollReveal.js" defer></script>
+  <script src="./assets/js/scroll/scroll.js" defer></script>
 
-  <!--: Menu navegation for responsive design -->
-  <script src="./assets/js/menuNav.js"></script>
-
-  <!--: Dark Mode -->
-  <script src="./assets/js/darkTheme.js"></script>
-
-  <!--: Scroll Reveal animation library -->
-  <script src="./assets/js/scrollreveal.min.js"></script>
-  <script src="./assets/js/scrollReveal.js"></script>
-  <script src="./assets/js/scrollUp.js"></script>
+  <!--: Utils -->
+  <script src="./assets/js/utils/mouseHover.js" defer></script>
 
   <!--: Begin of Chaport Live Chat code -->
   <script type="text/javascript">

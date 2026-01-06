@@ -1,0 +1,112 @@
+/*: Cards Component Styles */
+
+section.cards {
+  padding-top: 2.5rem; /* 40px */
+}
+
+.cards {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100%;
+  margin: auto;
+}
+.cards .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.cards .title .scroll-title {
+  margin: 0 auto;
+  background-color: none;
+  margin-top: 2rem;
+}
+.cards .title h2 {
+  width: 22%;
+  color: #fff;
+  font-size: 35px;
+  background: var(--animation-bg-color);
+  font-family: var(--font-titulos);
+  margin-top: 2rem;
+  border-radius: 3%;
+}
+.cards__subtitle {
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.cards .cardsBx {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cards .cardsBx .card {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  margin: 40px 40px;
+  transition: all 1.5s ease-in-out;
+  box-shadow: 6px 6px 5px grey;
+
+  display: grid;
+  place-items: start center;
+  overflow: hidden;
+}
+.cards .cardsBx .card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 146, 218, 0.3);
+}
+
+.cards .cardsBx .card h3 {
+  position: absolute;
+  margin-top: 10px;
+  font-size: 1.7em;
+  font-weight: 400;
+  color: var(--white-color);
+  text-align: center;
+}
+.cards .cardsBx .card h3 span {
+  color: var(--color-pagina);
+  font-size: 2em;
+  font-weight: 700;
+}
+.cards .cardsBx .card h3.telco-subtitulo {
+  font-size: 1.5em;
+}
+.cards .cardsBx .card h3.telco-subtitulo span {
+  font-size: 2em;
+}
+
+.cards .cardsBx .card .boton_mostrar {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-menu);
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+  background: rgba(39, 59, 71, 0.8);
+  color: var(--white-color);
+  cursor: pointer;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+.cards .cardsBx .card .boton_mostrar:hover {
+  background-image: linear-gradient(to top, #ff4900 0%, #ffb199 100%);
+  color: var(--white-color);
+}
+

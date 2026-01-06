@@ -78,7 +78,7 @@
     <!-- Favicon -->
     <link
       rel="shortcut icon"
-      href="/assets/img/favicon.png"
+      href="../img/favicon.png"
       type="image/x-icon"
     />
 
@@ -95,10 +95,10 @@
     />
 
     <!-- CSS General Styles -->
-    <link rel="stylesheet" href="/assets/css/all.min.css" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
-    <link rel="stylesheet" href="/assets/css/smartphones.css" />
-    <link rel="stylesheet" href="/assets/css/contacto.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/smartphones.css" />
+    <link rel="stylesheet" href="../css/contacto.css" />
   </head>
   <body>
     <div class="mainBox" id="home">
@@ -119,17 +119,17 @@
                 <a href="servicios.html" class="nav__link">Servicios</a>
               </li>
               <li class="nav__item">
-                <a href="security.html" class="nav__link"
-                  >Sistemas de Seguridad</a
+                <a href="automatizaciones.html" class="nav__link"
+                  >IA & Automatizaciones</a
                 >
               </li>
               <li class="nav__item">
-                <a href="ctrlAcceso.html" class="nav__link"
-                  >Control de Acceso</a
+                <a href="sistemasCriticos.html" class="nav__link"
+                  >Sistemas Críticos</a
                 >
               </li>
               <li class="nav__item">
-                <a href="telco.html" class="nav__link">Telecomunicaciones</a>
+                <a href="seguridadYRedes.html" class="nav__link">Seguridad & Redes</a>
               </li>
 
               <li class="nav__item">
@@ -201,7 +201,7 @@
         <div class="containerForm contact__container">
           <aside class="contact__aside">
             <div class="aside__image">
-              <img src="/assets/img/contact.svg" alt="" />
+              <img src="../img/img/contact.svg" alt="" />
             </div>
             <h2>Contáctenos</h2>
             <p>
@@ -319,12 +319,17 @@
     <!--: Rutinas Javascript -->
     <!------------------------->
 
-    <script src="/assets/js/mouseHover.js"></script>
-    <script src="/assets/js/scrollHeader.js"></script>
-    <script src="/assets/js/menuNav.js"></script>
-    <script src="/assets/js/darkTheme.js"></script>
-    <script src="/assets/js/scrollreveal.min.js"></script>
-    <script src="/assets/js/scrollReveal.js"></script>
-    <script src="/assets/js/formspree.js"></script>
+    <!--: Core Functionality -->
+    <script src="../js/core/menuNav.js" defer></script>
+    <script src="../js/core/darkTheme.js" defer></script>
+
+    <!--: Scroll Functionality -->
+    <script src="../js/scrollreveal.min.js" defer></script>
+    <script src="../js/scroll/scrollReveal.js" defer></script>
+    <script src="../js/scroll/scroll.js" defer></script>
+
+    <!--: Utils -->
+    <script src="../js/utils/mouseHover.js" defer></script>
+    <script src="../js/utils/formspree.js" defer></script>
   </body>
 </html>

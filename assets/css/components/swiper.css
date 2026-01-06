@@ -1,0 +1,116 @@
+/*: Swiper Component Styles */
+
+.slideshow1 {
+  position: relative;
+  max-width: 1200px;
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+  padding-top: 100px;
+  padding-bottom: 50px;
+  transition: 1.5s;
+}
+.slideshow1 .swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+  background: #000;
+  -webkit-box-reflect: below 1px
+    linear-gradient(transparent, transparent, #0006);
+}
+.slideshow1 .swiper-slide img {
+  border-radius: 5px;
+}
+.slideshow1 .swiper-container-horizontal {
+  position: relative;
+}
+.slideshow1 .swiper-button-next,
+.slideshow1 .swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  margin-left: 35px;
+  margin-right: 35px;
+  color: var(--white-color);
+  z-index: 2;
+}
+.slideshow1 .swiper-button-next::after,
+.slideshow1 .swiper-button-prev::after {
+  font-size: 2.5em;
+  font-weight: 900;
+}
+.swiper-pagination-bullet {
+  background: var(--color-pagina);
+}
+.slideshow1 .sombra__swiper-button-prev {
+  background: rgba(39, 96, 124, 0.5);
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 45%;
+  margin-left: 35px;
+  margin-right: 35px;
+  z-index: 1;
+  border-radius: 50%;
+}
+.slideshow1 .sombra__swiper-button-next {
+  background: rgba(39, 96, 124, 0.5);
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  right: 0;
+  top: 45%;
+  margin-left: 35px;
+  margin-right: 35px;
+  z-index: 1;
+  border-radius: 50%;
+}
+.mainTitle {
+  display: none;
+}
+h2.elegantshadow {
+  font-size: 2.5rem;
+  font-size: var(exception-font-size);
+  margin-top: 10px;
+  padding: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility;
+  color: var(--color-logo);
+  background-color: var(--elegantShadow-bg-color);
+  letter-spacing: 0.15em;
+}
+
+/*! Media queries & responsive design  -Swiper   */
+
+@media screen and (max-width: 768px) {
+  .slideshow1 .swiper-button-next,
+  .slideshow1 .swiper-button-prev {
+    top: 35%;
+  }
+  .slideshow1 .sombra__swiper-button-next,
+  .slideshow1 .sombra__swiper-button-prev {
+    top: 30%;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .slideshow1 .swiper-button-next,
+  .slideshow1 .swiper-button-prev {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .slideshow1 .swiper-button-next::after,
+  .slideshow1 .swiper-button-prev::after {
+    font-size: 2em;
+  }
+  .slideshow1 .sombra__swiper-button-next,
+  .slideshow1 .sombra__swiper-button-prev {
+    top: 30%;
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
