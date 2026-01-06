@@ -166,3 +166,4 @@ Definidos en `variables.css`:
 - Tablet: `max-width: 768px`
 - Mobile: `max-width: 414px`
 
+
