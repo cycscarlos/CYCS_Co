@@ -60,12 +60,12 @@
   font-size: 35px;
   background: transparent;
   /* color: var(--color-pagina); */
-  color: var(--text-color);
-  border-radius: 50%;
+  color: var(--text-color); 
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+  border-radius: 50%;
   border: none;
 }
 
