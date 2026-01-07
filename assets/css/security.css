@@ -70,6 +70,11 @@ section.security {
   font-weight: 700;
   font-size: 1em;
 }
+.security .row .col50 .mainUL {
+  list-style: square;
+  margin-left: 120px;
+  text-align: left;
+}
 .security .row .col50 .secondaryUL {
   text-align: left;
   margin-left: 220px;
@@ -250,7 +255,7 @@ section.proveedores {
   }
   .security .title h2 {
     font-size: 2rem;
-     margin-top: 2rem;
+    margin-top: 2rem;
   }
   .security .row .col50 h3 {
     font-size: 1.2rem;
