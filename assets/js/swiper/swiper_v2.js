@@ -3,12 +3,12 @@
  * Handles all Swiper slider initializations
  */
 
-(function() {
-  'use strict';
+(function () {
+  "use strict";
 
   // Check if Swiper is available
-  if (typeof Swiper === 'undefined') {
-    console.warn('Swiper library not loaded');
+  if (typeof Swiper === "undefined") {
+    console.warn("Swiper library not loaded");
     return;
   }
 
@@ -37,7 +37,7 @@
       },
       loop: true,
       autoplay: {
-        delay: 1500,
+        delay: 3000,
         disableOnInteraction: true,
       },
     });
@@ -50,6 +50,8 @@
       slidesPerView: 1,
       spaceBetween: 30,
       loop: true,
+      freemode: true,
+      speed: 5000,
       direction: "horizontal",
       pagination: {
         el: ".swiper-pagination",
@@ -60,17 +62,14 @@
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
+      // IMPORTANTE: Esto ayuda a que el swiper responda mejor
+      // a clics externos mientras se mueve
+      watchSlidesProgress: true,
       autoplay: {
-        delay: 2000,
+        delay: 0,
+        pauseOnMouseEnter: true,
         disableOnInteraction: false,
       },
     });
   }
 })();
-
-
-
-
-
-
-

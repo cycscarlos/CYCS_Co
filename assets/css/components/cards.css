@@ -21,6 +21,7 @@ section.cards {
   margin: 0 auto;
   background-color: none;
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 .cards .title h2 {
   width: 22%;
@@ -109,6 +110,10 @@ section.cards {
   background-image: linear-gradient(to top, #ff4900 0%, #ffb199 100%);
   color: var(--white-color);
 }
+
+
+
+
 
 
 

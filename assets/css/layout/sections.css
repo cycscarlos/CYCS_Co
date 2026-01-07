@@ -1,4 +1,7 @@
 /*: Section Layout Styles */
+.cards .title h3 {
+  margin-top: 2rem;
+}
 
 .clientes {
   display: flex;
@@ -185,6 +188,10 @@
   object-position: 50% 50%;
   transition: 0.7s ease-in-out;
 }
+
+
+
+
 
 
 

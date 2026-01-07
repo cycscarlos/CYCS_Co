@@ -81,6 +81,14 @@ h2.elegantshadow {
   letter-spacing: 0.15em;
 }
 
+/* Por defecto, Swiper usa una transición llamada ease-out, lo que hace
+que la diapositiva frene al final. Para que el movimiento sea constante
+se agrega lo siguiente: */
+/* .swiper-wrapper {
+  -webkit-transition-timing-function: linear !important;
+  transition-timing-function: linear !important;
+} */
+
 /*! Media queries & responsive design  -Swiper   */
 
 @media screen and (max-width: 768px) {
@@ -113,6 +121,3 @@ h2.elegantshadow {
     margin-right: 20px;
   }
 }
-
-
-
