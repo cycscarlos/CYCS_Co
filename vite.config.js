@@ -1,9 +1,27 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import { cpSync } from 'fs';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+
+// Copia assets/html/components/ a dist (Vite no incluye archivos que solo
+// se fetchean en runtime: components-loader los carga por fetch absoluto).
+function copyComponentsPlugin() {
+  return {
+    name: 'copy-components',
+    apply: 'build',
+    closeBundle() {
+      cpSync(
+        resolve(__dirname, 'assets/html/components'),
+        resolve(__dirname, 'dist/assets/html/components'),
+        { recursive: true }
+      );
+    },
+  };
+}
 
 export default defineConfig({
   plugins: [
+    copyComponentsPlugin(),
     ViteImageOptimizer({
       test: /\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i,
       exclude: undefined,
