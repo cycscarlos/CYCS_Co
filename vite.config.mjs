@@ -78,7 +78,6 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         automatizaciones: resolve(__dirname, 'assets/html/automatizaciones.html'),
         contacto: resolve(__dirname, 'assets/html/contacto.html'),
-        nosotros: resolve(__dirname, 'assets/html/nosotros.html'),
         seguridadYRedes: resolve(__dirname, 'assets/html/seguridadYRedes.html'),
         servicios: resolve(__dirname, 'assets/html/servicios.html'),
         sistemasCriticos: resolve(__dirname, 'assets/html/sistemasCriticos.html'),

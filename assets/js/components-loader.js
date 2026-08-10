@@ -61,7 +61,7 @@
    * Initialize component loading when DOM is ready.
    * Supported data-component values:
    *   - "header"       → loads header.html (for index.html)
-   *   - "header-subpages" → loads header-subpages.html (for nosotros/contacto)
+   *   - "header-subpages" → loads header-subpages.html (for subpages)
    *   - "header-tech"  → loads header-tech.html (for technical subpages)
    *   - "footer"       → loads footer.html
    *   - "whatsapp"     → loads whatsapp.html
