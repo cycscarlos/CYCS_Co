@@ -11,8 +11,8 @@ function copyComponentsPlugin() {
     apply: 'build',
     closeBundle() {
       cpSync(
-        resolve(__dirname, 'assets/html/components'),
-        resolve(__dirname, 'dist/assets/html/components'),
+        resolve(import.meta.dirname, 'assets/html/components'),
+        resolve(import.meta.dirname, 'dist/assets/html/components'),
         { recursive: true }
       );
     },
@@ -75,12 +75,12 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
-        automatizaciones: resolve(__dirname, 'assets/html/automatizaciones.html'),
-        contacto: resolve(__dirname, 'assets/html/contacto.html'),
-        seguridadYRedes: resolve(__dirname, 'assets/html/seguridadYRedes.html'),
-        servicios: resolve(__dirname, 'assets/html/servicios.html'),
-        sistemasCriticos: resolve(__dirname, 'assets/html/sistemasCriticos.html'),
+        main: resolve(import.meta.dirname, 'index.html'),
+        automatizaciones: resolve(import.meta.dirname, 'assets/html/automatizaciones.html'),
+        contacto: resolve(import.meta.dirname, 'assets/html/contacto.html'),
+        seguridadYRedes: resolve(import.meta.dirname, 'assets/html/seguridadYRedes.html'),
+        servicios: resolve(import.meta.dirname, 'assets/html/servicios.html'),
+        sistemasCriticos: resolve(import.meta.dirname, 'assets/html/sistemasCriticos.html'),
       }
     }
   }
