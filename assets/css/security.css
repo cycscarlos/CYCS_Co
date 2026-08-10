@@ -6,7 +6,6 @@
 
 /* ── SECCIÓN BASE ────────────────────────────────────────────── */
 section.security,
-section.ctrlAcceso,
 section.telco {
   width: 100%;
   max-width: 1200px;
@@ -16,21 +15,18 @@ section.telco {
 
 /* Segunda sección y siguientes no necesitan tanto espacio top */
 section.security + section,
-section.telco + section,
-section.ctrlAcceso + section {
+section.telco + section {
   padding-top: var(--space-16);
 }
 
 /* ── TÍTULO DE SECCIÓN ───────────────────────────────────────── */
 section.security .title,
-section.ctrlAcceso .title,
 section.telco .title {
   margin-bottom: var(--space-10);
   text-align: center;
 }
 
 section.security .title h2,
-section.ctrlAcceso .title h2,
 section.telco .title h2 {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
@@ -42,7 +38,6 @@ section.telco .title h2 {
 
 /* Drop-cap span → accent color inline */
 section.security .title h2 span,
-section.ctrlAcceso .title h2 span,
 section.telco .title h2 span {
   color: var(--brand-primary);
   font-style: normal;
@@ -50,7 +45,6 @@ section.telco .title h2 span {
 
 /* ── DOS COLUMNAS ────────────────────────────────────────────── */
 .security .row,
-.ctrlAcceso .row,
 .telco .row {
   display: grid;
   grid-template-columns: 55% 42%;
@@ -59,7 +53,6 @@ section.telco .title h2 span {
 }
 
 .security .col50,
-.ctrlAcceso .col50,
 .telco .col50 {
   width: 100%;
   min-width: 0; /* evita overflow en grid */
@@ -67,7 +60,6 @@ section.telco .title h2 span {
 
 /* ── HEADINGS DENTRO DEL CONTENIDO ──────────────────────────── */
 .security .col50 h3,
-.ctrlAcceso .col50 h3,
 .telco .col50 h3 {
   font-family: var(--font-display);
   font-size: var(--text-lg);
@@ -81,21 +73,18 @@ section.telco .title h2 span {
 }
 
 .security .col50 h3:first-child,
-.ctrlAcceso .col50 h3:first-child,
 .telco .col50 h3:first-child {
   margin-top: 0;
 }
 
 /* Accent spans in headings */
 .security .col50 h3 span,
-.ctrlAcceso .col50 h3 span,
 .telco .col50 h3 span {
   color: var(--brand-primary);
 }
 
 /* ── PÁRRAFOS ────────────────────────────────────────────────── */
 .security .col50 p,
-.ctrlAcceso .col50 p,
 .telco .col50 p {
   font-size: var(--text-base);
   color: var(--text-secondary);
@@ -104,7 +93,6 @@ section.telco .title h2 span {
 }
 
 .security .col50 p span,
-.ctrlAcceso .col50 p span,
 .telco .col50 p span {
   color: var(--brand-primary);
   font-weight: var(--font-semi-bold);
@@ -112,7 +100,6 @@ section.telco .title h2 span {
 
 /* ── LISTAS PRINCIPALES ──────────────────────────────────────── */
 .security .col50 .mainUL,
-.ctrlAcceso .col50 .mainUL,
 .telco .col50 .mainUL {
   list-style: none;
   padding: 0;
@@ -123,7 +110,6 @@ section.telco .title h2 span {
 }
 
 .security .col50 .mainUL > li,
-.ctrlAcceso .col50 .mainUL > li,
 .telco .col50 .mainUL > li {
   display: flex;
   align-items: flex-start;
@@ -136,7 +122,6 @@ section.telco .title h2 span {
 }
 
 .security .col50 .mainUL > li::before,
-.ctrlAcceso .col50 .mainUL > li::before,
 .telco .col50 .mainUL > li::before {
   content: '';
   display: inline-block;
@@ -149,7 +134,6 @@ section.telco .title h2 span {
 }
 
 .security .col50 .mainUL > li span,
-.ctrlAcceso .col50 .mainUL > li span,
 .telco .col50 .mainUL > li span {
   color: var(--brand-primary);
   font-weight: var(--font-semi-bold);
@@ -157,7 +141,6 @@ section.telco .title h2 span {
 
 /* ── LISTAS SECUNDARIAS (anidadas) ───────────────────────────── */
 .security .col50 .secondaryUL,
-.ctrlAcceso .col50 .secondaryUL,
 .telco .col50 .secondaryUL {
   list-style: none;
   padding: 0;
@@ -168,7 +151,6 @@ section.telco .title h2 span {
 }
 
 .security .col50 .secondaryUL li,
-.ctrlAcceso .col50 .secondaryUL li,
 .telco .col50 .secondaryUL li {
   font-size: var(--text-sm);
   color: var(--text-muted);
@@ -178,7 +160,6 @@ section.telco .title h2 span {
 }
 
 .security .col50 .secondaryUL li::before,
-.ctrlAcceso .col50 .secondaryUL li::before,
 .telco .col50 .secondaryUL li::before {
   content: '›';
   position: absolute;
@@ -188,7 +169,6 @@ section.telco .title h2 span {
 }
 
 .security .col50 .secondaryUL li span,
-.ctrlAcceso .col50 .secondaryUL li span,
 .telco .col50 .secondaryUL li span {
   color: var(--brand-primary);
   font-weight: var(--font-semi-bold);
@@ -263,12 +243,6 @@ section.telco .title h2 span {
   bottom: var(--space-3);
 }
 
-/* Remove legacy shadow divs */
-.sombra__swiper-button-prev,
-.sombra__swiper-button-next {
-  display: none;
-}
-
 /* ── COPYRIGHT ───────────────────────────────────────────────── */
 .copyright {
   padding: var(--space-6) var(--space-8);
@@ -284,12 +258,10 @@ section.telco .title h2 span {
 /* ── RESPONSIVE ──────────────────────────────────────────────── */
 @media screen and (max-width: 1024px) {
   section.security,
-  section.ctrlAcceso,
   section.telco {
     padding: calc(var(--header-height) + var(--space-10)) var(--space-6) var(--space-16);
   }
   .security .row,
-  .ctrlAcceso .row,
   .telco .row {
     gap: var(--space-8);
   }
@@ -300,19 +272,16 @@ section.telco .title h2 span {
 
 @media screen and (max-width: 768px) {
   section.security,
-  section.ctrlAcceso,
   section.telco {
     padding: calc(var(--header-height) + var(--space-8)) var(--space-4) var(--space-12);
   }
   .security .row,
-  .ctrlAcceso .row,
   .telco .row {
     grid-template-columns: 1fr;
     gap: var(--space-6);
   }
   /* On mobile: slider goes first, text below */
   .security .col50:last-child,
-  .ctrlAcceso .col50:last-child,
   .telco .col50:last-child {
     order: -1;
   }
@@ -321,7 +290,6 @@ section.telco .title h2 span {
     display: none;
   }
   section.security .title h2,
-  section.ctrlAcceso .title h2,
   section.telco .title h2 {
     font-size: var(--text-xl);
   }
@@ -329,12 +297,10 @@ section.telco .title h2 span {
 
 @media screen and (max-width: 480px) {
   .security .col50 h3,
-  .ctrlAcceso .col50 h3,
   .telco .col50 h3 {
     font-size: var(--text-base);
   }
   .security .col50 .mainUL > li,
-  .ctrlAcceso .col50 .mainUL > li,
   .telco .col50 .mainUL > li {
     font-size: var(--text-sm);
   }

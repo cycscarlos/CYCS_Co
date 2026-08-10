@@ -8,7 +8,6 @@
 .servicios {
   position: relative;
   width: 100%;
-  /* max-width: 1200px; */
   min-height: var(--section-height);
   margin: auto;
   padding: 10px;
@@ -23,74 +22,9 @@
   text-align: center;
 }
 
-/* usado solo en modo responsive */
-/* .rd__clickText {
-  display: none;
-}
-
-.servicios .clickText {
-  position: absolute;
-  top: 45%;
-  left: 0.5em;
-}
-
-.servicios .clickText h4 {
-  width: 100%;
-  background: var(--animation-bg-color);
-  font-size: 2em;
-  padding: 0 20px;
-  margin-top: 50%;
-}
-
-.servicios .clickText h4 span {
-  font-size: 0.75em;
-  color: var(--white-color);
-  letter-spacing: 0.1em;
-}
-.servicios .clickText h4 .fa-arrow-right {
-  font-size: 0.7em;
-  color: var(--white-color);
-}  */
-
 /* --------------------------------- */
 /*: Click & Arrow animation routine  */
 /* --------------------------------- */
-
-/* .servicios .clickText h4 span {
-  animation: click 2.25s linear infinite;
-  -webkit-animation: click 2.25s linear infinite;
-}
-.servicios .clickText h4 span:nth-child(1) {
-  animation-delay: 0.25s;
-}
-.servicios .clickText h4 span:nth-child(2) {
-  animation-delay: 0.5s;
-}
-.servicios .clickText h4 span:nth-child(3) {
-  animation-delay: 0.75s;
-}
-.servicios .clickText h4 span:nth-child(4) {
-  animation-delay: 1s;
-}
-.servicios .clickText h4 span:nth-child(5) {
-  animation-delay: 1.25s;
-}
-@keyframes click {
-  0%,
-  100% {
-    color: #fff;
-    filter: blur(2px);
-    text-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 40px #00b3ff,
-      0 0 80px #00b3ff;
-  }
-  5%,
-  95% {
-    color: var(--color-pagina);
-    filter: blur(0px);
-    text-shadow: none;
-  }
-} */
-/*: Ends Click & Arrow animation routine */
 
 .servicios .container-all {
   position: absolute;
@@ -331,10 +265,6 @@
   transform: scale(1);
 }
 
-/* .servicesRD {
-  display: none;
-} */
-
 /*! iPad Pro o iPad in landscape mode  */
 @media screen and (max-width: 1024px) {
   .servicios {
@@ -346,75 +276,6 @@
   .servicios .title h5 {
     margin: 3rem 0 0 0;
   }
-  /* .clickText {
-    display: none;
-  }
-  .rd__clickText {
-    display: block;
-  }
-  .servicios .rd__clickText {
-    position: absolute;
-    top: 20%;
-    left: 42.5%;
-    transform: translate(-20% -42.5%);
-  }
-  .servicios .rd__clickText {
-    width: 10rem;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .servicios .rd__clickText h4 {
-    width: 100%;
-    background: var(--animation-bg-color);
-    font-size: 2rem;
-  }
-  .servicios .rd__clickText h4 span {
-    font-size: 0.75em;
-    color: var(--white-color);
-    letter-spacing: 0.1em;
-  }
-  .servicios .rd__clickText h4 .fa-arrow-down {
-    font-size: 0.7em;
-    color: var(--white-color);
-  } */
-
-  /*: Click & Arrow animation routine  */
-  /* .servicios .rd__clickText h4 span {
-    animation: click 2.25s linear infinite;
-    -webkit-animation: click 2.25s linear infinite;
-  }
-  .servicios .rd__clickText h4 span:nth-child(1) {
-    animation-delay: 0.25s;
-  }
-  .servicios .rd__clickText h4 span:nth-child(2) {
-    animation-delay: 0.5s;
-  }
-  .servicios .rd__clickText h4 span:nth-child(3) {
-    animation-delay: 0.75s;
-  }
-  .servicios .rd__clickText h4 span:nth-child(4) {
-    animation-delay: 1s;
-  }
-  .servicios .rd__clickText h4 span:nth-child(5) {
-    animation-delay: 1.25s;
-  }
-  @keyframes click {
-    0%,
-    100% {
-      color: #fff;
-      filter: blur(2px);
-      text-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 40px #00b3ff,
-        0 0 80px #00b3ff;
-    }
-    5%,
-    95% {
-      color: var(--color-pagina);
-      filter: blur(0px);
-      text-shadow: none;
-    }
-  } */
-  /*: Ends Click & Arrow animation routine */
 
   .servicios .container-all {
     position: absolute;
@@ -434,12 +295,6 @@
   .servicios .title h2 {
     margin: 8rem 0 0 0;
   }
-  /* .servicios .rd__clickText {
-    position: absolute;
-    top: 30%;
-    left: 42.5%;
-    transform: translate(-30% -42.5%);
-  } */
   .servicios .container-all {
     position: absolute;
     width: 210px;
@@ -455,18 +310,9 @@
 
 /*! Samsung Galaxy J2 */
 @media screen and (max-width: 540px) {
-  /* .servicios {
-    display: none;
-  } */
   .servicios .title h2 {
     font-size: 2.5rem;
   }
-  /* .servicios .rd__clickText {
-    position: absolute;
-    top: 25%;
-    left: 35%;
-    transform: translate(-25% -35%);
-  } */
   .social_Icon,
   .banner_Icon {
     right: 70px;
@@ -480,23 +326,11 @@
 
 /*! PC in smallest viewport mode */
 @media screen and (max-width: 500px) {
-  /* .servicios {
-    display: none;
-  } */
   .servicios .title h2 {
     margin: 3rem 0 0 0;
     font-size: 1.5rem;
     text-align: center;
   }
-  /* .servicios .rd__clickText h4 {
-    font-size: 1.5rem;
-  }
-  .servicios .rd__clickText {
-    position: absolute;
-    top: 25%;
-    left: 35%;
-    transform: translate(-25% -35%);
-  } */
   .social_Icon,
   .banner_Icon {
     right: 60px;
@@ -510,9 +344,6 @@
 
 /*! iPhone XS Max */
 @media screen and (max-width: 414px) {
-  /* .servicios {
-    display: none;
-  } */
   .services {
     width: 100%;
     height: 896px;
@@ -527,12 +358,6 @@
   .banner_Icon {
     right: 25px;
   }
-  /* .servicios .rd__clickText {
-    position: absolute;
-    top: 25%;
-    left: 30%;
-    transform: translate(-25% -30%);
-  } */
   .lightbox {
     top: 42.5%;
     left: 23.5%;
@@ -542,9 +367,6 @@
 
 /*! iPhone 12 Pro */
 @media screen and (max-width: 390px) {
-  /* .servicios {
-    display: none;
-  } */
   .servicios {
     height: 844px;
   }
@@ -552,12 +374,6 @@
     text-align: center;
     font-size: 2rem;
   }
-  /* .servicios .rd__clickText {
-    position: absolute;
-    top: 25%;
-    left: 30%;
-    transform: translate(-25% -30%);
-  } */
   .lightbox {
     top: 42.5%;
     left: 23.5%;
@@ -567,9 +383,6 @@
 
 /*! iPhone 6/7/8 */
 @media screen and (max-width: 375px) {
-  /* .servicios {
-    display: none;
-  } */
   .services {
     height: 667px;
     min-height: 100vh;
@@ -577,15 +390,8 @@
   .servicios .title h2 {
     text-align: center;
     font-size: 2rem;
-    /* margin: 4rem 0 2.5rem 0; */
     margin: 2.5rem 0 1rem 0;
   }
-  /* .servicios .rd__clickText {
-    position: absolute;   
-    top: 15%;
-    left: 30%;
-    transform: translate(-25% -30%);
-  } */
   .servicios .container-all {
     position: absolute;
     width: 210px;
@@ -600,19 +406,10 @@
 }
 /*! samsung Galaxy S5 */
 @media screen and (max-width: 360px) {
-  /* .servicios {
-    display: none;
-  } */
   .services {
     height: 640px;
     min-height: 100vh;
   }
-  /* .servicios .rd__clickText {
-    position: absolute;
-    top: 25%;
-    left: 30%;
-    transform: translate(-25% -30%);
-  } */
   .lightbox {
     top: 42.5%;
     left: 23.5%;

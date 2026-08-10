@@ -221,10 +221,6 @@
   border-radius: var(--radius-full);
 }
 
-/* ── ELEGANT SHADOW TITLE (legacy, oculto) ───────────────────── */
-.mainTitle { display: none; }
-h2.elegantshadow { display: none; }
-
 /* ── RESPONSIVE ──────────────────────────────────────────────── */
 @media screen and (max-width: 1024px) {
   .hero-content {
