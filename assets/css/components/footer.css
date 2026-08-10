@@ -6,8 +6,8 @@
 .footer {
   font-family: var(--font-body);
   margin-top: var(--space-16);
-  background-color: var(--neutral-900);
-  border-top: 1px solid var(--surface-border);
+  background-color: var(--footer-bg);
+  border-top: 1px solid var(--footer-border);
 }
 
 .footer .title {
@@ -15,7 +15,7 @@
 }
 .footer .scroll-title {
   background: transparent;
-  color: var(--text-secondary);
+  color: var(--footer-text);
 }
 
 /* ── MAIN CONTAINER ─────────────────────────────────────────── */
@@ -32,7 +32,7 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   gap: var(--space-6);
-  color: var(--text-secondary);
+  color: var(--footer-text);
   padding: var(--space-10) var(--space-8) var(--space-8);
   width: 100%;
   max-width: 1200px;
@@ -41,13 +41,15 @@
 .main .contenedor .comun { flex: 1; min-width: 0; }
 .main .contenedor .comun.nosotros { flex: 1.4; }
 
-/* ── COLUMN HEADERS ─────────────────────────────────────────── */
+/* ── COLUMN HEADERS (tratamiento eyebrow, sinergia con el hero) ── */
 .main .contenedor h2 {
   position: relative;
-  color: var(--text-primary);
+  color: var(--footer-title);
   font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: var(--font-semi-bold);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   margin-bottom: var(--space-5);
   padding-bottom: var(--space-3);
 }
@@ -56,21 +58,21 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 36px;
+  width: 28px;
   height: 2px;
-  background: var(--brand-primary);
+  background: var(--footer-accent);
   border-radius: var(--radius-full);
 }
 
 /* ── NOSOTROS COLUMN ────────────────────────────────────────── */
 .main .contenedor .nosotros p {
-  color: var(--text-secondary);
+  color: var(--footer-text);
   font-size: var(--text-sm);
   line-height: 1.75;
   margin-top: var(--space-3);
 }
 .main .contenedor .nosotros p span {
-  color: var(--text-primary);
+  color: var(--footer-title);
   font-weight: var(--font-medium);
 }
 
@@ -82,21 +84,21 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  color: var(--text-secondary);
+  color: var(--footer-text);
   font-size: var(--text-sm);
   text-decoration: none;
   transition: color var(--transition-fast), gap var(--transition-fast);
 }
 .linkSecundarios ul li a::before {
   content: '›';
-  color: var(--brand-primary);
+  color: var(--footer-accent);
   font-size: 1.1em;
   line-height: 1;
   position: static; /* override legacy absolute positioning */
   flex-shrink: 0;
 }
 .linkSecundarios ul li a:hover {
-  color: var(--text-primary);
+  color: var(--footer-title);
   gap: var(--space-3);
   opacity: 1;
 }
@@ -115,7 +117,7 @@
 .linkSecundarios ul li a.seis::before {
   top: auto;
   position: static;
-  color: var(--brand-primary);
+  color: var(--footer-accent);
 }
 
 /* ── MAPA COLUMN ────────────────────────────────────────────── */
@@ -125,7 +127,7 @@
   width: 100%;
   height: 220px;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--surface-border);
+  border: 1px solid var(--footer-border);
   box-shadow: var(--shadow-md);
   margin-top: var(--space-3);
   display: block;
@@ -140,30 +142,30 @@
   gap: var(--space-3);
   margin-bottom: var(--space-5);
   font-size: var(--text-sm);
-  color: var(--text-secondary);
+  color: var(--footer-text);
   line-height: 1.6;
 }
 .contactos .informacion li span:first-child {
-  color: var(--brand-primary);
+  color: var(--footer-accent);
   font-size: 1rem;
   flex-shrink: 0;
   margin-top: 2px;
 }
 .contactos .informacion li a {
-  color: var(--text-secondary);
+  color: var(--footer-text);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
-.contactos .informacion li a:hover { color: var(--brand-primary); opacity: 1; }
+.contactos .informacion li a:hover { color: var(--footer-accent); opacity: 1; }
 
 /* ── COPYRIGHT ───────────────────────────────────────────────── */
 .copyrightTexto {
   width: 100%;
   padding: var(--space-4) var(--space-8);
   text-align: center;
-  color: var(--text-muted);
-  background-color: var(--neutral-950);
-  border-top: 1px solid var(--surface-border);
+  color: var(--footer-muted);
+  background-color: var(--footer-bg-alt);
+  border-top: 1px solid var(--footer-border);
   font-size: var(--text-xs);
   letter-spacing: 0.03em;
 }

@@ -46,6 +46,15 @@
   --text-secondary: #A0B2BF;
   --text-muted:     #56697A;
 
+  /* ── FOOTER (siempre oscuro — sinergia con el hero) ──────── */
+  --footer-bg:         var(--neutral-950);   /* #080E18 — mismo tono base del hero */
+  --footer-bg-alt:     var(--neutral-900);   /* #0F1923 — banda copyright */
+  --footer-title:      #EDF2F7;              /* títulos de columna (AAA) */
+  --footer-text:       #A0B2BF;              /* cuerpo, enlaces, descripción (AA) */
+  --footer-muted:      #56697A;              /* texto legal mínima */
+  --footer-border:     rgba(255,255,255,0.08); /* bordes y separadores */
+  --footer-accent:     var(--brand-primary); /* #FF4C00 — barra, bullets, iconos, hover */
+
   /* ── LEGACY ALIASES (mantiene compatibilidad con CSS existente) */
   --color-pagina:       var(--brand-primary);
   --color-logo:         #9d8d6c;
