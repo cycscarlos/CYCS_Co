@@ -39,7 +39,7 @@ La plataforma ofrece soluciones avanzadas en:
 ├── docs/               # (Ignorado) Documentación adicional
 ├── index.html          # Página de inicio principal
 ├── package.json        # Dependencias y scripts de NPM
-├── vite.config.js      # Configuración de Vite y optimización
+├── vite.config.mjs     # Configuración de Vite y optimización
 └── netlify.toml        # Configuración para despliegue en Netlify
 ```
 
