@@ -12,7 +12,8 @@
 
 :root {
   /* ── BRAND ───────────────────────────────────────────────── */
-  --brand-primary:   #FF4C00;   /* naranja CYCS — identidad consolidada */
+  --brand-primary:   #ff4c00;   
+  --brand-primary-btn:   rgba(255, 76, 0,0.65);   
   --brand-secondary: #0A1628;
   --brand-accent:    #00C4E8;
 

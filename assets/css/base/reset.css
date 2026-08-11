@@ -153,7 +153,8 @@ section {
 .banner_Icon {
   position: fixed;
   bottom: 1.5rem;
-  right: 1.5rem;
+  /* right: 1.5rem; */
+  left: 1.5rem;
   z-index: var(--z-tooltip);
   display: flex;
   align-items: center;
