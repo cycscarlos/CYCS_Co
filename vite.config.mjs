@@ -20,6 +20,8 @@ function copyComponentsPlugin() {
 }
 
 export default defineConfig({
+  // 🟢 AGREGAR ESTA LÍNEA PARA GITHUB PAGES:
+  base: '/CYCS_Co/',
   plugins: [
     copyComponentsPlugin(),
     ViteImageOptimizer({

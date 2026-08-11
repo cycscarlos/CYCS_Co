@@ -2,22 +2,21 @@
   command = "npm run build"
   publish = "dist"
 
+# Desactivamos el procesamiento secundario de Netlify para que respete exactamente el bundle generado por Vite
 [build.processing]
-  skip_processing = false
+  skip_processing = true
 
-[build.processing.css]
-  bundle = true
-  minify = true
+# Reescribe las rutas que soliciten /CYCS_Co/... hacia la raíz para que Netlify funcione con base: '/CYCS_Co/'
+[[redirects]]
+  from = "/CYCS_Co/*"
+  to = "/:splat"
+  status = 200
 
-[build.processing.js]
-  bundle = true
-  minify = true
-
-[build.processing.html]
-  pretty_print = true
-
-[build.processing.images]
-  compress = true
+# Soporte para rutas en SPA (HTML5 PushState)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
 [[headers]]
   for = "/*"
