@@ -25,11 +25,11 @@ section.contact {
 }
 
 .contact__aside {
-  background: rgba(30, 82, 113, 0.8);
-  padding: 3rem;
+  background: rgba(30, 82, 113, 0.6);
+  padding: 0 3rem 0 3rem;
   border-radius: 1rem;
   position: relative;
-  bottom: 7rem;
+  /* bottom: 7rem; */
 }
 
 .aside__image {
@@ -39,8 +39,8 @@ section.contact {
 
 .contact__aside h2 {
   text-align: center;
-  margin-bottom: 1rem;
-  color: var(--white-color);
+  margin-bottom: 3rem;
+  color: var(--footer-color);
 }
 .contact__aside p {
   font-size: 0.9rem;
@@ -54,16 +54,19 @@ section.contact {
   gap: 0.5rem;
   text-align: left;
   margin-bottom: 1rem;
-  color: var(--white-color);
+  /* color: var(--white-color); */
+    color: var(--footer-color);
 }
 
 .contact__details h5 {
   font-weight: 100;
-  color: var(--white-color);
+  /* color: var(--white-color); */
+   color: var(--footer-color);
 }
 
 .contact__details h5 a {
-  color: var(--white-color);
+  /* color: var(--white-color); */
+   color: var(--footer-color);
 }
 
 .contact__socials {
@@ -127,12 +130,12 @@ section.contact {
 }
 
 .contact__form input[type="text"] {
-  width: 50%;
+  width: 45%;
 }
 
 input,
 textarea {
-  width: 100%;
+  width: 93%;
   padding: 1rem;
   margin-bottom: 1.2rem;
   background: var(--color-azulObscuro);
@@ -140,7 +143,7 @@ textarea {
 }
 input::placeholder,
 textarea::placeholder {
-  color: var(--footer-color);
+  color: var(--color-logo);
   opacity: 0.5;
 }
 
@@ -161,11 +164,12 @@ textarea::placeholder {
 
 .contact .btn:hover {
   background: var(--color-azulMedio);
-  color: var(--white-color);
+  color: var(--color-logo);
 }
 
 .contact .btn-primary {
-  background: var(--brand-primary);
+  /* background: var(--brand-primary); */
+  background: var(--color-logo);
   color: var(--white-color);
 }
 
