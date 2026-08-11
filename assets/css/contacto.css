@@ -68,32 +68,26 @@ section.contact {
 
 .contact__socials {
   display: flex;
-  gap: 0.8rem;
+  justify-content: center;
   margin-top: 2rem;
 }
 
 .contact__socials a {
-  background: var(--color-azulMedio);
-  color: var(--white-color);
-  padding: 0.5rem;
-  margin-right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
   border-radius: 50%;
-  font-size: 0.9rem;
-  transition: var(--transition);
+  background: var(--color-azulMedio);
+  font-size: 2.4rem;
+  transition: transform var(--transition),
+              box-shadow var(--transition),
+              background var(--transition);
 }
 
-.contact__socials a:hover {
-  background: var(--white-color);
-}
-
-.contact__socials a:hover .uil-twitter {
-  color: var(--color-twitter);
-}
-.contact__socials a:hover .uil-instagram {
-  color: #fff;
-  text-align: center;
-  border-radius: 60px;
-  background: #d6249f;
+/* Gradiente original de Instagram, visible desde el inicio */
+.contact__socials a .uil-instagram {
   background: radial-gradient(
     circle at 30% 107%,
     #fdf497 0%,
@@ -102,12 +96,19 @@ section.contact {
     #d6249f 60%,
     #285aeb 90%
   );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-align: center;
 }
-.contact__socials a:hover .uil-linkedin-alt {
-  color: var(--color-linkedin);
-}
-.contact__socials a:hover .uil-whatsapp {
-  color: var(--color-whatsapp);
+
+/* Hover elegante: elevación, escala y halo naranja/rosa */
+.contact__socials a:hover {
+  transform: translateY(-4px) scale(1.15);
+  background: var(--white-color);
+  box-shadow: 0 0 0 3px rgba(214, 36, 159, 0.35),
+              0 12px 24px rgba(214, 36, 159, 0.35);
 }
 
 .contact__form {
@@ -164,7 +165,7 @@ textarea::placeholder {
 }
 
 .contact .btn-primary {
-  background: var(--color-btn-form);
+  background: var(--brand-primary);
   color: var(--white-color);
 }
 
