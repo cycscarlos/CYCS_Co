@@ -7,6 +7,7 @@
   font-family: var(--font-body);
   margin-top: var(--space-16);
   background-color: var(--footer-bg);
+  /* background-color: rgba(8,14,24,.8); */
   border-top: 1px solid var(--footer-border);
 }
 

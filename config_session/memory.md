@@ -1,0 +1,46 @@
+# Contexto de Sesión
+
+## Checkpoints
+- 944e3e0 — checkpoint: grid 2×2 de cards en index (estado actual antes de aplicar 2×2 en vistas seguridad/redes/sistemasCriticos).
+- 27f27fa — fix: rediseño del footer — tokens `--footer-*` siempre oscuros y sinergia con la paleta del hero (variables.css + footer.css).
+- 32cfcb5 — checkpoint estado actual (vite.config.js + package-lock.json) antes de renombrar a `.mjs`.
+- e5d18d1 — checkpoint estado actual (ediciones locales index) antes de eliminar vista nosotros.
+- 81c47ff — último commit antes del rediseño de vistas (punto de rollback del rediseño; árbol limpio).
+
+## Commits de la sesión actual
+- c5a354b — feat: variante 2×2 "pilares" en vistas técnicas + cards con fondo `--neutral-950` y copyright sobre `--neutral-600`. **← HEAD actual**
+- 944e3e0 — checkpoint: grid 2×2 de cards en index (estado actual antes de aplicar 2×2 en vistas seguridad/redes/sistemasCriticos).
+- c0ad5ed — checkpoint: etiquetas cortas Seguridad/Redes en navbar (header-tech) antes del grid 2×2 de cards.
+- c3e4986 — checkpoint: división de seguridadYRedes en seguridad/redes (estado actual antes de acortar etiquetas de navbar).
+- d75c31b — checkpoint: refactor hero-wrapper en vistas técnicas (estado actual antes de dividir seguridadYRedes en seguridad/redes).
+- 32cfcb5 — checkpoint: estado actual antes de renombrar vite.config.js a .mjs (incluye copyComponentsPlugin + package-lock.json pendientes).
+- d778fa8 — fix: renombrar vite.config.js → vite.config.mjs (warning ESM/CommonJS Vite 8).
+- 452f46d — fix: eliminar vista nosotros.html, quitar enlaces asociados e incorporar about.png al hero.
+- b6df878 — feat: colocar imagen de equipo (about.png) como primer slide del hero.
+- a3b70a5 — fix: sustituir __dirname por import.meta.dirname en vite.config.mjs (warning Vite 8).
+- 094644e — feat: purgar nosotros.css y limpiar código muerto/comentado (HTML, CSS, JS).
+- ebe7ccf — feat: autoplay del hero solo cuando es visible (IntersectionObserver), sin pausa por hover.
+- 81c47ff — feat: reducir delay del hero de 4000ms a 2000ms.
+- e36fe93 — feat: rediseñar vistas técnicas a cards con carousel de fondo (estilo hero). (punto base del rediseño posterior)
+- e2eb034 — feat: carousel visible a través de las cards — velo sutil + cristal translúcido (glassmorphism). **← ORFANO (revertido por rollback)**
+- 6db26f5 — feat: fusionar secciones de seguridadYRedes en una sola vista — cards protagonistas con un único carousel de fondo. **← ORFANO (revertido por rollback)**
+- c1b02b5 — feat: vistas técnicas en patrón hero-wrapper a sangre completa — swiper de fondo (slideshow1) + cards en overlay; eliminar swiper_v2.js. **← ORFANO (revertido por rollback)**
+
+## Resumen de la sesión
+
+1. **Vite config .mjs** — `vite.config.js` renombrado a `vite.config.mjs` para eliminar el warning `configLoader: 'native'` (ESM en archivo CommonJS). Incluyó commitear `copyComponentsPlugin` + `package-lock.json` regenerado.
+2. **Vista nosotros eliminada** — Se borró `assets/html/nosotros.html` (510 líneas) y todos sus enlaces; se quitó la entrada `nosotros` de `rollupOptions.input` en `vite.config.mjs`.
+3. **about.png al hero** — `assets/img/about.png` movido a `assets/img/swiper/about.png` (git mv) y añadido como **primer slide** del carrusel hero (`loading="eager"`). Hero: 11 slides, efecto fade, `loop`, `speed: 1200`, `delay: 2000`.
+4. **import.meta.dirname** — Sustituidos todos los usos de `__dirname` en `vite.config.mjs` (ESM correcto; elimina warning Vite 8).
+5. **Purga de código muerto** — Eliminado `assets/css/nosotros.css` (488 líneas) y su import en `app.js:13`; limpiados comentarios/bloques muertos en HTML (index, servicios, contacto) y CSS (`grid.css` `.proveedores`, `smartphones.css`, `security.css` `.ctrlAcceso`, `swiper.css`, `scrollReveal.js` selectores muertos). Se conservaron los separadores descriptivos de sección.
+6. **Autoplay hero condicionado a visibilidad** — `swiper.js`: se quitó `pauseOnMouseEnter` y se añadió `IntersectionObserver` (threshold 0.1) que arranca/para el autoplay solo cuando el hero es visible. Delay reducido de 4000ms → 2000ms.
+7. **Rediseño de vistas técnicas — base e36fe93** — cards compactas (título + 3 bullets) sobre carousel de fondo `slideshow2` con patrón `view-hero`/`view-bg`/`view-content`/`view-cards` (max-width limitado, sin sangre completa). Versiones cristal `e2eb034` y hero-wrapper `c1b02b5` descartadas por rollback (el usuario dijo que "nada de lo solicitado funcionó").
+8. **División y refactor posterior** — `seguridadYRedes.html` se dividió en `seguridad.html` y `redes.html`; navbar (header-tech) con etiquetas cortas **Seguridad/Redes**; patrón `hero-wrapper` replicado en las vistas técnicas (checkpoints d75c31b → 944e3e0).
+9. **Grid 2×2 "pilares"** — nueva variante `.view-cards--pilares` (2 columnas, `max-width: 960px`, centrado; 1 columna en ≤1024px) aplicada en seguridad, redes y sistemasCriticos; cards centradas (`justify-content/align-items/text-align: center`, bullets centrados).
+10. **Fondo de las cards** — de `rgba(8, 14, 24, 0.55)` a **`var(--neutral-950)`** (#080E18 sólido). El usuario confirmó neutral-950 tras descartar 900/800.
+11. **Copyright (versión final = c5a354b)** — `.copyright` vuelve al **flujo normal** (final de la página). Se intentó `position: fixed; bottom: 0` pero causó problemas de UI severos y se **revirtió**. Fondo **`var(--neutral-600)`** (#3A4A5C), `padding: var(--space-3) var(--space-8)`, sin borde; texto `var(--footer-faint)` (rgba(163,178,191,0.5)). Override `.copyright .copyrightTexto` (padding 0, bg transparente, sin borde) para neutralizar los estilos de `footer.css`. El token `--footer-glass` se añadió y luego se **eliminó** (quedó huérfano). El index no se ve afectado (su banda usa `.copyrightTexto` de `footer.css`). La banda aplica a las 5 vistas técnicas + contacto (componente compartido).
+
+## Pendiente
+- **Revisar en `npm run dev`** las vistas técnicas: cards 2×2 "pilares" con fondo neutral-950, copyright con fondo neutral-600 al final de la página (scroll normal, sin fijarse).
+- **Leftovers sin commitear** (a decidir): `assets/css/components/footer.css` con una línea comentada `/* background-color: rgba(8,14,24,.8); */` (resto de experimento); borrado de `CYCS_Co-v2.code-workspace`; archivos untracked `AGENTS.md`, `config_session/`, `opencode.json`, `x-CYCS_Co-v2.code-workspace` (locales, no se commitean).
+- **Push pendiente**: rama `main` adelantada respecto a `origin/main` (16 commits hasta c5a354b; los huérfanos NO se pushean). El push lo ejecuta el usuario.
