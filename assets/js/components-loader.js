@@ -22,8 +22,28 @@
    * @returns {string}
    */
   function getComponentsBasePath() {
-    // Use absolute path from project root for Vite dev server compatibility
-    return '/assets/html/components/';
+    // Use Vite's BASE_URL so the fetch works under base '/CYCS_Co/' (dev, Netlify, GitHub Pages)
+    return import.meta.env.BASE_URL + 'assets/html/components/';
+  }
+
+  /**
+   * Prefixes absolute URLs (starting with '/') inside a component with the
+   * Vite base path. Components are fetched at runtime so Vite never rewrites
+   * them; without this, links like '/assets/html/...' 404 under base '/CYCS_Co/'.
+   * @param {HTMLElement} root - Injected component root
+   */
+  function rewriteBaseUrls(root) {
+    var base = import.meta.env.BASE_URL || '/';
+    if (base === '/') return;
+    base = base.replace(/\/$/, '');
+    root.querySelectorAll('[href],[src]').forEach(function(el) {
+      ['href', 'src'].forEach(function(attr) {
+        var val = el.getAttribute(attr);
+        if (val && val.charAt(0) === '/' && val.charAt(1) !== '/') {
+          el.setAttribute(attr, base + val);
+        }
+      });
+    });
   }
 
   /**
@@ -47,6 +67,7 @@
       .then(function(html) {
         var temp = document.createElement('div');
         temp.innerHTML = html.trim();
+        rewriteBaseUrls(temp);
         while (temp.firstChild) {
           target.parentNode.insertBefore(temp.firstChild, target);
         }
