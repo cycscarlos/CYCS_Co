@@ -1,6 +1,6 @@
 /* ============================================================
-   CYCS & Co. — Service Pages CSS v4.1
-   Aplica a: seguridad, sistemasCriticos, automatizaciones
+   CYCS & Co. — Redes Page CSS v1.0
+   Aplica a: redes.html (Telecomunicaciones y Redes)
    Layout: hero-wrapper con swiper de fondo a sangre completa +
            overlay de título y grid de cards (patrón index hero)
    ============================================================ */
@@ -12,7 +12,7 @@
    nunca se recortan); min-height: 100vh la hace pantalla completa
    cuando el contenido cabe. El contenido va en flujo (flex
    centrado) para que la sección crezca si las cards no caben. */
-section.security.hero-wrapper {
+section.telco.hero-wrapper {
   position: relative;
   width: 100%;
   height: auto;

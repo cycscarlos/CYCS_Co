@@ -13,6 +13,7 @@ import '../css/smartphones.css';
 import '../css/contacto.css';
 import '../css/servicios.css';
 import '../css/security.css';
+import '../css/redes.css';
 
 // 3. Vendor-specific initializations
 import { initHeroSwiper } from './swiper/swiper.js';

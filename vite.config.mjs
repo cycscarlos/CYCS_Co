@@ -78,7 +78,8 @@ export default defineConfig({
         main: resolve(import.meta.dirname, 'index.html'),
         automatizaciones: resolve(import.meta.dirname, 'assets/html/automatizaciones.html'),
         contacto: resolve(import.meta.dirname, 'assets/html/contacto.html'),
-        seguridadYRedes: resolve(import.meta.dirname, 'assets/html/seguridadYRedes.html'),
+        redes: resolve(import.meta.dirname, 'assets/html/redes.html'),
+        seguridad: resolve(import.meta.dirname, 'assets/html/seguridad.html'),
         servicios: resolve(import.meta.dirname, 'assets/html/servicios.html'),
         sistemasCriticos: resolve(import.meta.dirname, 'assets/html/sistemasCriticos.html'),
       }
