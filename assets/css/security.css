@@ -1,27 +1,34 @@
 /* ============================================================
-   CYCS & Co. — Service Pages CSS v3.0
+   CYCS & Co. — Service Pages CSS v4.0
    Aplica a: seguridadYRedes, sistemasCriticos, automatizaciones
-   Layout: hero con swiper de fondo + grid de cards (estilo index)
+   Layout: hero-wrapper con swiper de fondo a sangre completa +
+           overlay de título y grid de cards (patrón index hero)
    ============================================================ */
 
-/* ── SECCIÓN BASE (view-hero) ───────────────────────────────── */
-section.security.view-hero,
-section.telco.view-hero {
+/* ── SECCIÓN = HERO-WRAPPER (sangre completa) ───────────────── */
+/* Replica .hero-wrapper del index: la sección es el "cajón" que
+   contiene el swiper absoluto (fondo) + el contenido (overlay).
+   height: auto anula el height: 100vh de swiper.css (los cards
+   nunca se recortan); min-height: 100vh la hace pantalla completa
+   cuando el contenido cabe. El contenido va en flujo (flex
+   centrado) para que la sección crezca si las cards no caben. */
+section.security.hero-wrapper,
+section.telco.hero-wrapper {
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  height: auto;
+  min-height: 100vh;
   margin: 0 auto;
-  padding: calc(var(--header-height) + var(--space-16)) var(--space-8) var(--space-20);
-}
-
-/* Segunda sección y siguientes no necesitan tanto espacio top */
-section.security + section,
-section.telco + section {
-  padding-top: var(--space-16);
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* ── SWIPER DE FONDO ────────────────────────────────────────── */
-/* Absoluto detrás del contenido, como el hero de la página principal */
+/* Absoluto, inset 0, z-0: cubre toda la sección (patrón .slideshow1
+   del hero de la página principal). */
 .view-bg {
   position: absolute;
   inset: 0;
@@ -59,11 +66,25 @@ section.telco + section {
   pointer-events: none;
 }
 
-/* ── CONTENIDO (encima del swiper) ──────────────────────────── */
+/* ── CONTENIDO (overlay encima del swiper) ──────────────────── */
+/* Equivalente a .hero-content del index: capa sobre el fondo con
+   z-index 2. En flujo (position: relative) para que la sección
+   crezca con las cards; el swiper queda absoluto detrás.
+   pointer-events: none deja pasar el touch/drag al swiper. */
 .view-content {
   position: relative;
   z-index: 2;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: calc(var(--header-height) + var(--space-10)) var(--space-8) var(--space-10);
+  pointer-events: none;
+}
+
+/* Re-habilitar clicks en enlaces/botones del contenido */
+.view-content a,
+.view-content button {
+  pointer-events: all;
 }
 
 /* ── TÍTULO DE SECCIÓN ──────────────────────────────────────── */
@@ -93,6 +114,7 @@ section.telco + section {
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-6);
   justify-items: center;
+  width: 100%;
 }
 
 .view-cards .card {
@@ -179,8 +201,7 @@ section.telco + section {
 
 /* ── RESPONSIVE ─────────────────────────────────────────────── */
 @media screen and (max-width: 1024px) {
-  section.security.view-hero,
-  section.telco.view-hero {
+  .view-content {
     padding: calc(var(--header-height) + var(--space-10)) var(--space-6) var(--space-16);
   }
   .view-cards {
@@ -189,10 +210,6 @@ section.telco + section {
 }
 
 @media screen and (max-width: 768px) {
-  section.security.view-hero,
-  section.telco.view-hero {
-    padding: calc(var(--header-height) + var(--space-8)) var(--space-4) var(--space-12);
-  }
   .view-cards {
     grid-template-columns: 1fr;
     max-width: 480px;
