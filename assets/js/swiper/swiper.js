@@ -13,7 +13,7 @@ export function initHeroSwiper() {
   /* ── HERO SLIDESHOW — fade fullscreen ── */
   const el = document.querySelector('.slideshow1');
   if (el && !el.classList.contains('swiper-initialized')) {
-    new Swiper('.slideshow1', {
+    const swiper = new Swiper('.slideshow1', {
       modules: [Navigation, Pagination, Autoplay, EffectFade],
       effect: 'fade',
       fadeEffect: { crossFade: true },
@@ -23,7 +23,6 @@ export function initHeroSwiper() {
       autoplay: {
         delay: 4000,
         disableOnInteraction: false,
-        pauseOnMouseEnter: true,
       },
       pagination: {
         el: '.swiper-pagination',
@@ -34,5 +33,20 @@ export function initHeroSwiper() {
         prevEl: '.swiper-button-prev',
       },
     });
+
+    /* Autoplay solo mientras el hero es visible en pantalla */
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            swiper.autoplay.start();
+          } else {
+            swiper.autoplay.stop();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
   }
 }
