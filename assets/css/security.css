@@ -1,12 +1,13 @@
 /* ============================================================
-   CYCS & Co. — Service Pages CSS v2.1
+   CYCS & Co. — Service Pages CSS v3.0
    Aplica a: seguridadYRedes, sistemasCriticos, automatizaciones
-   Layout: dos columnas, texto moderno, sliders preservados
+   Layout: hero con swiper de fondo + grid de cards (estilo index)
    ============================================================ */
 
-/* ── SECCIÓN BASE ────────────────────────────────────────────── */
-section.security,
-section.telco {
+/* ── SECCIÓN BASE (view-hero) ───────────────────────────────── */
+section.security.view-hero,
+section.telco.view-hero {
+  position: relative;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -19,15 +20,59 @@ section.telco + section {
   padding-top: var(--space-16);
 }
 
-/* ── TÍTULO DE SECCIÓN ───────────────────────────────────────── */
-section.security .title,
-section.telco .title {
+/* ── SWIPER DE FONDO ────────────────────────────────────────── */
+/* Absoluto detrás del contenido, como el hero de la página principal */
+.view-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.view-bg .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.view-bg .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Overlay oscuro para legibilidad del contenido sobre las imágenes */
+.view-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(8, 14, 24, 0.86) 0%,
+    rgba(8, 14, 24, 0.6) 50%,
+    rgba(8, 14, 24, 0.3) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── CONTENIDO (encima del swiper) ──────────────────────────── */
+.view-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* ── TÍTULO DE SECCIÓN ──────────────────────────────────────── */
+.view-content .title {
   margin-bottom: var(--space-10);
   text-align: center;
 }
 
-section.security .title h2,
-section.telco .title h2 {
+.view-content .title h2 {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: var(--font-bold);
@@ -37,92 +82,79 @@ section.telco .title h2 {
 }
 
 /* Drop-cap span → accent color inline */
-section.security .title h2 span,
-section.telco .title h2 span {
+.view-content .title h2 span {
   color: var(--brand-primary);
   font-style: normal;
 }
 
-/* ── DOS COLUMNAS ────────────────────────────────────────────── */
-.security .row,
-.telco .row {
+/* ── GRID DE CARDS ──────────────────────────────────────────── */
+.view-cards {
   display: grid;
-  grid-template-columns: 55% 42%;
-  gap: var(--space-8);
-  align-items: start;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  justify-items: center;
 }
 
-.security .col50,
-.telco .col50 {
+.view-cards .card {
+  position: relative;
   width: 100%;
-  min-width: 0; /* evita overflow en grid */
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--surface-border);
+  background: rgba(8, 14, 24, 0.55);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-base),
+              box-shadow var(--transition-base),
+              border-color var(--transition-base);
 }
 
-/* ── HEADINGS DENTRO DEL CONTENIDO ──────────────────────────── */
-.security .col50 h3,
-.telco .col50 h3 {
+.view-cards .card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg), 0 0 0 1px var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+
+/* ── HEADING DE LA CARD ─────────────────────────────────────── */
+.view-cards .card h3 {
   font-family: var(--font-display);
   font-size: var(--text-lg);
-  font-weight: var(--font-semi-bold);
-  color: var(--text-primary);
-  line-height: 1.35;
-  margin-top: var(--space-8);
-  margin-bottom: var(--space-4);
-  padding-left: var(--space-3);
-  border-left: 3px solid var(--brand-primary);
+  font-weight: var(--font-bold);
+  color: #EDF2F7;
+  line-height: 1.3;
+  margin-bottom: var(--space-3);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.security .col50 h3:first-child,
-.telco .col50 h3:first-child {
-  margin-top: 0;
-}
-
-/* Accent spans in headings */
-.security .col50 h3 span,
-.telco .col50 h3 span {
+.view-cards .card h3 span {
   color: var(--brand-primary);
 }
 
-/* ── PÁRRAFOS ────────────────────────────────────────────────── */
-.security .col50 p,
-.telco .col50 p {
-  font-size: var(--text-base);
-  color: var(--text-secondary);
-  line-height: 1.75;
-  margin-bottom: var(--space-4);
-}
-
-.security .col50 p span,
-.telco .col50 p span {
-  color: var(--brand-primary);
-  font-weight: var(--font-semi-bold);
-}
-
-/* ── LISTAS PRINCIPALES ──────────────────────────────────────── */
-.security .col50 .mainUL,
-.telco .col50 .mainUL {
+/* ── LISTA COMPACTA ─────────────────────────────────────────── */
+.view-cards .card ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 var(--space-4) 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
 }
 
-.security .col50 .mainUL > li,
-.telco .col50 .mainUL > li {
+.view-cards .card ul li {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-3);
-  font-size: var(--text-base);
-  color: var(--text-secondary);
-  line-height: 1.6;
-  padding: var(--space-2) 0;
-  border-bottom: 1px solid var(--surface-border-sub);
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: rgba(237, 242, 247, 0.9);
+  line-height: 1.55;
 }
 
-.security .col50 .mainUL > li::before,
-.telco .col50 .mainUL > li::before {
+.view-cards .card ul li::before {
   content: '';
   display: inline-block;
   width: 6px;
@@ -133,117 +165,7 @@ section.telco .title h2 span {
   margin-top: 0.55em;
 }
 
-.security .col50 .mainUL > li span,
-.telco .col50 .mainUL > li span {
-  color: var(--brand-primary);
-  font-weight: var(--font-semi-bold);
-}
-
-/* ── LISTAS SECUNDARIAS (anidadas) ───────────────────────────── */
-.security .col50 .secondaryUL,
-.telco .col50 .secondaryUL {
-  list-style: none;
-  padding: 0;
-  margin: var(--space-3) 0 var(--space-3) var(--space-6);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-}
-
-.security .col50 .secondaryUL li,
-.telco .col50 .secondaryUL li {
-  font-size: var(--text-sm);
-  color: var(--text-muted);
-  line-height: 1.65;
-  padding-left: var(--space-4);
-  position: relative;
-}
-
-.security .col50 .secondaryUL li::before,
-.telco .col50 .secondaryUL li::before {
-  content: '›';
-  position: absolute;
-  left: 0;
-  color: var(--neutral-500);
-  font-weight: bold;
-}
-
-.security .col50 .secondaryUL li span,
-.telco .col50 .secondaryUL li span {
-  color: var(--brand-primary);
-  font-weight: var(--font-semi-bold);
-}
-
-/* ── SWIPER SLIDESHOW2 ───────────────────────────────────────── */
-/* Preserva el comportamiento original con estilo modernizado */
-
-.col50 .swiper.slideshow2 {
-  position: relative;
-  width: 100%;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--surface-border);
-}
-
-.col50 .swiper.slideshow2 .swiper-slide {
-  text-align: center;
-  background: transparent;
-}
-
-.col50 .swiper.slideshow2 .swiper-slide img {
-  width: 100%;
-  max-height: 420px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  border-radius: var(--radius-md);
-}
-
-/* Prev/Next buttons */
-.col50 .slideshow2 .swiper-button-next,
-.col50 .slideshow2 .swiper-button-prev {
-  color: rgba(255,255,255,0.9);
-  width: 36px;
-  height: 36px;
-  background: rgba(0,0,0,0.35);
-  border-radius: var(--radius-full);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-  transition: background var(--transition-fast);
-}
-.col50 .slideshow2 .swiper-button-next:hover,
-.col50 .slideshow2 .swiper-button-prev:hover {
-  background: var(--brand-primary);
-}
-.col50 .slideshow2 .swiper-button-next::after,
-.col50 .slideshow2 .swiper-button-prev::after {
-  font-size: 0.9rem;
-  font-weight: 900;
-}
-
-/* Pagination */
-.col50 .slideshow2 .swiper-pagination-bullet {
-  background: rgba(255,255,255,0.55);
-  opacity: 1;
-  width: 7px;
-  height: 7px;
-}
-.col50 .slideshow2 .swiper-pagination-bullet-active {
-  background: var(--brand-primary);
-  width: 20px;
-  border-radius: var(--radius-full);
-}
-
-/* Fraction pagination (swiper_v2) */
-.col50 .slideshow2 .swiper-pagination-fraction {
-  color: rgba(255,255,255,0.8);
-  font-size: var(--text-sm);
-  font-weight: var(--font-semi-bold);
-  bottom: var(--space-3);
-}
-
-/* ── COPYRIGHT ───────────────────────────────────────────────── */
+/* ── COPYRIGHT ──────────────────────────────────────────────── */
 .copyright {
   padding: var(--space-6) var(--space-8);
   border-top: 1px solid var(--surface-border);
@@ -255,53 +177,40 @@ section.telco .title h2 span {
   color: var(--text-muted);
 }
 
-/* ── RESPONSIVE ──────────────────────────────────────────────── */
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
 @media screen and (max-width: 1024px) {
-  section.security,
-  section.telco {
+  section.security.view-hero,
+  section.telco.view-hero {
     padding: calc(var(--header-height) + var(--space-10)) var(--space-6) var(--space-16);
   }
-  .security .row,
-  .telco .row {
-    gap: var(--space-8);
-  }
-  .col50 .swiper.slideshow2 .swiper-slide img {
-    max-height: 320px;
+  .view-cards {
+    gap: var(--space-4);
   }
 }
 
 @media screen and (max-width: 768px) {
-  section.security,
-  section.telco {
+  section.security.view-hero,
+  section.telco.view-hero {
     padding: calc(var(--header-height) + var(--space-8)) var(--space-4) var(--space-12);
   }
-  .security .row,
-  .telco .row {
+  .view-cards {
     grid-template-columns: 1fr;
-    gap: var(--space-6);
+    max-width: 480px;
+    margin: 0 auto;
   }
-  /* On mobile: slider goes first, text below */
-  .security .col50:last-child,
-  .telco .col50:last-child {
-    order: -1;
+  .view-cards .card {
+    aspect-ratio: 16 / 9;
   }
-  .col50 .slideshow2 .swiper-button-next,
-  .col50 .slideshow2 .swiper-button-prev {
-    display: none;
-  }
-  section.security .title h2,
-  section.telco .title h2 {
+  .view-content .title h2 {
     font-size: var(--text-xl);
   }
 }
 
 @media screen and (max-width: 480px) {
-  .security .col50 h3,
-  .telco .col50 h3 {
+  .view-cards .card h3 {
     font-size: var(--text-base);
   }
-  .security .col50 .mainUL > li,
-  .telco .col50 .mainUL > li {
-    font-size: var(--text-sm);
+  .view-cards .card ul li {
+    font-size: var(--text-xs);
   }
 }

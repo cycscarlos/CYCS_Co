@@ -1,12 +1,10 @@
 /**
- * CYCS & Co. — Swiper v2.1 (páginas de servicio)
- * Maneja múltiples instancias de .slideshow2 en la misma página
+ * CYCS & Co. — Swiper v2.2 (páginas de servicio)
+ * Maneja múltiples instancias de .slideshow2 como fondo (view-bg)
  */
 import Swiper from 'swiper';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 export function initServiceSwipers() {
   var slides = document.querySelectorAll('.swiper.slideshow2');
@@ -15,37 +13,36 @@ export function initServiceSwipers() {
   slides.forEach(function (el, i) {
     if (el.classList.contains('swiper-initialized')) return;
 
-    /* Cada instancia necesita clases únicas para nav/pagination */
-    var pag  = el.querySelector('.swiper-pagination');
-    var next = el.querySelector('.swiper-button-next');
-    var prev = el.querySelector('.swiper-button-prev');
-
     var uid = 'slideshow2-' + i;
     el.classList.add(uid);
-    if (pag)  pag.classList.add('pag-'  + uid);
-    if (next) next.classList.add('next-' + uid);
-    if (prev) prev.classList.add('prev-' + uid);
 
-    new Swiper('.' + uid, {
-      modules: [Navigation, Pagination, Autoplay],
+    var swiper = new Swiper('.' + uid, {
+      modules: [Autoplay, EffectFade],
+      effect: 'fade',
+      fadeEffect: { crossFade: true },
       slidesPerView: 1,
       spaceBetween: 0,
       loop: true,
-      speed: 800,
-      pagination: pag ? {
-        el: '.pag-' + uid,
-        type: 'fraction',
-      } : false,
-      navigation: (next && prev) ? {
-        nextEl: '.next-' + uid,
-        prevEl: '.prev-' + uid,
-      } : false,
+      speed: 1200,
       autoplay: {
-        delay: 3500,
-        pauseOnMouseEnter: true,
+        delay: 2500,
         disableOnInteraction: false,
       },
     });
+
+    /* Autoplay solo cuando el fondo es visible (patrón del hero) */
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            swiper.autoplay.start();
+          } else {
+            swiper.autoplay.stop();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
   });
 }
-
