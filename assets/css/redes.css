@@ -116,6 +116,14 @@ section.telco.hero-wrapper {
   width: 100%;
 }
 
+/* Variante 2×2 "pilares" centrada (redes) */
+.view-cards.view-cards--pilares {
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
 .view-cards .card {
   position: relative;
   width: 100%;
@@ -124,12 +132,15 @@ section.telco.hero-wrapper {
   overflow: hidden;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--surface-border);
-  background: rgba(8, 14, 24, 0.55);
+  background: var(--neutral-950);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   transition: transform var(--transition-base),
               box-shadow var(--transition-base),
               border-color var(--transition-base);
@@ -169,6 +180,7 @@ section.telco.hero-wrapper {
 .view-cards .card ul li {
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   gap: var(--space-2);
   font-size: var(--text-sm);
   color: rgba(237, 242, 247, 0.9);
@@ -188,14 +200,19 @@ section.telco.hero-wrapper {
 
 /* ── COPYRIGHT ──────────────────────────────────────────────── */
 .copyright {
-  padding: var(--space-6) var(--space-8);
-  border-top: 1px solid var(--surface-border);
-  background: var(--surface-raised);
+  padding: var(--space-3) var(--space-8);
+  background: var(--neutral-600);
+}
+.copyright .copyrightTexto {
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--footer-faint);
 }
 .copyrightTexto p {
   text-align: center;
   font-size: var(--text-xs);
-  color: var(--text-muted);
+  color: var(--footer-faint);
 }
 
 /* ── RESPONSIVE ─────────────────────────────────────────────── */
@@ -210,6 +227,11 @@ section.telco.hero-wrapper {
 
 @media screen and (max-width: 768px) {
   .view-cards {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .view-cards.view-cards--pilares {
     grid-template-columns: 1fr;
     max-width: 480px;
     margin: 0 auto;

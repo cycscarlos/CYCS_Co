@@ -52,6 +52,7 @@
   --footer-title:      #EDF2F7;              /* títulos de columna (AAA) */
   --footer-text:       #A0B2BF;              /* cuerpo, enlaces, descripción (AA) */
   --footer-muted:      #56697A;              /* texto legal mínima */
+  --footer-faint:      rgba(163, 178, 191, 0.5); /* texto legal — sutil/imperceptible */
   --footer-border:     rgba(255,255,255,0.08); /* bordes y separadores */
   --footer-accent:     var(--brand-primary); /* #FF4C00 — barra, bullets, iconos, hover */
 
