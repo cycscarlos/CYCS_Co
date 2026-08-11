@@ -46,11 +46,14 @@ section.cards {
 }
 
 /* ── CARDS GRID ─────────────────────────────────────────────── */
+/* 2×2 (pilares) centrado con buen gap entre cards */
 .cards .cardsBx {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
   justify-items: center;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 /* ── INDIVIDUAL CARD ────────────────────────────────────────── */
@@ -160,7 +163,7 @@ section.cards {
 
 /* ── RESPONSIVE ──────────────────────────────────────────────── */
 @media screen and (max-width: 1024px) {
-  .cards .cardsBx { grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+  .cards .cardsBx { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
 }
 
 @media screen and (max-width: 768px) {
