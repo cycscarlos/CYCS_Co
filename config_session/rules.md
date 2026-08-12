@@ -53,3 +53,10 @@
 - `config_session/memory.md` — contexto de la sesión.
 - `AGENTS.md` — instrucciones específicas para el agente IA.
 - `opencode.json` — configuración del agente.
+
+## 9. Plan de implementación obligatorio (nueva regla)
+
+- **A partir de ahora no se realizan implementaciones ni refactorizaciones sin un plan de implementación previo.**
+- Antes de cualquier requerimiento, yo diseño un plan **desglosado en tareas cortas, muy cortas, específicas y concretas** y lo guardo en un archivo en **formato Markdown dentro de la carpeta `docs/`**.
+- Cada tarea del plan debe especificar el **riesgo** que conlleva realizarla.
+- Para ejecutar cada tarea se requiere tu **autorización explícita**.
