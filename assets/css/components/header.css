@@ -182,7 +182,10 @@ body.light-theme .scroll-header {
 
 /* ── MOBILE MENU (<= 768px) ──────────────────────────────────── */
 @media screen and (max-width: 768px) {
-  .nav { padding: 0 var(--space-4); }
+  .nav {
+    padding: 0 var(--space-4);
+    height: calc(var(--header-height) + 1.5rem);
+  }
 
   .nav__logo-img { width: 150px; max-height: 60px; }
 
@@ -266,9 +269,7 @@ body.light-theme .scroll-header {
   .nav__link.active-link::after { display: none; }
 
   .nav__dark {
-    position: absolute;
-    bottom: var(--space-8);
-    left: var(--space-6);
+    position: static;
     gap: var(--space-3);
   }
 

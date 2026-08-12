@@ -6,6 +6,11 @@
 - 32cfcb5 — checkpoint estado actual (vite.config.js + package-lock.json) antes de renombrar a `.mjs`.
 - e5d18d1 — checkpoint estado actual (ediciones locales index) antes de eliminar vista nosotros.
 - 81c47ff — último commit antes del rediseño de vistas (punto de rollback del rediseño; árbol limpio).
+- 735ef6c — checkpoint: estado actual antes de arreglar menu responsive y cards de vistas.
+- 342c853 — checkpoint: estado actual antes de fix responsive menu hamburguesa y cards de vistas (incluye Regla 9 en rules.md).
+- bbad4f8 — checkpoint: fix menu responsive (panel pantalla completa) + cards opacas en vistas, antes de eliminar scroll horizontal.
+- dea4d14 — checkpoint: html clip en responsive (elimina scroll horizontal global) antes de clip mainBox.
+- e2ac2e8 — checkpoint: pre-scrollReveal — estado actual antes de modificar scrollReveal.js (rollback de la Tarea 3).
 
 ## Commits de la sesión actual
 - 0dc19e4 — checkpoint: estado actual antes de cambiar el color del titulo principal a blanco
@@ -14,6 +19,7 @@
 - 4cee3f4 — checkpoint: ajustar altura dinamica del swiper y permitir scroll natural para cards
 - 26da663 — checkpoint: posicionamiento absoluto del contenedor de cards superpuesto directamente sobre el swiper
 - b0bbe43 — checkpoint: estado actual antes de refactorizar cards translucidas (swiper como fondo visible)
+- 941a854 — fix: eliminar scroll horizontal en vistas tecnicas (se remueve animacion ScrollReveal de section.security que aplicaba translateX(60px)).
 
 ## Resumen de la sesión
 1. **Refactorización de Vistas Técnicas (automatizaciones, sistemasCriticos, seguridad, redes)**:
@@ -23,9 +29,19 @@
    - Margen superior del título ampliado (`calc(var(--header-height) + var(--space-12))`) despejando holgadamente el navbar.
    - Títulos principales en color **blanco puro (`#FFFFFF`)** conservando la acentuación naranja (`var(--brand-primary)`) en los `span`.
 
+2. **Responsive — menú hamburguesa y cards de vistas**:
+   - Menú móvil en `assets/css/components/header.css` (solo `@media max-width:768px`): panel `height:100vh/100dvh`, fondo `--neutral-950`, links `--neutral-300` con hover blanco, botón cerrar claro. Causa raíz: `backdrop-filter` del header ancla el drawer `fixed` y los colores de texto dependían del tema (light por defecto en `main.js`).
+   - Cards de vistas en `security.css` y `redes.css` (solo `@media max-width:1024px`): `background: rgba(8,14,24,0.9)` (hover `0.96`) para legibilidad. Desktop intacto (0.28/0.42).
+
+3. **Playbook "eliminar scroll horizontal en responsive" (360×800, Redmi Note 12S)**:
+   - **Causa raíz definitiva:** `assets/js/scroll/scrollReveal.js` → `sr.reveal('.clients, .security', { origin:'right', distance:'60px' })` aplicaba a `section.security` un `transform: translateX(60px)` → desbordaba el viewport 60px de más en seguridad/automatizaciones/sistemasCriticos. Redes usa `section.telco` (no coincide con `.security`) → nunca se animó → funcionaba.
+   - **Fix (Commit 941a854):** cambiar `.clients, .security` → `.clients` en `scrollReveal.js:21`. Las 3 vistas quedan estáticas (como redes); `.galeria`/`.clients` del index conservan su animación.
+   - **Pasos descartados en el camino (conservados como aprendizaje):** `html/mainBox` con `overflow-x: hidden/clip` en `@media ≤768px` de `smartphones.css` — enmascara pero no elimina y trunca contenido real. Diagnosticar primero el exceso exacto con scripts en consola (archivos en `docs/diagnostico-*.js` guardados en archivo porque pegar código de OpenCode en DevTools falla).
+   - **Regla 9 activa en `config_session/rules.md`:** no implementar sin plan Markdown en `docs/`, tareas cortas con riesgo, autorización explícita por tarea.
+
 ## Pendiente
 - **Probar en `npm run dev`** (el usuario): verificar el texto blanco del título, el espacio respecto al navbar y la experiencia completa en las 4 vistas.
 
 - **Investigación del usuario**: Chaport vs Tawk.to (el snippet de Tawk.to ya está comentado en index.html). Decidir si se cambia de proveedor (implicaría snippet en 7 páginas + CSP). Información de Chaport en `docs/chatbot-chaport.md`.
 - **Leftovers** (a decidir): `assets/css/components/footer.css` con línea comentada (resto de experimento); borrado de `CYCS_Co-v2.code-workspace`; archivos untracked `AGENTS.md`, `config_session/`, `opencode.json`, `x-CYCS_Co-v2.code-workspace` (locales, no se commitean).
-- **Git**: rama `main` **sincronizada con `origin/main`** (push hecho). Árbol limpio.
+- **Git**: rama `main` **12 commits por delante de `origin/main`** (push pendiente, lo ejecuta el usuario).
