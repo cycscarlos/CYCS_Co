@@ -18,7 +18,7 @@ export function initScrollReveal() {
   });
 
   // Reveal animations from right
-  sr.reveal(`.clients, .security`, {
+  sr.reveal(`.clients`, {
     origin: "right",
     interval: 100,
   });
