@@ -8,56 +8,24 @@
 - 81c47ff — último commit antes del rediseño de vistas (punto de rollback del rediseño; árbol limpio).
 
 ## Commits de la sesión actual
-- 2b46a6b — fix: Posicionamiento Icons Butons. *(commit del usuario — banner_Icon a la izquierda, scrollup circular con `--brand-primary-btn`, `show-scroll` bottom 10rem, snippet Tawk.to comentado en index)* **← HEAD actual**
-- a63301c — fix: Vista Contacto. *(commit del usuario — aside translúcido 0.6, colores `--footer-color`, botón Enviar a `--color-logo`, inputs 93% y texto de la descripción comentado)*
-- 37972a1 — memory.md. *(commit del usuario — commitea esta memoria con los puntos 12-14)*
-- 524f5e1 — feat: vista contacto — botón Enviar en `--brand-primary`, socials centrados con gradiente de Instagram visible desde el inicio y hover con halo; se eliminan linkedin y whatsapp del bloque de redes.
-- 6e0e0b4 — fix: navbar y componentes en vistas bajo base `/CYCS_Co/` — `getComponentsBasePath()` usa `import.meta.env.BASE_URL` y `rewriteBaseUrls()` prefija href/src absolutos de los componentes inyectados.
-- 8efee55 — fix: se redefinieron las imágenes de la vista Automatizaciones & IA. *(commit del usuario)*
-- 2dac1c4 — Actualizar netlify.toml y sincronizar base path para Netlify y GitHub Pages. *(commit del usuario — introduce `base: '/CYCS_Co/'`)*
-- 01595fd — Subir a producción la nueva versión del proyecto.
-- c5a354b — feat: variante 2×2 "pilares" en vistas técnicas + cards con fondo `--neutral-950` y copyright sobre `--neutral-600`.
-- 944e3e0 — checkpoint: grid 2×2 de cards en index (estado actual antes de aplicar 2×2 en vistas seguridad/redes/sistemasCriticos).
-- c0ad5ed — checkpoint: etiquetas cortas Seguridad/Redes en navbar (header-tech) antes del grid 2×2 de cards.
-- c3e4986 — checkpoint: división de seguridadYRedes en seguridad/redes (estado actual antes de acortar etiquetas de navbar).
-- d75c31b — checkpoint: refactor hero-wrapper en vistas técnicas (estado actual antes de dividir seguridadYRedes en seguridad/redes).
-- 32cfcb5 — checkpoint: estado actual antes de renombrar vite.config.js a .mjs (incluye copyComponentsPlugin + package-lock.json pendientes).
-- d778fa8 — fix: renombrar vite.config.js → vite.config.mjs (warning ESM/CommonJS Vite 8).
-- 452f46d — fix: eliminar vista nosotros.html, quitar enlaces asociados e incorporar about.png al hero.
-- b6df878 — feat: colocar imagen de equipo (about.png) como primer slide del hero.
-- a3b70a5 — fix: sustituir __dirname por import.meta.dirname en vite.config.mjs (warning Vite 8).
-- 094644e — feat: purgar nosotros.css y limpiar código muerto/comentado (HTML, CSS, JS).
-- ebe7ccf — feat: autoplay del hero solo cuando es visible (IntersectionObserver), sin pausa por hover.
-- 81c47ff — feat: reducir delay del hero de 4000ms a 2000ms.
-- e36fe93 — feat: rediseñar vistas técnicas a cards con carousel de fondo (estilo hero). (punto base del rediseño posterior)
-- e2eb034 — feat: carousel visible a través de las cards — velo sutil + cristal translúcido (glassmorphism). **← ORFANO (revertido por rollback)**
-- 6db26f5 — feat: fusionar secciones de seguridadYRedes en una sola vista — cards protagonistas con un único carousel de fondo. **← ORFANO (revertido por rollback)**
-- c1b02b5 — feat: vistas técnicas en patrón hero-wrapper a sangre completa — swiper de fondo (slideshow1) + cards en overlay; eliminar swiper_v2.js. **← ORFANO (revertido por rollback)**
+- 0dc19e4 — checkpoint: estado actual antes de cambiar el color del titulo principal a blanco
+- 283c617 — checkpoint: estado actual funcional antes de ajustar margen superior del titulo respecto al navbar
+- 63ba6a5 — checkpoint: restaurar posicionamiento absoluto overlay en .view-content con overflow-y auto para scroll perfecto
+- 4cee3f4 — checkpoint: ajustar altura dinamica del swiper y permitir scroll natural para cards
+- 26da663 — checkpoint: posicionamiento absoluto del contenedor de cards superpuesto directamente sobre el swiper
+- b0bbe43 — checkpoint: estado actual antes de refactorizar cards translucidas (swiper como fondo visible)
 
 ## Resumen de la sesión
-
-1. **Vite config .mjs** — `vite.config.js` renombrado a `vite.config.mjs` para eliminar el warning `configLoader: 'native'` (ESM en archivo CommonJS). Incluyó commitear `copyComponentsPlugin` + `package-lock.json` regenerado.
-2. **Vista nosotros eliminada** — Se borró `assets/html/nosotros.html` (510 líneas) y todos sus enlaces; se quitó la entrada `nosotros` de `rollupOptions.input` en `vite.config.mjs`.
-3. **about.png al hero** — `assets/img/about.png` movido a `assets/img/swiper/about.png` (git mv) y añadido como **primer slide** del carrusel hero (`loading="eager"`). Hero: 11 slides, efecto fade, `loop`, `speed: 1200`, `delay: 2000`.
-4. **import.meta.dirname** — Sustituidos todos los usos de `__dirname` en `vite.config.mjs` (ESM correcto; elimina warning Vite 8).
-5. **Purga de código muerto** — Eliminado `assets/css/nosotros.css` (488 líneas) y su import en `app.js:13`; limpiados comentarios/bloques muertos en HTML (index, servicios, contacto) y CSS (`grid.css` `.proveedores`, `smartphones.css`, `security.css` `.ctrlAcceso`, `swiper.css`, `scrollReveal.js` selectores muertos). Se conservaron los separadores descriptivos de sección.
-6. **Autoplay hero condicionado a visibilidad** — `swiper.js`: se quitó `pauseOnMouseEnter` y se añadió `IntersectionObserver` (threshold 0.1) que arranca/para el autoplay solo cuando el hero es visible. Delay reducido de 4000ms → 2000ms.
-7. **Rediseño de vistas técnicas — base e36fe93** — cards compactas (título + 3 bullets) sobre carousel de fondo `slideshow2` con patrón `view-hero`/`view-bg`/`view-content`/`view-cards` (max-width limitado, sin sangre completa). Versiones cristal `e2eb034` y hero-wrapper `c1b02b5` descartadas por rollback (el usuario dijo que "nada de lo solicitado funcionó").
-8. **División y refactor posterior** — `seguridadYRedes.html` se dividió en `seguridad.html` y `redes.html`; navbar (header-tech) con etiquetas cortas **Seguridad/Redes**; patrón `hero-wrapper` replicado en las vistas técnicas (checkpoints d75c31b → 944e3e0).
-9. **Grid 2×2 "pilares"** — nueva variante `.view-cards--pilares` (2 columnas, `max-width: 960px`, centrado; 1 columna en ≤1024px) aplicada en seguridad, redes y sistemasCriticos; cards centradas (`justify-content/align-items/text-align: center`, bullets centrados).
-10. **Fondo de las cards** — de `rgba(8, 14, 24, 0.55)` a **`var(--neutral-950)`** (#080E18 sólido). El usuario confirmó neutral-950 tras descartar 900/800.
-11. **Copyright (versión final = c5a354b)** — `.copyright` vuelve al **flujo normal** (final de la página). Se intentó `position: fixed; bottom: 0` pero causó problemas de UI severos y se **revirtió**. Fondo **`var(--neutral-600)`** (#3A4A5C), `padding: var(--space-3) var(--space-8)`, sin borde; texto `var(--footer-faint)` (rgba(163,178,191,0.5)). Override `.copyright .copyrightTexto` (padding 0, bg transparente, sin borde) para neutralizar los estilos de `footer.css`. El token `--footer-glass` se añadió y luego se **eliminó** (quedó huérfano). El index no se ve afectado (su banda usa `.copyrightTexto` de `footer.css`). La banda aplica a las 5 vistas técnicas + contacto (componente compartido).
-12. **Fix navbar bajo base `/CYCS_Co/`** — tras el commit del usuario `2dac1c4` (base path en `vite.config.mjs`), el navbar de las vistas se rompió: `components-loader.js` fetcheaba `/assets/html/components/…` (404 en dev, aviso "did you mean to visit /CYCS_Co/…"). Fix en `components-loader.js` (6e0e0b4): `getComponentsBasePath()` → `import.meta.env.BASE_URL + 'assets/html/components/'` y nueva `rewriteBaseUrls()` que prefija con BASE_URL los `href`/`src` absolutos (que empiecen por `/` pero no `//`) de los componentes inyectados. Verificado en dev: las 8 rutas dan 200 (incl. `/#home`). El index no usa `data-component` (header inline con enlaces relativos), por eso no se rompió.
-13. **Vista contacto rediseñada** (524f5e1) — botón Enviar de `--color-btn-form` (cian) a **`--brand-primary`** (#FF4C00 naranja). `.contact__socials` centrado; círculo 4.5rem con `font-size: 2.4rem`; **solo Instagram** (se eliminan LinkedIn y WhatsApp del HTML) con gradiente oficial visible desde el inicio (`background-clip: text` + `-webkit-text-fill-color: transparent`; radial `#fdf497→#285aeb`); hover elegante (`translateY(-4px) scale(1.15)`, fondo blanco, halo `rgba(214,36,159,0.35)`).
-14. **Chatbot = widget Chaport (investigación)** — el botón flotante de todas las vistas es **Chaport live chat** (terceros, no npm): snippet duplicado en las 7 páginas (`index.html:1343-1369` y resto) con `window.chaportConfig = { appId: "62c2e668ae84592f309849bb", locale: "es", language: "es" }`, carga async `https://app.chaport.com/javascripts/insert.js`. CSP de netlify.toml ya permite app.chaport.com. Plan Free para siempre (2 operadores, chats ilimitados, 14 días de Unlimited de prueba); bots/chatbots solo en Unlimited (≈99 €/mes). Sustituible por Tawk.to/Crisp/Tidio/Chatwoot o WhatsApp API (implicaría cambiar snippet en 7 páginas + CSP). El botón flotante de WhatsApp (`.banner_Icon.whatsapp_Texto`) es aparte. Análisis completo guardado en `docs/chatbot-chaport.md`.
-15. **Fix Vista Contacto (usuario, a63301c)** — sobre el rediseño 524f5e1: aside `rgba(30, 82, 113, 0.6)`, `padding: 0 3rem` y `bottom: 7rem` comentado; títulos/`h5` a `--footer-color`; inputs a 93% (text 45%); botón Enviar ahora **`--color-logo`** (naranja `#FF4C00` = `--brand-primary`, comentado el var) con hover a `--color-logo`; placeholder `--color-logo`; descripción del aside comentada en HTML; dirección reformateada.
-16. **Posicionamiento botones (usuario, 2b46a6b)** — `.banner_Icon` ahora a la **izquierda** (`left: 1.5rem`, `right` comentado); nuevo token **`--brand-primary-btn: rgba(255, 76, 0, 0.65)`** (variables.css) usado en el scrollup; `.scrollup` circular (`border-radius: 50%`); `.show-scroll` a `bottom: 10rem`. En index.html quedó **comentado un snippet de Tawk.to** (embed.tawk.to `6a7b79d9d801151d4959b732`) → indica que el usuario evalúa Tawk.to como sustituto de Chaport.
-17. **Fixes móvil de la vista servicios (sesión actual, SIN commitear)** — el usuario reportó en móvil: logo gigante que desbordaba el header y carrusel/`.container-all` superpuestos al título con scroll lateral. Se reemplazó el lío de media queries antiguas de `servicios.css` (containers absolute con `top:45%`, lightbox con `transform: translate(-50% -40%)` roto) por, a ≤768px: `.servicios { height: calc(100vh - var(--header-height)); padding-top: calc(header-height + 1rem); display:flex; flex-direction:column; align-items:center; justify-content:space-evenly }`; `.title h2` a 1.6rem (h5 centrado); `.container-all` a `position:relative; top/left:auto; transform:none; height:160px`; `.servicios + .copyright` fijo al bottom (solo ≤768px). Título reducido a 1.45/1.4/1.35rem a ≤540/414/375px y `.title h5 { display:none }` a ≤540px. En `header.css`: logo compacto a ≤768px (padding reducido, `span` 1.15rem, `sup` 1.15rem) y a ≤414px `small { display:none }` + `span` 1.05rem. Verificado con Chrome headless a 360px (sondeo `__probe.html` temporal, ya borrado): logo 173px sin desborde, título 1.35rem, sección 744px (=100vh−header), `.container-all` relativo 160px, sin overflow horizontal/vertical (scrollHeight 785 ≤ 800), copyright fixed bottom.
+1. **Refactorización de Vistas Técnicas (automatizaciones, sistemasCriticos, seguridad, redes)**:
+   - Contenido (`.view-content`) sobrepuesto de forma absoluta sobre el swiper de fondo (`position: absolute; inset: 0; z-index: 2`).
+   - Scroll vertical activado en `.view-content` (`overflow-y: auto`) para lectura completa de tarjetas sin recortes.
+   - Transparencia cristal glassmorphic (`rgba(8, 14, 24, 0.28)` + `blur(5px)`) para proyectar el carrusel al fondo.
+   - Margen superior del título ampliado (`calc(var(--header-height) + var(--space-12))`) despejando holgadamente el navbar.
+   - Títulos principales en color **blanco puro (`#FFFFFF`)** conservando la acentuación naranja (`var(--brand-primary)`) en los `span`.
 
 ## Pendiente
-- **CIERRE DE SESIÓN (último prompt del usuario)**: "Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed." — el usuario cerró la sesión sin validar los fixes móviles del punto 17. Retomar en la próxima sesión: preguntar cuál es el problema exacto que quiere resolver y decidir si los cambios **sin commitear** en `servicios.css` + `header.css` se conservan o se revierten (`git restore .`).
-- **Probar fixes móviles servicios/logo** (el usuario): cambios **SIN commitear** en `assets/css/servicios.css` + `assets/css/components/header.css`. Si OK, el usuario hace el commit.
-- **Probar en `npm run dev`** (el usuario): navbar/componentes en las 4 vistas técnicas + contacto bajo `/CYCS_Co/`, socials de contacto (solo Instagram), y los 2 fixes nuevos (aside/colores contacto, posición de botones a la izquierda + scrollup circular).
+- **Probar en `npm run dev`** (el usuario): verificar el texto blanco del título, el espacio respecto al navbar y la experiencia completa en las 4 vistas.
+
 - **Investigación del usuario**: Chaport vs Tawk.to (el snippet de Tawk.to ya está comentado en index.html). Decidir si se cambia de proveedor (implicaría snippet en 7 páginas + CSP). Información de Chaport en `docs/chatbot-chaport.md`.
 - **Leftovers** (a decidir): `assets/css/components/footer.css` con línea comentada (resto de experimento); borrado de `CYCS_Co-v2.code-workspace`; archivos untracked `AGENTS.md`, `config_session/`, `opencode.json`, `x-CYCS_Co-v2.code-workspace` (locales, no se commitean).
 - **Git**: rama `main` **sincronizada con `origin/main`** (push hecho). Árbol limpio.
