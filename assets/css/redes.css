@@ -15,11 +15,11 @@
 section.telco.hero-wrapper {
   position: relative;
   width: 100%;
-  height: auto;
-  min-height: calc(100vh - var(--header-height));
+  height: calc(100vh - var(--header-height));
+  min-height: 540px;
   margin: 0 auto;
   padding: 0;
-  overflow: visible;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +27,7 @@ section.telco.hero-wrapper {
 }
 
 /* ── SWIPER DE FONDO ────────────────────────────────────────── */
-/* Absoluto, inset 0, z-0: se ajusta automáticamente al tamaño exacto de la sección (cards + padding) */
+/* Absoluto, inset 0, z-0: se ajusta a la ventana del marco hero */
 .view-bg {
   position: absolute;
   inset: 0;
@@ -66,14 +66,20 @@ section.telco.hero-wrapper {
 }
 
 /* ── CONTENIDO (overlay encima del swiper) ──────────────────── */
-/* Capa superpuesta sobre el swiper que define la altura del contenedor y permite scroll natural */
+/* Capa absoluta sobre el swiper con z-index 2 y overflow-y auto para permitir scroll completo si las cards sobrepasan el alto */
 .view-content {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 2;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: calc(var(--header-height) + var(--space-8)) var(--space-6) var(--space-12);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: calc(var(--header-height) + var(--space-4)) var(--space-6) var(--space-8);
+  overflow-y: auto;
   pointer-events: none;
 }
 
