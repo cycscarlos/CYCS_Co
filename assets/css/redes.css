@@ -233,6 +233,12 @@ section.telco.hero-wrapper {
   .view-cards {
     gap: var(--space-4);
   }
+  .view-cards .card {
+    background: rgba(8, 14, 24, 0.9);
+  }
+  .view-cards .card:hover {
+    background: rgba(8, 14, 24, 0.96);
+  }
 }
 
 @media screen and (max-width: 768px) {
