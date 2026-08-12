@@ -270,150 +270,83 @@
   .servicios {
     min-height: var(--section-height);
   }
+
+  /* Lightbox centrado — el transform base (scale(0)→scale(1)) se
+     conserva; aquí solo se centra con márgenes negativos (válido). */
+  .lightbox {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    width: 210px;
+    height: 300px;
+    margin: -150px 0 0 -105px;
+  }
+}
+
+/*! Tablet y móvil — vista 100vh sin scroll, carrusel centrado */
+@media screen and (max-width: 768px) {
+  .servicios {
+    min-height: 0;
+    height: calc(100vh - var(--header-height));
+    margin: 0;
+    padding: calc(var(--header-height) + 1rem) 0 0; /* despeja el header fijo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .servicios .title {
+    margin: 0;
+  }
   .servicios .title h2 {
-    margin: 8rem 0 0 0;
+    margin: 0 0 var(--space-2);
+    font-size: 1.6rem;
+    line-height: 1.2;
   }
   .servicios .title h5 {
-    margin: 3rem 0 0 0;
+    margin: 0;
   }
 
   .servicios .container-all {
-    position: absolute;
-    width: 210px;
-    top: 35%;
-    left: 50%;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    -webkit-transform: none;
+    height: 160px;
+    margin: 0 auto;
   }
-  .lightbox {
-    top: 50%;
-    left: 40%;
-    transform: translate(-50% -40%);
+
+  /* Banda de copyright fija al bottom de la vista */
+  .servicios + .copyright {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
   }
 }
 
-/*! iPad Portrait mode */
-@media screen and (max-width: 768px) {
-  .servicios .title h2 {
-    margin: 8rem 0 0 0;
-  }
-  .servicios .container-all {
-    position: absolute;
-    width: 210px;
-    top: 45%;
-    left: 50%;
-  }
-  .lightbox {
-    top: 50%;
-    left: 40%;
-    transform: translate(-50% -40%);
-  }
-}
-
-/*! Samsung Galaxy J2 */
+/*! Smartphones — título compacto */
 @media screen and (max-width: 540px) {
+  .servicios .title h5 {
+    display: none;
+  }
   .servicios .title h2 {
-    font-size: 2.5rem;
-  }
-  .social_Icon,
-  .banner_Icon {
-    right: 70px;
-  }
-  .lightbox {
-    top: 45%;
-    left: 30%;
-    transform: translate(-45% -30%);
+    font-size: 1.45rem;
   }
 }
 
-/*! PC in smallest viewport mode */
-@media screen and (max-width: 500px) {
-  .servicios .title h2 {
-    margin: 3rem 0 0 0;
-    font-size: 1.5rem;
-    text-align: center;
-  }
-  .social_Icon,
-  .banner_Icon {
-    right: 60px;
-  }
-  .lightbox {
-    top: 50%;
-    left: 25%;
-    transform: translate(-50% -25%);
-  }
-}
-
-/*! iPhone XS Max */
 @media screen and (max-width: 414px) {
-  .services {
-    width: 100%;
-    height: 896px;
-    min-height: 100vh;
-  }
   .servicios .title h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin: 6rem 0 2.5rem 0;
-  }
-  .social_Icon,
-  .banner_Icon {
-    right: 25px;
-  }
-  .lightbox {
-    top: 42.5%;
-    left: 23.5%;
-    transform: translate(-42.5% -23.5%);
+    font-size: 1.4rem;
   }
 }
 
-/*! iPhone 12 Pro */
-@media screen and (max-width: 390px) {
-  .servicios {
-    height: 844px;
-  }
-  .servicios .title h2 {
-    text-align: center;
-    font-size: 2rem;
-  }
-  .lightbox {
-    top: 42.5%;
-    left: 23.5%;
-    transform: translate(-42.5% -23.5%);
-  }
-}
-
-/*! iPhone 6/7/8 */
 @media screen and (max-width: 375px) {
-  .services {
-    height: 667px;
-    min-height: 100vh;
-  }
   .servicios .title h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin: 2.5rem 0 1rem 0;
-  }
-  .servicios .container-all {
-    position: absolute;
-    width: 210px;
-    top: 25%;
-    left: 50%;
-  }
-  .lightbox {
-    top: 42.5%;
-    left: 23.5%;
-    transform: translate(-42.5% -23.5%);
-  }
-}
-/*! samsung Galaxy S5 */
-@media screen and (max-width: 360px) {
-  .services {
-    height: 640px;
-    min-height: 100vh;
-  }
-  .lightbox {
-    top: 42.5%;
-    left: 23.5%;
-    transform: translate(-42.5% -23.5%);
+    font-size: 1.35rem;
   }
 }
 
