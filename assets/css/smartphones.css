@@ -8,6 +8,14 @@
   header { padding: 0; }
 }
 
+/* ── TABLET/TELÉFONO (max 768px) ────────────────────────────── */
+/* Corta el excedente del drawer off-canvas del menú (anclado al
+   header por backdrop-filter), que extendía el scroll horizontal.
+   En html (no body): el preloader anula body.style.overflow pero no html. */
+@media screen and (max-width: 768px) {
+  html { overflow-x: hidden; overflow-x: clip; }
+}
+
 /* ── TABLET PORTRAIT (max 768px) ────────────────────────────── */
 /* .nav__dark rules MOVED to header.css to avoid duplication */
 
