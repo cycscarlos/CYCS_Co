@@ -11,6 +11,14 @@
   border-top: 1px solid var(--footer-border);
 }
 
+/* Footer de #home en modo light */
+body.light-theme .footer {
+  background-color: #011627;
+}
+body.light-theme .copyrightTexto {
+  background-color: #011627;
+}
+
 .footer .title {
   margin-bottom: var(--space-4);
 }
