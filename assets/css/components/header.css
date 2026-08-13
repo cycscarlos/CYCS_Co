@@ -184,7 +184,7 @@ body.light-theme .scroll-header {
 @media screen and (max-width: 768px) {
   .nav {
     padding: 0 var(--space-4);
-    height: calc(var(--header-height) + 1.5rem);
+    height: calc(var(--header-height) + 2.5rem);
   }
 
   .nav__logo-img { width: 150px; max-height: 60px; }
@@ -282,9 +282,9 @@ body.light-theme .scroll-header {
 
 /* ── LOGO AÚN MÁS COMPACTO (<= 414px) ───────────────────────── */
 @media screen and (max-width: 414px) {
-  .nav__logo small { display: none; }
   .nav__logo span { font-size: 1.05rem; }
   .nav__logo span sup { font-size: 1.05rem; }
+  .nav__logo small { font-size: var(--text-xs); letter-spacing: 0.12em; }
 }
 
 /* ── DESKTOP (>= 769px) ──────────────────────────────────────── */
