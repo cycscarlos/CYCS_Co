@@ -1,6 +1,8 @@
 # Contexto de Sesión
 
 ## Checkpoints
+- 4b305b2 — checkpoint: fix alto header responsive + 2 líneas logo (antes de eliminar scroll horizontal en index).
+- a9e0d27 — checkpoint: estado actual antes de fix alto header responsive (2 líneas logo).
 - 944e3e0 — checkpoint: grid 2×2 de cards en index (estado actual antes de aplicar 2×2 en vistas seguridad/redes/sistemasCriticos).
 - 27f27fa — fix: rediseño del footer — tokens `--footer-*` siempre oscuros y sinergia con la paleta del hero (variables.css + footer.css).
 - 32cfcb5 — checkpoint estado actual (vite.config.js + package-lock.json) antes de renombrar a `.mjs`.
@@ -13,6 +15,9 @@
 - e2ac2e8 — checkpoint: pre-scrollReveal — estado actual antes de modificar scrollReveal.js (rollback de la Tarea 3).
 
 ## Commits de la sesión actual
+- 2135dd1 — fix: eliminar scroll horizontal en index responsive — ScrollReveal sin translateX en movil (.clients/.galeria) + preloader no anula overflow-x del body.
+- 4b305b2 — checkpoint: fix alto header responsive + 2 líneas logo (antes de eliminar scroll horizontal en index).
+- a9e0d27 — checkpoint: estado actual antes de fix alto header responsive (2 líneas logo).
 - 0dc19e4 — checkpoint: estado actual antes de cambiar el color del titulo principal a blanco
 - 283c617 — checkpoint: estado actual funcional antes de ajustar margen superior del titulo respecto al navbar
 - 63ba6a5 — checkpoint: restaurar posicionamiento absoluto overlay en .view-content con overflow-y auto para scroll perfecto
@@ -39,9 +44,18 @@
    - **Pasos descartados en el camino (conservados como aprendizaje):** `html/mainBox` con `overflow-x: hidden/clip` en `@media ≤768px` de `smartphones.css` — enmascara pero no elimina y trunca contenido real. Diagnosticar primero el exceso exacto con scripts en consola (archivos en `docs/diagnostico-*.js` guardados en archivo porque pegar código de OpenCode en DevTools falla).
    - **Regla 9 activa en `config_session/rules.md`:** no implementar sin plan Markdown en `docs/`, tareas cortas con riesgo, autorización explícita por tarea.
 
+4. **Fix alto header responsive (2 líneas del logo)**:
+   - **Causa:** `display: none` en `.nav__logo small` dentro de `@media ≤414px` de `header.css` ocultaba por completo la línea "Ingenieros" en móvil (simulador 360px). No era falta de alto: la línea 2 no existía en el DOM renderizado.
+   - **Fix:** quitar el `display:none` (el `small` ahora se muestra en móvil con `font-size: var(--text-xs)` + `letter-spacing: 0.12em`) y subir el alto de `.nav` en `@media ≤768px` a `calc(var(--header-height) + 2.5rem)` (80px → 96px) para que la caja glassmorphism del logo despliegue ambas líneas cómodamente. Desktop intacto.
+
+5. **Eliminar scroll horizontal en index (responsive)**:
+   - **Causa 1 (origen real):** en `scrollReveal.js`, `.clients` (origin right, 60px) y `.galeria` (origin left, 60px) aplicaban `translateX(±60px)` → desbordaban el viewport en móvil. Mismo patrón que el fix 941a854 de las vistas técnicas.
+   - **Causa 2 (habilitador):** preloader en `index.html` → `document.body.style.overflow = "auto"` (inline) anulaba el `body { overflow-x: hidden }` de `reset.css`, re-habilitando el scroll horizontal de la página.
+   - **Fix (Commit 2135dd1):** en `scrollReveal.js`, si `matchMedia(min-width:769px)` es falso (≤768px) `.clients`/`.galeria` usan `origin: "bottom"` + `distance: "0px"` (solo fade, sin translateX); desktop conserva su animación. En `index.html` el preloader ahora usa `overflowX="hidden"` + `overflowY="auto"` en vez de `overflow="auto"`. Plan en `docs/plan-scroll-horizontal-index.md`.
+
 ## Pendiente
-- **Probar en `npm run dev`** (el usuario): verificar el texto blanco del título, el espacio respecto al navbar y la experiencia completa en las 4 vistas.
+- **Probar en `npm run dev`** (el usuario): (1) alto del header responsive con las 2 líneas del logo visibles; (2) scroll horizontal eliminado en todas las secciones del index (360×800). El usuario indica que **todavía faltan un par de tareas más por resolver** (se retomarán en la próxima sesión).
 
 - **Investigación del usuario**: Chaport vs Tawk.to (el snippet de Tawk.to ya está comentado en index.html). Decidir si se cambia de proveedor (implicaría snippet en 7 páginas + CSP). Información de Chaport en `docs/chatbot-chaport.md`.
 - **Leftovers** (a decidir): `assets/css/components/footer.css` con línea comentada (resto de experimento); borrado de `CYCS_Co-v2.code-workspace`; archivos untracked `AGENTS.md`, `config_session/`, `opencode.json`, `x-CYCS_Co-v2.code-workspace` (locales, no se commitean).
-- **Git**: rama `main` **12 commits por delante de `origin/main`** (push pendiente, lo ejecuta el usuario).
+- **Git**: rama `main` **16 commits por delante de `origin/main`** (push pendiente, lo ejecuta el usuario).
