@@ -1,6 +1,8 @@
 # Contexto de Sesión
 
 ## Checkpoints
+- 13fe434 — checkpoint: estado actual antes de bajar swiper de fondo en vistas tecnicas (fix drawer nav__btns incluido).
+- 38aba2e — checkpoint: estado actual antes de mover X de nav__menu a nav__btns (fix flash/cierre del drawer).
 - 4b305b2 — checkpoint: fix alto header responsive + 2 líneas logo (antes de eliminar scroll horizontal en index).
 - a9e0d27 — checkpoint: estado actual antes de fix alto header responsive (2 líneas logo).
 - 944e3e0 — checkpoint: grid 2×2 de cards en index (estado actual antes de aplicar 2×2 en vistas seguridad/redes/sistemasCriticos).
@@ -15,6 +17,9 @@
 - e2ac2e8 — checkpoint: pre-scrollReveal — estado actual antes de modificar scrollReveal.js (rollback de la Tarea 3).
 
 ## Commits de la sesión actual
+- 13fe434 — checkpoint: estado actual antes de bajar swiper de fondo en vistas tecnicas (fix drawer nav__btns incluido).
+- 38aba2e — checkpoint: estado actual antes de mover X de nav__menu a nav__btns (fix flash/cierre del drawer).
+- c9f3452 — fix: menu responsive — header servicios con nav__btns + link Contacto en header-tech + overflow-y drawer.
 - fbbbc2e — subir a producción (commit del usuario): fix servicios responsive (padding-top 136px + flex-start + gap 64px) + `theme-color` cambiado a `#080e18` (naranja `#ff4c00` comentado).
 - 6a9019a — checkpoint: color Night Owl #011627 en footer/cards/titulos (modo light) — antes de ajustar servicios responsive.
 - 2135dd1 — fix: eliminar scroll horizontal en index responsive — ScrollReveal sin translateX en movil (.clients/.galeria) + preloader no anula overflow-x del body.
@@ -78,9 +83,24 @@
    - **Nota:** en `index.html:25` queda la línea comentada `<!-- theme-color #080e18 -->` (intacta, no se tocó).
    - **Riesgo:** nulo (solo color de la barra del navegador en móvil). Sin commit todavía.
 
-## Pendiente
-- **Probar en smartphone real** (el usuario): (1) `theme-color` = `#ffffff` aplicado en las 8 vistas — confirmar que ya no se ve naranja; (2) verificación final de servicios.html en 360×800 ya realizada (título bajo el header con aire, separación h2↔carrusel visible).
+10. **Fix drawer — X movida a `.nav__btns` (fuera del drawer)**:
+    - **Síntomas encadenados:** (a) hamburguesa y X se superponían al abrir; (b) al ocultar el hamburguesa, el tema se superponía a la X; (c) con el drawer abierto, click en la franja alta → el header parpadeaba y cualquier click ahí cerraba el menú como si fuera la X.
+    - **Causa raíz (c):** la X (`.nav__close`) vivía dentro del drawer `.nav__menu` en su esquina superior derecha (`top:16px; right:16px`), zona que coincide con la franja del header; el `backdrop-filter` del header ancla el drawer `fixed` → clicks/repintados erráticos en esa franja.
+    - **Fix (Commit 13fe434, 6 archivos):** mover la X fuera del drawer a `.nav__btns` (hermano del tema y hamburguesa) en los 5 headers (index, servicios, header, header-subpages, header-tech) + en `header.css`: `.nav__btns` con `position:relative; z-index:calc(var(--z-fixed)+1)` (queda sobre el drawer), eliminado el `display:none` de `.nav__btns` al abrir, e intercambio de visibilidad: drawer cerrado → hamburguesa visible y X `display:none`; drawer abierto → X `display:flex` y hamburguesa oculto (`.nav__menu.show-menu ~ .nav__btns .nav__toggle/close`). La X ya no es absoluta: es item flex normal. `main.js` usa IDs (`getEl('nav-close')`/`getEl('nav-toggle')`), insensible a ubicación → sin cambios. **Verificado por el usuario: funciona.**
 
-- **Investigación del usuario**: Chaport vs Tawk.to (el snippet de Tawk.to ya está comentado en index.html). Decidir si se cambia de proveedor (implicaría snippet en 7 páginas + CSP). Información de Chaport en `docs/chatbot-chaport.md`.
+11. **Fix swiper de fondo oculto tras el navbar en vistas técnicas (responsive)**:
+    - **Síntoma:** en las 4 vistas (`docs/navbar.md`), en `@media ≤768px`, la `div` `.swiper.slideshow2.view-bg` se renderizaba justo detrás del navbar y solo se apreciaban las últimas 3/4 de las imágenes del carrusel.
+    - **Causa:** en mobile la sección `.hero-wrapper` pasa a `height:auto; min-height:100vh` y `.view-content` a `position:relative`, pero el `.view-bg` seguía con `position:absolute; inset:0` → arrancaba en el top de la sección, tras el header fijo (96px).
+    - **Fix (Commit 13fe434, mismo commit que el drawer):** en `security.css` y `redes.css` (`@media ≤768px`): `.view-bg` ahora con `top:calc(var(--header-height) + 2.5rem); height:auto; bottom:0` (arranca bajo el navbar y ocupa el resto) y `.view-content` padding-top a `calc(var(--header-height) + 2.5rem + var(--space-6))` (120px) para que el título quede con aire sobre el swiper. Plan en `docs/plan-vistas-swiper-nabvar.md`. **Verificado por el usuario: funciona.**
+
+12. **Chatbot Chaport INACTIVADO (no eliminado)**:
+    - **Motivo:** el usuario necesita investigar más, definir qué necesita y escoger la herramienta adecuada (aún no sabe cuál es).
+    - **Cambio:** bloque Chaport (`window.chaportConfig` + loader `app.chaport.com/javascripts/insert.js`) envuelto en comentario HTML `<!-- ... -->` en las **7 páginas**: `index.html`, `assets/html/{automatizaciones,contacto,redes,seguridad,servicios,sistemasCriticos}.html`. Etiqueta cambiada a `Begin of Chaport Live Chat code (DESACTIVADO — revisar proveedor)`.
+    - **Tawk.to:** ya estaba comentado (se conserva igual).
+    - **Reactivar:** quitar las marcas `<!--`/`-->` de los bloques. **Nota:** `app.chaport.com` sigue en la CSP de `netlify.toml` (inofensivo mientras nadie lo llame; retirarlo si no se elige Chaport). **Verificado: build OK.**
+
+## Pendiente
+- **Commit de cierre:** el usuario hace el commit final y `git push` a main (Netlify publica al hacer push).
+- **Investigación del usuario**: Chaport vs Tawk.to vs otra herramienta (chatbot inactivado hasta decidir). El snippet de Tawk.to ya está comentado en index.html; Chaport comentado en las 7 páginas. Información de Chaport en `docs/chatbot-chaport.md`. Decidir proveedor → implicaría descomentar/reactivar snippet + posible ajuste de CSP en `netlify.toml`.
 - **Leftovers** (a decidir): `assets/css/components/footer.css` con línea comentada (resto de experimento); borrado de `CYCS_Co-v2.code-workspace`; archivos untracked `AGENTS.md`, `config_session/`, `opencode.json`, `x-CYCS_Co-v2.code-workspace` (locales, no se commitean).
-- **Git**: rama `main` **18 commits por delante de `origin/main`** (push pendiente, lo ejecuta el usuario).
+- **Git**: rama `main` **20 commits por delante de `origin/main`** (push pendiente, lo ejecuta el usuario).
