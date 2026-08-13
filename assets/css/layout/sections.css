@@ -144,6 +144,14 @@
   -webkit-box-orient: vertical;
 }
 
+/* Modo light — contenido del reverso (flip): mismos colores que dark */
+body.light-theme .clientes .card .box .contentBx div h2 {
+  color: var(--brand-primary);
+}
+body.light-theme .clientes .card .box .contentBx div p {
+  color: #A0B2BF;
+}
+
 /* ── GALERÍA ─────────────────────────────────────────────────── */
 [id="galeria"] { scroll-margin-top: 7ex; }
 

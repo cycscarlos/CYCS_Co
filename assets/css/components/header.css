@@ -229,6 +229,10 @@ body.light-theme .scroll-header {
 
   .nav__menu.show-menu { right: 0; }
 
+  /* Cuando el drawer está abierto, ocultar .nav__btns (hamburguesa + tema)
+     para que no se superpongan con el botón X (.nav__close) y dejen de ser clickeables */
+  .nav__menu.show-menu ~ .nav__btns { display: none; }
+
   .nav__close {
     display: block;
     position: absolute;

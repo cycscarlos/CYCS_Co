@@ -173,7 +173,7 @@ body.light-theme .copyrightTexto {
   padding: var(--space-4) var(--space-8);
   text-align: center;
   color: var(--footer-muted);
-  background-color: var(--footer-bg-alt);
+  background-color: #011627;
   border-top: 1px solid var(--footer-border);
   font-size: var(--text-xs);
   letter-spacing: 0.03em;

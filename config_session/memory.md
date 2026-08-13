@@ -73,8 +73,13 @@
    - **Causa:** `<meta name="theme-color" content="#ff4c00" />` en `index.html` (el `.loader` solo es el spinner del preloader). No se aprecia igual en DevTools desktop.
    - **Fix (Commit fbbbc2e, index.html):** comentado el `#ff4c00` → nuevo `theme-color` = `#080e18` (oscuro, coherente con el tema). El usuario **no autorizó** aún sincronizar dinámicamente el theme-color con el tema light/dark (propuesta rechazada por ahora).
 
+9. **`theme-color` blanco `#ffffff` en todas las vistas (sin checkpoint, orden directa)**:
+   - **Alcance:** sustitución global de `<meta name="theme-color" content="#ff4c00" />` → `content="#ffffff"` en las **8 ocurrencias activas**: `index.html:24`, `assets/html/{seguridad,contacto,redes,servicios,sistemasCriticos,automatizaciones}.html` y `assets/html/components/head-meta.html`.
+   - **Nota:** en `index.html:25` queda la línea comentada `<!-- theme-color #080e18 -->` (intacta, no se tocó).
+   - **Riesgo:** nulo (solo color de la barra del navegador en móvil). Sin commit todavía.
+
 ## Pendiente
-- **Probar en smartphone real** (el usuario): (1) `theme-color` = `#080e18` ya aplicado en index.html (commit fbbbc2e) — confirmar que ya no se ve naranja; (2) verificación final de servicios.html en 360×800 ya realizada (título bajo el header con aire, separación h2↔carrusel visible).
+- **Probar en smartphone real** (el usuario): (1) `theme-color` = `#ffffff` aplicado en las 8 vistas — confirmar que ya no se ve naranja; (2) verificación final de servicios.html en 360×800 ya realizada (título bajo el header con aire, separación h2↔carrusel visible).
 
 - **Investigación del usuario**: Chaport vs Tawk.to (el snippet de Tawk.to ya está comentado en index.html). Decidir si se cambia de proveedor (implicaría snippet en 7 páginas + CSP). Información de Chaport en `docs/chatbot-chaport.md`.
 - **Leftovers** (a decidir): `assets/css/components/footer.css` con línea comentada (resto de experimento); borrado de `CYCS_Co-v2.code-workspace`; archivos untracked `AGENTS.md`, `config_session/`, `opencode.json`, `x-CYCS_Co-v2.code-workspace` (locales, no se commitean).
