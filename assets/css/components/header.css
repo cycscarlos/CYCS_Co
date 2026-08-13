@@ -218,6 +218,7 @@ body.light-theme .scroll-header {
     max-width: 300px;
     height: 100vh;
     height: 100dvh;
+    overflow-y: auto;
     background: var(--neutral-950);
     border-left: 1px solid var(--surface-border);
     padding: var(--space-16) var(--space-6) var(--space-6);
