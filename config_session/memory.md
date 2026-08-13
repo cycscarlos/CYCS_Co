@@ -15,6 +15,8 @@
 - e2ac2e8 — checkpoint: pre-scrollReveal — estado actual antes de modificar scrollReveal.js (rollback de la Tarea 3).
 
 ## Commits de la sesión actual
+- fbbbc2e — subir a producción (commit del usuario): fix servicios responsive (padding-top 136px + flex-start + gap 64px) + `theme-color` cambiado a `#080e18` (naranja `#ff4c00` comentado).
+- 6a9019a — checkpoint: color Night Owl #011627 en footer/cards/titulos (modo light) — antes de ajustar servicios responsive.
 - 2135dd1 — fix: eliminar scroll horizontal en index responsive — ScrollReveal sin translateX en movil (.clients/.galeria) + preloader no anula overflow-x del body.
 - 4b305b2 — checkpoint: fix alto header responsive + 2 líneas logo (antes de eliminar scroll horizontal en index).
 - a9e0d27 — checkpoint: estado actual antes de fix alto header responsive (2 líneas logo).
@@ -53,9 +55,27 @@
    - **Causa 2 (habilitador):** preloader en `index.html` → `document.body.style.overflow = "auto"` (inline) anulaba el `body { overflow-x: hidden }` de `reset.css`, re-habilitando el scroll horizontal de la página.
    - **Fix (Commit 2135dd1):** en `scrollReveal.js`, si `matchMedia(min-width:769px)` es falso (≤768px) `.clients`/`.galeria` usan `origin: "bottom"` + `distance: "0px"` (solo fade, sin translateX); desktop conserva su animación. En `index.html` el preloader ahora usa `overflowX="hidden"` + `overflowY="auto"` en vez de `overflow="auto"`. Plan en `docs/plan-scroll-horizontal-index.md`.
 
+6. **Color Night Owl `#011627` en modo light (footer + cards + títulos de vistas)**:
+   - **Iteración de color (3 valores):** el usuario pidió inicialmente `#483335` → lo corrigió a `#0072CE` (azul médico) → **final definitivo `#011627`** (color principal del tema Night Owl). Solo bajo `body.light-theme`, Desktop y dark-theme intactos.
+   - **Alcance (docs/navbar.md):** footer de index (#home) completo (`.footer` + `.copyrightTexto`), y en vistas técnicas `seguridad`/`redes` (y por patrón automatizaciones/sistemasCriticos usan los mismos archivos) → solo el título de sección h2 (`.view-content .title h2`) con `#011627`; los h3 de cards siguen blancos; el `span` naranja no se toca. `servicios.html` y `contacto.html` quedan **excluidos** por decisión del usuario.
+   - **Archivos:** `assets/css/components/footer.css`, `assets/css/redes.css`, `assets/css/security.css` (Commit 6a9019a). Build OK.
+
+7. **Fix posición de título h2 + carrusel en servicios.html (responsive)**:
+   - **Síntoma original:** en móvil el carrusel y el h2 quedaban muy abajo y con ~150px de hueco entre ambos (`.servicios` con `justify-content: space-evenly` en el `@media ≤768px`).
+   - **Iteración (2 intentos fallidos → correcto):**
+     - Intento 1: `flex-start` + `gap: var(--space-6)` pero `padding-top: calc(var(--header-height) + 1rem)` (72px) → el título quedaba cubierto/pegado por el header y el carrusel medio tapado (el header móvil mide **96px** = `--header-height` + 2.5rem).
+     - Intento 2: `padding-top` a `calc(var(--header-height) + 2.5rem + 1rem)` (112px) → se veía pero aún muy pegado al header y **sin separación visible** h2↔carrusel.
+     - **Causa raíz de la falta de separación:** las figuras del carrusel 3D (`.container-carrousel figure`, `translateZ(300px)` bajo `perspective: 1000px`) desbordan ~27px hacia arriba de su caja de 160px → se comían el `gap` de 24px.
+     - **Fix final (Commit fbbbc2e, solo `@media ≤768px` de `assets/css/servicios.css`):** `justify-content: flex-start`, `gap: var(--space-16)` (64px) y `padding-top: calc(var(--header-height) + 2.5rem + 2.5rem)` (136px = header 96px + 40px de aire). Desktop intacto.
+
+8. **`theme-color` naranja en smartphone real**:
+   - **Reporte del usuario:** al abrir en teléfono real (no simulado) la app se veía naranja `#ff4c00`.
+   - **Causa:** `<meta name="theme-color" content="#ff4c00" />` en `index.html` (el `.loader` solo es el spinner del preloader). No se aprecia igual en DevTools desktop.
+   - **Fix (Commit fbbbc2e, index.html):** comentado el `#ff4c00` → nuevo `theme-color` = `#080e18` (oscuro, coherente con el tema). El usuario **no autorizó** aún sincronizar dinámicamente el theme-color con el tema light/dark (propuesta rechazada por ahora).
+
 ## Pendiente
-- **Probar en `npm run dev`** (el usuario): (1) alto del header responsive con las 2 líneas del logo visibles; (2) scroll horizontal eliminado en todas las secciones del index (360×800). El usuario indica que **todavía faltan un par de tareas más por resolver** (se retomarán en la próxima sesión).
+- **Probar en smartphone real** (el usuario): (1) `theme-color` = `#080e18` ya aplicado en index.html (commit fbbbc2e) — confirmar que ya no se ve naranja; (2) verificación final de servicios.html en 360×800 ya realizada (título bajo el header con aire, separación h2↔carrusel visible).
 
 - **Investigación del usuario**: Chaport vs Tawk.to (el snippet de Tawk.to ya está comentado en index.html). Decidir si se cambia de proveedor (implicaría snippet en 7 páginas + CSP). Información de Chaport en `docs/chatbot-chaport.md`.
 - **Leftovers** (a decidir): `assets/css/components/footer.css` con línea comentada (resto de experimento); borrado de `CYCS_Co-v2.code-workspace`; archivos untracked `AGENTS.md`, `config_session/`, `opencode.json`, `x-CYCS_Co-v2.code-workspace` (locales, no se commitean).
-- **Git**: rama `main` **16 commits por delante de `origin/main`** (push pendiente, lo ejecuta el usuario).
+- **Git**: rama `main` **18 commits por delante de `origin/main`** (push pendiente, lo ejecuta el usuario).
