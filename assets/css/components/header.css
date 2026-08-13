@@ -154,7 +154,8 @@ body.light-theme .scroll-header {
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  z-index: var(--z-fixed);
+  position: relative;
+  z-index: calc(var(--z-fixed) + 1);
 }
 
 /* ── THEME TOGGLE ────────────────────────────────────────────── */
@@ -229,15 +230,15 @@ body.light-theme .scroll-header {
 
   .nav__menu.show-menu { right: 0; }
 
-  /* Cuando el drawer está abierto, ocultar .nav__btns (hamburguesa + tema)
-     para que no se superpongan con el botón X (.nav__close) y dejen de ser clickeables */
-  .nav__menu.show-menu ~ .nav__btns { display: none; }
+  /* El X y el hamburguesa son items de .nav__btns (fuera del drawer):
+     hamburguesa visible cuando el drawer está cerrado, X visible cuando está abierto.
+     Así nunca se superponen con la franja del header y el drawer solo cierra con el X real. */
+  .nav__close { display: none; }
+  .nav__menu.show-menu ~ .nav__btns .nav__toggle { display: none; }
+  .nav__menu.show-menu ~ .nav__btns .nav__close { display: flex; }
 
   .nav__close {
-    display: block;
-    position: absolute;
-    top: var(--space-4);
-    right: var(--space-4);
+    align-items: center;
     font-size: 1.4rem;
     color: var(--neutral-300);
     cursor: pointer;
