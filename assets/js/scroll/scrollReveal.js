@@ -11,15 +11,21 @@ export function initScrollReveal() {
     duration: 4800,
   });
 
+  // En móvil (<= 768px) las secciones quedan estáticas: el translateX
+  // horizontal desborda el viewport y genera scroll horizontal.
+  const isDesktop = window.matchMedia("(min-width: 769px)").matches;
+
   // Reveal animations from left
   sr.reveal(`.galeria`, {
-    origin: "left",
+    origin: isDesktop ? "left" : "bottom",
+    distance: isDesktop ? "60px" : "0px",
     interval: 100,
   });
 
   // Reveal animations from right
   sr.reveal(`.clients`, {
-    origin: "right",
+    origin: isDesktop ? "right" : "bottom",
+    distance: isDesktop ? "60px" : "0px",
     interval: 100,
   });
 }
