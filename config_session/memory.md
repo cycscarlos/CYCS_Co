@@ -1,6 +1,7 @@
 # Contexto de Sesión
 
 ## Checkpoints
+- ffd13f9 — checkpoint: fix titulo cards invisible en responsive (incluye el fix + escalado proporcional h3/boton en cards.css).
 - 13fe434 — checkpoint: estado actual antes de bajar swiper de fondo en vistas tecnicas (fix drawer nav__btns incluido).
 - 38aba2e — checkpoint: estado actual antes de mover X de nav__menu a nav__btns (fix flash/cierre del drawer).
 - 4b305b2 — checkpoint: fix alto header responsive + 2 líneas logo (antes de eliminar scroll horizontal en index).
@@ -17,6 +18,7 @@
 - e2ac2e8 — checkpoint: pre-scrollReveal — estado actual antes de modificar scrollReveal.js (rollback de la Tarea 3).
 
 ## Commits de la sesión actual
+- ffd13f9 — checkpoint: fix titulo cards invisible en responsive (incluye el fix + escalado proporcional h3/boton en cards.css).
 - 13fe434 — checkpoint: estado actual antes de bajar swiper de fondo en vistas tecnicas (fix drawer nav__btns incluido).
 - 38aba2e — checkpoint: estado actual antes de mover X de nav__menu a nav__btns (fix flash/cierre del drawer).
 - c9f3452 — fix: menu responsive — header servicios con nav__btns + link Contacto en header-tech + overflow-y drawer.
@@ -99,8 +101,13 @@
     - **Tawk.to:** ya estaba comentado (se conserva igual).
     - **Reactivar:** quitar las marcas `<!--`/`-->` de los bloques. **Nota:** `app.chaport.com` sigue en la CSP de `netlify.toml` (inofensivo mientras nadie lo llame; retirarlo si no se elige Chaport). **Verificado: build OK.**
 
+13. **Fix título h3 de cards invisible en responsive + escalado proporcional h3/botón (index)**:
+    - **Síntoma:** en `index.html`, sección `#cards`, el título `h3` de cada `div.card` no se renderizaba en modo responsive.
+    - **Causa raíz:** en `cards.css` (`@media ≤414px`) `bottom: var(--space-14)` → `--space-14` **no existe** en `variables.css` (escala 1..12,16,20,24) → `bottom` inválido = `auto` → el h3 (absolute, tras el `<img>` con `height:100%`) caía a su posición estática fuera de la card y `overflow:hidden` de `.card` lo recortaba.
+    - **Fix (Commit ffd13f9, solo `cards.css`, solo media queries):** ≤768px → h3 `font-size: clamp(0.82rem, 2.6vw, 1.25rem)` y botón `.boton_mostrar` `font-size: clamp(0.72rem, 2vw, 0.9rem)` + `padding: clamp(5px,1.4vw,8px) clamp(12px,4vw,20px)` (escala proporcional al viewport); ≤414px → se elimina la línea rota y el h3 recupera `bottom: var(--space-12)` (48px, sin solape con el botón). Desktop intacto. Plan en `docs/plan-cards-titulo-responsive.md`. **Pendiente de prueba por el usuario.**
+
 ## Pendiente
 - **Commit de cierre:** el usuario hace el commit final y `git push` a main (Netlify publica al hacer push).
 - **Investigación del usuario**: Chaport vs Tawk.to vs otra herramienta (chatbot inactivado hasta decidir). El snippet de Tawk.to ya está comentado en index.html; Chaport comentado en las 7 páginas. Información de Chaport en `docs/chatbot-chaport.md`. Decidir proveedor → implicaría descomentar/reactivar snippet + posible ajuste de CSP en `netlify.toml`.
 - **Leftovers** (a decidir): `assets/css/components/footer.css` con línea comentada (resto de experimento); borrado de `CYCS_Co-v2.code-workspace`; archivos untracked `AGENTS.md`, `config_session/`, `opencode.json`, `x-CYCS_Co-v2.code-workspace` (locales, no se commitean).
-- **Git**: rama `main` **20 commits por delante de `origin/main`** (push pendiente, lo ejecuta el usuario).
+- **Git**: rama `main` **21 commits por delante de `origin/main`** (push pendiente, lo ejecuta el usuario).
