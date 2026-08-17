@@ -168,7 +168,11 @@ section.cards {
 
 @media screen and (max-width: 768px) {
   .cards .cardsBx { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
-  .cards .cardsBx .card h3 { font-size: var(--text-lg); }
+  .cards .cardsBx .card h3 { font-size: clamp(0.82rem, 2.6vw, 1.25rem); }
+  .cards .cardsBx .card .boton_mostrar {
+    font-size: clamp(0.72rem, 2vw, 0.9rem);
+    padding: clamp(5px, 1.4vw, 8px) clamp(12px, 4vw, 20px);
+  }
   .cards .title h3.scroll-title { font-size: var(--text-2xl); }
 }
 
@@ -179,5 +183,5 @@ section.cards {
 
 @media screen and (max-width: 414px) {
   .cards .title h3.scroll-title { font-size: var(--text-xl); }
-  .cards .cardsBx .card h3 { font-size: var(--text-base); bottom: var(--space-14); }
+  .cards .cardsBx .card h3 { bottom: var(--space-12); }
 }
