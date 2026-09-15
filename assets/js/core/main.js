@@ -106,6 +106,41 @@ export function initScroll() {
     } else {
       scrollUp.classList.remove('show-scroll');
     }
+
+    var scrollUpIcon = getEl('scroll-up-icon');
+    var atBottom =
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
+    scrollUp.dataset.atBottom = atBottom ? 'true' : 'false';
+
+    if (atBottom) {
+      if (scrollUpIcon) {
+        scrollUpIcon.classList.remove('ri-arrow-down-line');
+        scrollUpIcon.classList.add('ri-arrow-up-line');
+      }
+      scrollUp.title = 'Volver arriba';
+      scrollUp.setAttribute('aria-label', 'Volver arriba');
+    } else {
+      if (scrollUpIcon) {
+        scrollUpIcon.classList.remove('ri-arrow-up-line');
+        scrollUpIcon.classList.add('ri-arrow-down-line');
+      }
+      scrollUp.title = 'Ir al final de la página';
+      scrollUp.setAttribute('aria-label', 'Ir al final de la página');
+    }
+  }
+
+  function onScrollUpClick(event) {
+    if (!scrollUp) return;
+    event.preventDefault();
+    var atBottom = scrollUp.dataset.atBottom === 'true';
+    window.scrollTo({
+      top: atBottom ? 0 : document.body.scrollHeight,
+      behavior: 'smooth'
+    });
+  }
+
+  if (scrollUp) {
+    scrollUp.addEventListener('click', onScrollUpClick);
   }
 
   function scrollActiveLinks() {
