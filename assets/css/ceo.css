@@ -34,6 +34,15 @@
   justify-content:center;
   color:#fff;
 }
+.ceo-content h2,
+.ceo-content h4,
+.ceo-content p,
+.ceo-content small,
+.ceo-content i{color:#fff}
+.ceo-content h2{margin:0 0 .5rem;font-size:1.45rem}
+.ceo-content h4{margin:0 0 .75rem;font-size:.9rem;font-weight:400;opacity:.85}
+.ceo-content .loque{margin:.75rem 0 .25rem;color:var(--brand-primary,#ff4c00);font-weight:600}
+.ceo-content .description{margin:0 0 .5rem;font-size:.85rem;line-height:1.5}
 .ceo-media{
   flex:1 1 55%;
   position:relative;

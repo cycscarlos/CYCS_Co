@@ -1,6 +1,14 @@
 # Contexto de Sesión
 
+## ⭐ PUNTO DE ROLLBACK (tarea CEO) — "ORO en Polvo"
+- **64e3beb** — *fix: ajustes botón scroll down · up* → es el **último commit ANTES de empezar toda la tarea del CEO**. Es el punto de restauración acordado por el usuario.
+- Para descartar TODO lo del CEO: `git reset --hard 64e3beb` (lo ejecuta el usuario).
+- Los commits posteriores (1b998c8, b329197, c0cf8ac, 30eb501) y los cambios WIP del CEO son **descartables**.
+- **Estado actual:** el diseño del modal CEO **incompleto / no aprobado**. Retomar desde aquí NO es una tarea terminada.
+
 ## Checkpoints
+- 4a7df87 — fix: normalizar mayúsculas en telco11/13/14/15 para que coincidan con refs HTML (Telco → telco).
+- 64e3beb — fix: ajustes botón scroll down · up (commit final del usuario).
 - ffd13f9 — checkpoint: fix titulo cards invisible en responsive (incluye el fix + escalado proporcional h3/boton en cards.css).
 - 13fe434 — checkpoint: estado actual antes de bajar swiper de fondo en vistas tecnicas (fix drawer nav__btns incluido).
 - 38aba2e — checkpoint: estado actual antes de mover X de nav__menu a nav__btns (fix flash/cierre del drawer).
@@ -18,6 +26,12 @@
 - e2ac2e8 — checkpoint: pre-scrollReveal — estado actual antes de modificar scrollReveal.js (rollback de la Tarea 3).
 
 ## Commits de la sesión actual
+- 30eb501 — checkpoint (CEO): añadir entrada `ceo` en `vite.config.mjs` (rollupOptions.input).
+- c0cf8ac — checkpoint (CEO): añadir submenú CEO en header-subpages.html → **DESHECHO en esta sesión** (se quitó el submenú).
+- b329197 — checkpoint (CEO): modal autónomo (ceo.html + ceo.css + img ceo/logo1a.webp) + biografía extraída de hero-section.
+- 1b998c8 — checkpoint (CEO): plan del modal CEO.
+- 4a7df87 — fix: normalizar mayúsculas en telco11/13/14/15 para que coincidan con refs HTML (Telco → telco).
+- 64e3beb — fix: ajustes botón scroll down · up (commit final del usuario).
 - ffd13f9 — checkpoint: fix titulo cards invisible en responsive (incluye el fix + escalado proporcional h3/boton en cards.css).
 - 13fe434 — checkpoint: estado actual antes de bajar swiper de fondo en vistas tecnicas (fix drawer nav__btns incluido).
 - 38aba2e — checkpoint: estado actual antes de mover X de nav__menu a nav__btns (fix flash/cierre del drawer).
@@ -106,8 +120,50 @@
     - **Causa raíz:** en `cards.css` (`@media ≤414px`) `bottom: var(--space-14)` → `--space-14` **no existe** en `variables.css` (escala 1..12,16,20,24) → `bottom` inválido = `auto` → el h3 (absolute, tras el `<img>` con `height:100%`) caía a su posición estática fuera de la card y `overflow:hidden` de `.card` lo recortaba.
     - **Fix (Commit ffd13f9, solo `cards.css`, solo media queries):** ≤768px → h3 `font-size: clamp(0.82rem, 2.6vw, 1.25rem)` y botón `.boton_mostrar` `font-size: clamp(0.72rem, 2vw, 0.9rem)` + `padding: clamp(5px,1.4vw,8px) clamp(12px,4vw,20px)` (escala proporcional al viewport); ≤414px → se elimina la línea rota y el h3 recupera `bottom: var(--space-12)` (48px, sin solape con el botón). Desktop intacto. Plan en `docs/plan-cards-titulo-responsive.md`. **Pendiente de prueba por el usuario.**
 
+14. **Fix imágenes telco11/13/14/15 no renderizadas (conflicto mayúsculas/minúsculas)**:
+    - **Síntoma:** `Telco14.png` (y Telco11/13/15) existían en el proyecto/GitHub/Netlify pero la sección "servicios" y el swiper de redes mostraban la imagen rota.
+    - **Causa raíz:** los archivos en disco tenían `T` mayúscula (`Telco*.png`) pero las 5 refs HTML usaban minúsculas (`telco*.png`): `servicios.html:249` (telco14) y `redes.html:66,67,71,72` (telco13, telco14, telco11, telco15). En Windows (FS insensible) se renderizaba; en Linux/Netlify (sensible) → 404.
+    - **Fix (Commit 4a7df87):** `git mv` de los 4 archivos a minúsculas (`Telco11/13/14/15.png` → `telco11/13/14/15.png`) para coincidir con las refs HTML y con la convención del folder (todo minúsculas). Cero cambios en HTML/CSS/JS. Plan en `docs/plan-telco-case.md`. **Verificado por el usuario: funciona.**
+
+15. **Botón scroll dual down/up (index)**:
+    - **Solicitud:** al hacer scroll down el icono muestra flecha → **abajo** y lleva al **final**; al llegar al bottom el icono se invierte a flecha → **arriba** y al tocarlo vuelve al **top**.
+    - **Cambio (2 archivos, plan `docs/plan-boton-scroll-dual.md`):**
+      - `index.html:1350-1359` → icono por defecto `ri-arrow-down-line` (`id="scroll-up-icon"` añadido) + `title`/`aria-label` "Ir al final de la página". Solo existe en index (no en subpáginas).
+      - `main.js:102-144` → `scrollUpButton()` ahora detecta bottom (`innerHeight + scrollY >= body.offsetHeight - 50`), guarda estado en `data-at-bottom`, swappea clase Remix icon + title/aria-label, y se añade listener `click` → bottom ? `scrollTo({top:0})` : `scrollTo({top: document.body.scrollHeight})`, ambos `behavior:'smooth'`. `preventDefault()` evita el salto nativo del `href="#"`.
+    - Sin cambios en CSS. Remix Icon 2.5.0 vía CDN (`cdn.jsdelivr.net`, ya en CSP). **Verificado por el usuario: funciona.**
+
+## TAREA CEO (EN CURSO — retomar aquí) 
+> Estado: **incompleta y no aprobada**. Ante duda, descartar todo con `git reset --hard 64e3beb`.
+
+### Idea / objetivo
+- Link **CEO** de nivel principal en el nav del **index** (junto a "Contacto", clase `nav__link`, mismo color/estilo que los demás).
+- Al pulsarlo: abrir el **modal del CEO como overlay sobre el index SIN cambiar la URL** (opción 2 elegida por el usuario). Cierre con ×, click en backdrop y **Esc**.
+- Si la opción 2 no le convence, pasar a **opción 1** = navegar a `ceo.html` como página (patrón de Servicios/Contacto).
+
+### Estado del código (WIP, sin commit, a fecha de fin de sesión)
+- `index.html:206` → link CEO: `<a href="./assets/html/ceo.html" class="nav__link" data-ceo-modal>CEO</a>` (href de respaldo).
+- `assets/js/utils/ceoModal.js` (**nuevo**) → `initCeoModal()`: en click `preventDefault()`, fetch de `BASE_URL + assets/html/ceo.html`, extrae `.ceo-backdrop` con DOMParser, **reescribe el `img.src`** con `import ceoImg from '../../img/ceo/logo1a.webp'` (ruta correcta dev/prod), lo appendea a `<body>` y conecta cierre (×, backdrop, Esc) eliminándolo del DOM al cerrar.
+- `assets/js/app.js` → `import '../css/ceo.css'` + `import { initCeoModal }` y llamada en `DOMContentLoaded` y en `components:loaded`.
+- `assets/css/ceo.css` → estilos `.ceo-*` + colores explícitos para `.ceo-content h2/h4/p/small/i` (blanco) porque el `reset.css` del index (tema **light** por defecto) forzaba texto oscuro sobre la ventana azul (causa de "contenido no decente").
+- `assets/html/ceo.html` (commit b329197) → contiene el markup del modal (título + biografía + imagen). Sigue siendo la **fuente única de contenido** que inyecta el overlay.
+- `assets/css/ceo.css` y `assets/html/ceo.html` también sirven a la **página autónoma** `ceo.html` (que enlaza `ceo.css` directamente y no carga el reset).
+- `assets/html/components/header-subpages.html` → se **eliminó** el submenú CEO añadido en c0cf8ac (net: volvió al estado sin submenú).
+- `header.html` y `header-tech.html` → se añadió y luego se **quitó** el link CEO (net: sin cambios; `index.html` NO usa el componente `header.html`, tiene su header inline).
+- `docs/plan-ceo-overlay.md` → plan de la opción 2 (docs/ gitignored).
+- `vite.config.mjs:87` → entrada `ceo` (commit 30eb501).
+
+### Dos causas raíz ya resueltas (aprendizaje)
+1. **Imagen no aparecía:** el HTML inyectado trae `src="../img/ceo/logo1a.webp"` (relativo a `/assets/html/`); al inyectarse en el index (`/CYCS_Co/`) resuelve a `/img/...` → 404. Fix: importar el asset en `ceoModal.js` y setear `img.src`.
+2. **Contenido "no decente":** el `reset.css` del sitio fija `h1..h6 { color: var(--text-primary) }` y `p { color: var(--text-secondary) }`; en tema light (por defecto) son oscuros → texto oscuro sobre ventana azul. Fix: colores explícitos en `ceo.css`.
+
+### Próximo paso al retomar
+1. Confirmar con el usuario si la opción 2 cubre sus expectativas (probar en `http://localhost:5173/CYCS_Co/#home`).
+2. Si no → migrar a opción 1 (navegar a `ceo.html`) y valorar si `ceo.html` debe ser página completa con header/footer.
+3. **No se han hecho commits** desde `30eb501` por orden expresa del usuario. No commitear hasta que lo autorice.
+
 ## Pendiente
+- **Tarea CEO**: retomar en la sección "TAREA CEO" de arriba (incompleta/no aprobada; rollback = `git reset --hard 64e3beb`).
 - **Commit de cierre:** el usuario hace el commit final y `git push` a main (Netlify publica al hacer push).
 - **Investigación del usuario**: Chaport vs Tawk.to vs otra herramienta (chatbot inactivado hasta decidir). El snippet de Tawk.to ya está comentado en index.html; Chaport comentado en las 7 páginas. Información de Chaport en `docs/chatbot-chaport.md`. Decidir proveedor → implicaría descomentar/reactivar snippet + posible ajuste de CSP en `netlify.toml`.
-- **Leftovers** (a decidir): `assets/css/components/footer.css` con línea comentada (resto de experimento); borrado de `CYCS_Co-v2.code-workspace`; archivos untracked `AGENTS.md`, `config_session/`, `opencode.json`, `x-CYCS_Co-v2.code-workspace` (locales, no se commitean).
-- **Git**: rama `main` **21 commits por delante de `origin/main`** (push pendiente, lo ejecuta el usuario).
+- **Leftovers** (a decidir): `assets/css/components/footer.css` con línea comentada (resto de experimento); borrado de `CYCS_Co-v2.code-workspace`; archivos untracked `AGENTS.md`, `opencode.json`, `.docs/`, `assets/img/logo1.png`, `assets/img/logo2.png` (locales, no se commitean).
+- **Git**: `origin/main` va por detrás de `main` (push pendiente, lo ejecuta el usuario).

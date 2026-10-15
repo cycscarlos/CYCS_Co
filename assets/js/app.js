@@ -14,6 +14,7 @@ import '../css/contacto.css';
 import '../css/servicios.css';
 import '../css/security.css';
 import '../css/redes.css';
+import '../css/ceo.css';
 
 // 3. Vendor-specific initializations
 import { initHeroSwiper } from './swiper/swiper.js';
@@ -24,6 +25,7 @@ import { initScrollReveal } from './scroll/scrollReveal.js';
 import { initGalleryLightbox } from './utils/galleryLightbox.js';
 import { initMouseHover } from './utils/mouseHover.js';
 import { initFormspree } from './utils/formspree.js';
+import { initCeoModal } from './utils/ceoModal.js';
 
 // 5. Core logic
 import { initAll } from './core/main.js';
@@ -36,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGalleryLightbox();
   initMouseHover();
   initFormspree();
+  initCeoModal();
   initAll();
 });
 
@@ -47,6 +50,7 @@ document.addEventListener('components:loaded', () => {
   initGalleryLightbox();
   initMouseHover();
   initFormspree();
+  initCeoModal();
   initAll();
 });
 // 6. Preloader control
