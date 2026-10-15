@@ -1,10 +1,9 @@
 # Contexto de Sesión
 
-## ⭐ PUNTO DE ROLLBACK (tarea CEO) — "ORO en Polvo"
-- **64e3beb** — *fix: ajustes botón scroll down · up* → es el **último commit ANTES de empezar toda la tarea del CEO**. Es el punto de restauración acordado por el usuario.
-- Para descartar TODO lo del CEO: `git reset --hard 64e3beb` (lo ejecuta el usuario).
-- Los commits posteriores (1b998c8, b329197, c0cf8ac, 30eb501) y los cambios WIP del CEO son **descartables**.
-- **Estado actual:** el diseño del modal CEO **incompleto / no aprobado**. Retomar desde aquí NO es una tarea terminada.
+## ⭐ TAREA CEO — COMPLETADA
+- Punto de rollback original (si se quisiera descartar TODO el CEO): **64e3beb** → `git reset --hard 64e3beb` (lo ejecuta el usuario).
+- **Estado:** completada y aprobada. El link **CEO** del index ya no abre un modal: **navega** a `assets/html/ceo.html` (página completa). Commit final `93b4970`.
+- Los commits WIP del modal (1b998c8, b329197, c0cf8ac, 30eb501, 46cd62e) quedaron **superseded** por `93b4970`.
 
 ## Checkpoints
 - 4a7df87 — fix: normalizar mayúsculas en telco11/13/14/15 para que coincidan con refs HTML (Telco → telco).
@@ -26,6 +25,11 @@
 - e2ac2e8 — checkpoint: pre-scrollReveal — estado actual antes de modificar scrollReveal.js (rollback de la Tarea 3).
 
 ## Commits de la sesión actual
+- cc320b2 — chore: dependencia tagcloud + assets logo1/logo2.png (cambios ajenos a la tarea CEO).
+- 93b4970 — feat: página CEO reemplaza el modal (navegación normal, diseño hero, animación entrada/salida y botón × de retorno). **Commit final de la tarea CEO.**
+- f918696 — checkpoint: estado actual antes de animar entrada/salida CEO.
+- a82b116 — checkpoint: estado actual antes de sustituir modal CEO por página.
+- 46cd62e — checkpoint: fin de sesión - nav CEO en index + modal overlay opción 2 (WIP; **superseded** por 93b4970).
 - 30eb501 — checkpoint (CEO): añadir entrada `ceo` en `vite.config.mjs` (rollupOptions.input).
 - c0cf8ac — checkpoint (CEO): añadir submenú CEO en header-subpages.html → **DESHECHO en esta sesión** (se quitó el submenú).
 - b329197 — checkpoint (CEO): modal autónomo (ceo.html + ceo.css + img ceo/logo1a.webp) + biografía extraída de hero-section.
@@ -132,38 +136,29 @@
       - `main.js:102-144` → `scrollUpButton()` ahora detecta bottom (`innerHeight + scrollY >= body.offsetHeight - 50`), guarda estado en `data-at-bottom`, swappea clase Remix icon + title/aria-label, y se añade listener `click` → bottom ? `scrollTo({top:0})` : `scrollTo({top: document.body.scrollHeight})`, ambos `behavior:'smooth'`. `preventDefault()` evita el salto nativo del `href="#"`.
     - Sin cambios en CSS. Remix Icon 2.5.0 vía CDN (`cdn.jsdelivr.net`, ya en CSP). **Verificado por el usuario: funciona.**
 
-## TAREA CEO (EN CURSO — retomar aquí) 
-> Estado: **incompleta y no aprobada**. Ante duda, descartar todo con `git reset --hard 64e3beb`.
+16. **Página CEO (sustituye al modal) + animaciones** (solo `assets/html/ceo.html` + assets; commits `93b4970` y `cc320b2`):
+    - El link CEO del index **navega** a `ceo.html` (opción B elegida). Se eliminó el subsistema modal (`ceoModal.js`, `ceo.css`, imports/llamadas en `app.js`, `data-ceo-modal`); la imagen pasó a `ceo.webp` (duplicado `logo1a.webp` eliminado); `docs/CEO` se disolvió y borró.
+    - Entrada **fade+rise** (texto 1.2s, foto 1.4s) y salida **en círculo** sobre `.ceo-stage` (1.8s) al pulsar ×, con respaldo `history.back()`/`../../index.html` (timeout 3000ms) y soporte `prefers-reduced-motion`. La × quedó sutil (opacidad 0.4, hover 1).
+    - El usuario pidió explícitamente ralentizar ambas (entrada "un poco", salida "mucho") y difuminar la ×. Planes: `docs/plan-ceo-pagina.md`, `docs/plan-ceo-anim.md`.
 
-### Idea / objetivo
-- Link **CEO** de nivel principal en el nav del **index** (junto a "Contacto", clase `nav__link`, mismo color/estilo que los demás).
-- Al pulsarlo: abrir el **modal del CEO como overlay sobre el index SIN cambiar la URL** (opción 2 elegida por el usuario). Cierre con ×, click en backdrop y **Esc**.
-- Si la opción 2 no le convence, pasar a **opción 1** = navegar a `ceo.html` como página (patrón de Servicios/Contacto).
+## TAREA CEO (COMPLETADA)
+> Estado: **completada y aprobada por el usuario**. Commit final `93b4970`. Rollback total del CEO = `git reset --hard 64e3beb`.
 
-### Estado del código (WIP, sin commit, a fecha de fin de sesión)
-- `index.html:206` → link CEO: `<a href="./assets/html/ceo.html" class="nav__link" data-ceo-modal>CEO</a>` (href de respaldo).
-- `assets/js/utils/ceoModal.js` (**nuevo**) → `initCeoModal()`: en click `preventDefault()`, fetch de `BASE_URL + assets/html/ceo.html`, extrae `.ceo-backdrop` con DOMParser, **reescribe el `img.src`** con `import ceoImg from '../../img/ceo/logo1a.webp'` (ruta correcta dev/prod), lo appendea a `<body>` y conecta cierre (×, backdrop, Esc) eliminándolo del DOM al cerrar.
-- `assets/js/app.js` → `import '../css/ceo.css'` + `import { initCeoModal }` y llamada en `DOMContentLoaded` y en `components:loaded`.
-- `assets/css/ceo.css` → estilos `.ceo-*` + colores explícitos para `.ceo-content h2/h4/p/small/i` (blanco) porque el `reset.css` del index (tema **light** por defecto) forzaba texto oscuro sobre la ventana azul (causa de "contenido no decente").
-- `assets/html/ceo.html` (commit b329197) → contiene el markup del modal (título + biografía + imagen). Sigue siendo la **fuente única de contenido** que inyecta el overlay.
-- `assets/css/ceo.css` y `assets/html/ceo.html` también sirven a la **página autónoma** `ceo.html` (que enlaza `ceo.css` directamente y no carga el reset).
-- `assets/html/components/header-subpages.html` → se **eliminó** el submenú CEO añadido en c0cf8ac (net: volvió al estado sin submenú).
-- `header.html` y `header-tech.html` → se añadió y luego se **quitó** el link CEO (net: sin cambios; `index.html` NO usa el componente `header.html`, tiene su header inline).
-- `docs/plan-ceo-overlay.md` → plan de la opción 2 (docs/ gitignored).
-- `vite.config.mjs:87` → entrada `ceo` (commit 30eb501).
-
-### Dos causas raíz ya resueltas (aprendizaje)
-1. **Imagen no aparecía:** el HTML inyectado trae `src="../img/ceo/logo1a.webp"` (relativo a `/assets/html/`); al inyectarse en el index (`/CYCS_Co/`) resuelve a `/img/...` → 404. Fix: importar el asset en `ceoModal.js` y setear `img.src`.
-2. **Contenido "no decente":** el `reset.css` del sitio fija `h1..h6 { color: var(--text-primary) }` y `p { color: var(--text-secondary) }`; en tema light (por defecto) son oscuros → texto oscuro sobre ventana azul. Fix: colores explícitos en `ceo.css`.
-
-### Próximo paso al retomar
-1. Confirmar con el usuario si la opción 2 cubre sus expectativas (probar en `http://localhost:5173/CYCS_Co/#home`).
-2. Si no → migrar a opción 1 (navegar a `ceo.html`) y valorar si `ceo.html` debe ser página completa con header/footer.
-3. **No se han hecho commits** desde `30eb501` por orden expresa del usuario. No commitear hasta que lo autorice.
+### Resultado
+- Link **CEO** de nivel principal en el nav del **index** (`nav__link`). Al pulsarlo **navega** a `assets/html/ceo.html` (página completa, patrón Servicios/Contacto). Ya **no** hay modal overlay.
+- `ceo.html` = diseño hero del input `docs/CEO`: dos columnas en desktop (texto izq / foto circular der) y, a **≤900px**, foto de fondo con gradiente y texto centrado. **Estilos y responsive intactos** (solo aditivo).
+- **Animaciones** (bloque `<style id="ceo-anim">` + `<script>` inline; `app.js` no se toca):
+  - Entrada: `ceoFadeUp` texto 1.2s + `ceoFadeImg` foto 1.4s (retardo 0.15s).
+  - Salida (click en ×): `ceoCircleClose` sobre `.ceo-stage` (`clip-path: circle(150%→0% at 50% 50%)`, 1.8s) + desvanecido de la ×; al `animationend` navega (`history.back()`, respaldo `../../index.html`; timeout de seguridad 3000ms). Respeta `prefers-reduced-motion`.
+  - Botón **×** de retorno: fijo arriba-derecha, **opacidad 0.4** en reposo (hover/focus → 1), borde `rgba(255,255,255,0.18)`.
+- **Modal eliminado sin rastro:** borrados `assets/js/utils/ceoModal.js` y `assets/css/ceo.css`; quitados `import`/llamadas en `app.js`; quitado `data-ceo-modal` en `index.html` (se mantiene el `href`). `vite.config.mjs` conserva la entrada `ceo` (necesaria para el build).
+- **Imagen:** `assets/img/ceo/ceo.webp` (desde `docs/CEO/img/ceo/ceo.webp`); eliminado el duplicado `logo1a.webp` (hash idéntico). `src` = `../img/ceo/ceo.webp`; cadena de `onerror` actualizada a `ceo.webp`.
+- **Biografía** (Lo Que Hago/Ofrezco/Hice) descartada del sitio (solo permanece en el historial de git, commit b329197).
+- **Limpieza:** `docs/CEO/` eliminado; planes viejos (`plan-ceo-modal.md`, `plan-ceo-overlay.md`) movidos a `docs/trash/`. Planes de esta sesión: `docs/plan-ceo-pagina.md` y `docs/plan-ceo-anim.md`.
+- **CSP:** sin cambios (`fonts.googleapis.com/gstatic.com` y `placehold.co` ya cubiertos).
 
 ## Pendiente
-- **Tarea CEO**: retomar en la sección "TAREA CEO" de arriba (incompleta/no aprobada; rollback = `git reset --hard 64e3beb`).
-- **Commit de cierre:** el usuario hace el commit final y `git push` a main (Netlify publica al hacer push).
+- **Commit de cierre:** hecho por el agente — `93b4970` (CEO) + `cc320b2` (ajenos). El **push** a main lo ejecuta el usuario (Netlify publica al hacer push).
 - **Investigación del usuario**: Chaport vs Tawk.to vs otra herramienta (chatbot inactivado hasta decidir). El snippet de Tawk.to ya está comentado en index.html; Chaport comentado en las 7 páginas. Información de Chaport en `docs/chatbot-chaport.md`. Decidir proveedor → implicaría descomentar/reactivar snippet + posible ajuste de CSP en `netlify.toml`.
-- **Leftovers** (a decidir): `assets/css/components/footer.css` con línea comentada (resto de experimento); borrado de `CYCS_Co-v2.code-workspace`; archivos untracked `AGENTS.md`, `opencode.json`, `.docs/`, `assets/img/logo1.png`, `assets/img/logo2.png` (locales, no se commitean).
-- **Git**: `origin/main` va por detrás de `main` (push pendiente, lo ejecuta el usuario).
+- **Leftovers**: `assets/css/components/footer.css` con línea comentada (resto de experimento); borrado de `CYCS_Co-v2.code-workspace`. Nota: `tagcloud` + `assets/img/logo1.png`/`logo2.png` ya commiteados en `cc320b2` (la dependencia aún no se importa en el código).
+- **Git**: `origin/main` por detrás de `main` (push pendiente, lo ejecuta el usuario).
