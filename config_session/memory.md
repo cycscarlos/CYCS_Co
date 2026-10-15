@@ -6,6 +6,8 @@
 - Los commits WIP del modal (1b998c8, b329197, c0cf8ac, 30eb501, 46cd62e) quedaron **superseded** por `93b4970`.
 
 ## Checkpoints
+- bdd3323 — checkpoint: estado actual antes de ceo.html como panel flotante (incluye el +15% fontsize del teléfono del copyright de ceo.html).
+- 3307bb1 — checkpoint: estado actual antes de aumentar 15% fontsize teléfono copyright ceo.html.
 - 4a7df87 — fix: normalizar mayúsculas en telco11/13/14/15 para que coincidan con refs HTML (Telco → telco).
 - 64e3beb — fix: ajustes botón scroll down · up (commit final del usuario).
 - ffd13f9 — checkpoint: fix titulo cards invisible en responsive (incluye el fix + escalado proporcional h3/boton en cards.css).
@@ -149,6 +151,22 @@
     - **Cambios:** head con meta description/título/favicon/RemixIcon 3.0.0 (CDN, ya en CSP) y `@font-face` DancingScript/OpenSans (rutas `../fonts/`); CSS de la referencia sin `.sphere`/CTAs, copyright centrado; body con × + `.floating-logo` (`../img/logo2.png`) + hero DancingScript degradado + 3 cards + copyright solo contacto.
     - **Plan:** `docs/plan-ceo-index-ref.md`. Commits: checkpoint `86813c6`, final `29c6705`. **Verificado por el usuario: "Quedo muy Bien!"**
 
+18. **+15% fontsize del teléfono del copyright (ceo.html)**:
+    - **Solicitud:** aumentar 15% el `font-size` del número de teléfono del copyright en `ceo.html`.
+    - **Cambio:** `.copyright__phone` en CSS inline (`ceo.html`): `font-size: 0.49rem` → `0.5635rem` (×1.15 exacto). Solo el número; iconos (phone/IG/LinkedIn) y resto intactos. Sin JS/CSP.
+    - **Nota:** el cambio quedó incluido en el commit checkpoint `bdd3323` (no en un commit final propio).
+    - **Pendiente de prueba visual por el usuario** (no reportó el resultado).
+
+19. **ceo.html como "panel flotante" en desktop (apariencia tipo modal, sin serlo)**:
+    - **Solicitud:** que la vista se viera más pequeña, como un modal/drawer (sin serlo), manteniendo navegación normal (URL `/ceo`, × vuelve al index).
+    - **Decisión del usuario (brainstorming, opciones):** fondo **oscuro/atenuado sólido** (viñeteado); **todo el contenido dentro del panel con scroll interno**; **solo desktop** (móvil idéntico); forma **modal centrado**. Se descartó el "visual companion" (mockup modal vs drawer) porque el usuario ya eligió modal centrado. **× y `.floating-logo` NO se tocan** (siguen fijos al viewport).
+    - **Implementación (solo `assets/html/ceo.html`, CSS inline; commits `bdd3323` checkpoint → `31d3275` final):**
+      - **T1:** `<section class="cards">` y la `<section>` del contacto (`.copyrightTexto`) se movieron **dentro de `div.ceo-stage`** → el contenedor que ya usaba la animación de salida `ceoCircleClose` ahora abarca todo el panel (la salida en círculo cubre hero + cards + contacto). En ≤900px el flujo visual no cambia.
+      - **T2:** nuevo `<style id="ceo-panel">` **solo `@media (min-width: 901px)`** (tras `#ceo-anim`): `html/body { height:100%; overflow:hidden }`; `body` con `background: radial-gradient(circle at 50% 38%, #0b1017 0%, #050505 72%) fixed` + centrado flex; `.ceo-stage` = panel (`width:min(1100px,92vw)`, `min-height:0`, `max-height:min(88vh,900px)`, `overflow-y:auto`, `border-radius:24px`, borde `rgba(255,255,255,0.12)`, `background: rgba(17,17,17,0.72)` + `blur(18px)`, sombra profunda, scrollbar fina dorada); `.hero-container` `min-height:auto` (deja de ser 100vh); `.cards` `padding-top` ajustado.
+      - **Corte responsive:** `min-width:901px` para no pisar el `@media (max-width:900px)` existente (móvil/tablet intactos).
+      - **Plan:** `docs/plan-ceo-panel.md` (gitignored). **Build OK.** Pendiente de prueba visual por el usuario (no reportó resultado); a vigilar: el `.floating-logo` (180px, fixed `right:50px`) puede solaparse con la esquina del panel en desktop.
+
+
 
 > Estado: **completada y aprobada por el usuario**. Commit final `93b4970`. Rollback total del CEO = `git reset --hard 64e3beb`.
 
@@ -166,7 +184,8 @@
 - **CSP:** sin cambios (`fonts.googleapis.com/gstatic.com` y `placehold.co` ya cubiertos).
 
 ## Pendiente
-- **Cierre de sesión (ceo.html ≡ index.html referencia):** implementado y aprobado por el usuario ("Quedo muy Bien!"). Commit final `29c6705` (checkpoint `86813c6`). El usuario indicó que **sube a producción (push)** al cerrar. Plan en `docs/plan-ceo-index-ref.md`.
+- **Cierre de sesión (ceo.html panel flotante):** implementado; commits `bdd3323` (checkpoint) → `31d3275` (final). **Pendiente de prueba visual por el usuario** (desktop ≥901px: panel centrado con scroll interno; ≤900px idéntico). El **push** a main lo ejecuta el usuario (Netlify publica al hacer push).
+- **Cierre de sesión (ceo.html ≡ index.html referencia):** implementado y aprobado por el usuario ("Quedo muy Bien!"). Commit final `29c6705` (checkpoint `86813c6`). Plan en `docs/plan-ceo-index-ref.md`.
 - **Commit de cierre previo:** `93b4970` (CEO) + `cc320b2` (ajenos). El **push** a main lo ejecuta el usuario (Netlify publica al hacer push).
 - **Investigación del usuario**: Chaport vs Tawk.to vs otra herramienta (chatbot inactivado hasta decidir). El snippet de Tawk.to ya está comentado en index.html; Chaport comentado en las 7 páginas. Información de Chaport en `docs/chatbot-chaport.md`. Decidir proveedor → implicaría descomentar/reactivar snippet + posible ajuste de CSP en `netlify.toml`.
 - **Leftovers**: `assets/css/components/footer.css` con línea comentada (resto de experimento); borrado de `CYCS_Co-v2.code-workspace`. Nota: `tagcloud` + `assets/img/logo1.png`/`logo2.png` ya commiteados en `cc320b2` (la dependencia aún no se importa en el código).
