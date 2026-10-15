@@ -84,6 +84,7 @@ export default defineConfig({
         seguridad: resolve(import.meta.dirname, 'assets/html/seguridad.html'),
         servicios: resolve(import.meta.dirname, 'assets/html/servicios.html'),
         sistemasCriticos: resolve(import.meta.dirname, 'assets/html/sistemasCriticos.html'),
+        ceo: resolve(import.meta.dirname, 'assets/html/ceo.html'),
       }
     }
   }
