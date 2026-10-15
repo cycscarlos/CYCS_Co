@@ -166,7 +166,8 @@
 - **CSP:** sin cambios (`fonts.googleapis.com/gstatic.com` y `placehold.co` ya cubiertos).
 
 ## Pendiente
-- **Commit de cierre:** hecho por el agente — `93b4970` (CEO) + `cc320b2` (ajenos). El **push** a main lo ejecuta el usuario (Netlify publica al hacer push).
+- **Cierre de sesión (ceo.html ≡ index.html referencia):** implementado y aprobado por el usuario ("Quedo muy Bien!"). Commit final `29c6705` (checkpoint `86813c6`). El usuario indicó que **sube a producción (push)** al cerrar. Plan en `docs/plan-ceo-index-ref.md`.
+- **Commit de cierre previo:** `93b4970` (CEO) + `cc320b2` (ajenos). El **push** a main lo ejecuta el usuario (Netlify publica al hacer push).
 - **Investigación del usuario**: Chaport vs Tawk.to vs otra herramienta (chatbot inactivado hasta decidir). El snippet de Tawk.to ya está comentado en index.html; Chaport comentado en las 7 páginas. Información de Chaport en `docs/chatbot-chaport.md`. Decidir proveedor → implicaría descomentar/reactivar snippet + posible ajuste de CSP en `netlify.toml`.
 - **Leftovers**: `assets/css/components/footer.css` con línea comentada (resto de experimento); borrado de `CYCS_Co-v2.code-workspace`. Nota: `tagcloud` + `assets/img/logo1.png`/`logo2.png` ya commiteados en `cc320b2` (la dependencia aún no se importa en el código).
 - **Git**: `origin/main` por detrás de `main` (push pendiente, lo ejecuta el usuario).
