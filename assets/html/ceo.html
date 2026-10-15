@@ -571,6 +571,65 @@
         }
       }
     </style>
+
+    <!-- ===== Panel flotante (solo desktop ≥901px; ≤900px intacto) ===== -->
+    <style id="ceo-panel">
+      @media (min-width: 901px) {
+        html,
+        body {
+          height: 100%;
+          overflow: hidden;
+        }
+
+        body {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: clamp(1rem, 4vh, 2.5rem) 1rem;
+          background: radial-gradient(
+            circle at 50% 38%,
+            #0b1017 0%,
+            #050505 72%
+          ) fixed;
+        }
+
+        .ceo-stage {
+          width: min(1100px, 92vw);
+          min-height: 0;
+          max-height: min(88vh, 900px);
+          overflow-y: auto;
+          overflow-x: hidden;
+          border-radius: 24px;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          background: rgba(17, 17, 17, 0.72);
+          -webkit-backdrop-filter: blur(18px);
+          backdrop-filter: blur(18px);
+          box-shadow:
+            0 40px 100px rgba(0, 0, 0, 0.8),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+          scrollbar-width: thin;
+          scrollbar-color: rgba(157, 141, 108, 0.5) transparent;
+        }
+
+        .ceo-stage::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        .ceo-stage::-webkit-scrollbar-thumb {
+          background: rgba(157, 141, 108, 0.45);
+          border-radius: 8px;
+        }
+
+        .hero-container {
+          min-height: auto;
+          padding: clamp(2rem, 5vh, 3.5rem) clamp(1.5rem, 4vw, 3.5rem);
+        }
+
+        .cards {
+          padding-top: clamp(1.5rem, 4vw, 3rem);
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -634,7 +693,6 @@
             </div>
           </div>
         </div>
-      </div>
 
       <!-- ===== Cards de vidrio (reemplazan el article) ===== -->
       <section class="cards" aria-label="Trayectoria">
@@ -671,10 +729,8 @@
           </article>
         </div>
       </section>
-    </main>
-
-    <!-- ===== Teléfono y redes (sin texto de copyright) ===== -->
-    <section>
+      <!-- ===== Teléfono y redes (sin texto de copyright) ===== -->
+      <section>
       <div class="copyrightTexto">
         <div class="copyright__contact">
           <a
@@ -701,7 +757,9 @@
           ></a>
         </div>
       </div>
-    </section>
+      </section>
+      </div>
+    </main>
 
     <script>
       (function () {
