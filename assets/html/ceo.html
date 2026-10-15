@@ -3,8 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carlos Colmenares A. - Design and Development</title>
-    <!-- Fuente moderna Space Grotesk -->
+    <meta
+      name="description"
+      content="Carlos Colmenares A. — Ingeniero en proyectos y software. 40+ años en Mainframe IBM, redes interbancarias y soluciones corporativas."
+    />
+    <title>Carlos Colmenares A. | Design and Development</title>
+    <link
+      rel="shortcut icon"
+      href="../img/favicon.png"
+      type="image/png"
+    />
+
+    <!-- Iconografía (RemixIcon) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- Fuente UI (ceo.html) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -41,7 +57,44 @@
     </script>
 
     <style>
-      /* Reset y Estilos Base */
+      /* ===== Tokens (nuevos; los estilos del hero conservan los literales de ceo.html) ===== */
+      :root {
+        --bg: #050505;
+        --surface: #111111;
+        --ink: #ffffff;
+        --ink-soft: rgba(255, 255, 255, 0.85);
+        --muted: #9ca3af;
+        --accent: #9d8d6c;
+        --accent-dark: #7e7156;
+        --whatsapp: #00bd2c;
+        --whatsapp-dark: #1b8a24;
+        --header-height: 5.5rem;
+      }
+
+      /* Tipografía del título (preservada de index.html → .title) */
+      @font-face {
+        font-family: "DancingScript";
+        font-display: swap;
+        font-weight: 400;
+        src: url(../fonts/DancingScript-Medium.ttf);
+      }
+
+      /* Tipografía del teléfono (local, assets/fonts) */
+      @font-face {
+        font-family: "OpenSans";
+        font-display: swap;
+        font-weight: 400;
+        src: url(../fonts/OpenSans-Regular.ttf);
+      }
+
+      @font-face {
+        font-family: "OpenSans";
+        font-display: swap;
+        font-weight: 600;
+        src: url(../fonts/OpenSans-SemiBold.ttf);
+      }
+
+      /* ===== Reset y base (idéntico a ceo.html) ===== */
       * {
         margin: 0;
         padding: 0;
@@ -51,9 +104,9 @@
       html,
       body {
         width: 100%;
-        height: 100%;
-        background-color: #050505;
-        color: #ffffff;
+        min-height: 100%;
+        background-color: var(--bg);
+        color: var(--ink);
         font-family:
           "Space Grotesk",
           -apple-system,
@@ -62,7 +115,111 @@
         overflow-x: hidden;
       }
 
-      /* Layout Hero de Dos Columnas en Pantalla Completa (Desktop) */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      /* ===== Contacto del pie: teléfono + redes (lado derecho) ===== */
+      .copyright__contact {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(0.7rem, 2vw, 1rem);
+        flex-wrap: wrap;
+      }
+
+      .copyright__phone {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-family: "OpenSans", sans-serif;
+        font-size: 0.49rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        color: var(--ink-soft);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .copyright__phone i {
+        font-size: 0.56rem;
+      }
+
+      .copyright__phone:hover,
+      .copyright__phone:focus-visible {
+        color: #ffffff;
+      }
+
+      .copyright__contact .icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.3rem;
+        border-radius: 6px;
+        color: var(--ink-soft);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .copyright__contact .icon i {
+        font-size: 1.05rem;
+      }
+
+      .copyright__contact .ri-instagram-line:hover,
+      .copyright__contact .ri-instagram-line:focus-visible {
+        color: #e1306c;
+      }
+
+      .copyright__contact .ri-linkedin-fill:hover,
+      .copyright__contact .ri-linkedin-fill:focus-visible {
+        color: #0a66c2;
+      }
+
+      /* ===== Logo Flotante Fijo (definición y estilos preservados de index.html) ===== */
+      @keyframes fadeInLogo {
+        from {
+          opacity: 0;
+          transform: translateY(-18px) scale(0.85);
+        }
+        to {
+          opacity: 0.92;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .floating-logo {
+        position: fixed;
+        top: calc(var(--header-height) + 15px);
+        right: 50px;
+        z-index: 1000;
+        width: 180px;
+        opacity: 0.92;
+        padding: 6px;
+        animation: fadeInLogo 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+        cursor: default;
+        pointer-events: none;
+      }
+
+      .floating-logo:hover {
+        opacity: 1;
+        transform: scale(1.06);
+        filter: drop-shadow(0 6px 22px rgba(157, 141, 108, 0.5));
+      }
+
+      .floating-logo img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+      }
+
+      /* ===== Layout Hero (estilos intactos de ceo.html) ===== */
       .hero-container {
         display: flex;
         min-height: 100vh;
@@ -74,7 +231,6 @@
         position: relative;
       }
 
-      /* Columna Izquierda: Texto */
       .hero-text-content {
         flex: 1 1 55%;
         display: flex;
@@ -83,15 +239,22 @@
         z-index: 2;
       }
 
+      /* Único cambio sobre ceo.html: la tipografía del nombre (de .title / index.html) */
       .hero-name {
-        font-size: clamp(2.5rem, 5.5vw, 5.5rem);
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        line-height: 1.05;
-        text-transform: uppercase;
-        color: #ffffff;
-        margin-bottom: 1.2rem;
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        font-family: "DancingScript", cursive;
+        font-weight: 400;
+        font-size: clamp(3rem, 9vw, 6rem);
+        line-height: 1.15;
+        letter-spacing: 0;
+        text-transform: none;
+        background: linear-gradient(135deg, #ffffff, #9d8d6c);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.75));
+        margin-bottom: 1.4rem;
+        text-wrap: balance;
       }
 
       .hero-subtitle {
@@ -103,7 +266,6 @@
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
       }
 
-      /* Columna Derecha: Imagen */
       .hero-image-content {
         flex: 1 1 45%;
         display: flex;
@@ -118,7 +280,7 @@
         height: min(420px, 80vw);
         border-radius: 50%;
         overflow: hidden;
-        background-color: #111111;
+        background-color: var(--surface);
         box-shadow:
           0 25px 50px -12px rgba(0, 0, 0, 0.9),
           0 0 0 1px rgba(255, 255, 255, 0.1);
@@ -149,8 +311,112 @@
         transform: scale(1.03);
       }
 
-      /* */
-      /* Adaptabilidad Responsiva (Móviles / Tablets - Viewports menores a Desktop) */
+      /* ===== Cards de vidrio (sustituyen al article) ===== */
+      .cards {
+        padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 3rem) 0;
+      }
+
+      .cards__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: clamp(1rem, 2.5vw, 1.75rem);
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 18px;
+        padding: clamp(1.4rem, 3vw, 2rem);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.45),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(157, 141, 108, 0.5);
+      }
+
+      .card__title {
+        font-size: clamp(1.15rem, 2vw, 1.4rem);
+        font-weight: 700;
+        color: var(--accent);
+        margin-bottom: 0.9rem;
+        letter-spacing: 0.01em;
+        text-wrap: balance;
+      }
+
+      .card__list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+      }
+
+      .card__list li {
+        position: relative;
+        padding-left: 1.35rem;
+        font-size: clamp(0.9rem, 1.4vw, 1rem);
+        line-height: 1.6;
+        color: #dfe6ee;
+        text-wrap: pretty;
+      }
+
+      .card__list li::before {
+        content: "\2726";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--accent);
+        filter: drop-shadow(0 0 2px rgba(157, 141, 108, 0.4));
+      }
+
+      /* ===== Copyright (solo contacto: teléfono + redes) ===== */
+      .copyrightTexto {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.6rem clamp(1rem, 3vw, 2rem);
+        width: 100%;
+        padding: 1.1rem clamp(1rem, 5vw, 2.5rem) 1rem;
+        color: var(--muted);
+        background-color: transparent;
+        font-size: 0.5rem;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 640px) {
+        .copyrightTexto {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 0.6rem;
+        }
+      }
+
+      /* ===== Movimiento reducido ===== */
+      @media (prefers-reduced-motion: reduce) {
+        .card,
+        .floating-logo,
+        .hero-image-container img {
+          transition: none;
+        }
+        .card:hover,
+        .floating-logo:hover,
+        .hero-image-container:hover img {
+          transform: none;
+        }
+      }
+
+      /* ===== Adaptabilidad responsiva (idéntica a ceo.html) ===== */
       @media (max-width: 900px) {
         .hero-container {
           display: flex;
@@ -163,7 +429,6 @@
           position: relative;
         }
 
-        /* Texto por delante */
         .hero-text-content {
           flex: none;
           width: 100%;
@@ -173,7 +438,7 @@
         }
 
         .hero-name {
-          font-size: clamp(2.2rem, 9vw, 3.8rem);
+          font-size: clamp(2.6rem, 11vw, 4.5rem);
         }
 
         .hero-subtitle {
@@ -181,7 +446,6 @@
           font-size: clamp(0.75rem, 3.2vw, 1rem);
         }
 
-        /* La imagen pasa a cubrir el fondo detrás del texto */
         .hero-image-content {
           position: absolute;
           inset: 0;
@@ -201,12 +465,11 @@
 
         .hero-image-container img {
           border-radius: 0;
-          opacity: 0.35; /* Suavizado para legibilidad del texto */
+          opacity: 0.35;
           filter: grayscale(100%) contrast(110%);
           object-position: center 20%;
         }
 
-        /* Capa gradiente oscura para asegurar contraste perfecto del texto */
         .hero-image-container::after {
           content: "";
           position: absolute;
@@ -216,6 +479,33 @@
             rgba(5, 5, 5, 0.4) 0%,
             rgba(5, 5, 5, 0.92) 80%
           );
+        }
+
+        .floating-logo {
+          width: 100px;
+          top: calc(var(--header-height) + 10px);
+          right: 10px;
+          border-radius: 10px;
+          padding: 4px;
+        }
+
+        .floating-logo img {
+          border-radius: 8px;
+        }
+      }
+
+      @media (max-width: 500px) {
+        .floating-logo {
+          width: 100px;
+          top: calc(var(--header-height) + 5px);
+          right: 6px;
+          border-radius: 8px;
+          padding: 3px;
+          filter: drop-shadow(0 2px 8px rgba(157, 141, 108, 0.25));
+        }
+
+        .floating-logo img {
+          border-radius: 6px;
         }
       }
     </style>
@@ -282,6 +572,7 @@
       }
     </style>
   </head>
+
   <body>
     <!-- Botón de retorno (X) -->
     <button
@@ -316,30 +607,101 @@
       &times;
     </button>
 
-    <!-- Contenedor Principal -->
-    <div class="ceo-stage">
-      <main class="hero-container">
-        <!-- Texto e Identidad -->
-        <div class="hero-text-content">
-          <h1 class="hero-name">Carlos Colmenares A.</h1>
-          <p class="hero-subtitle">Project and Software Engineer</p>
-        </div>
+    <!-- Logo Flotante Fijo (index.html) -->
+    <div class="floating-logo">
+      <img src="../img/logo2.png" alt="CYCS Logo" />
+    </div>
 
-        <!-- Imagen de Perfil (A la derecha en Desktop, de fondo en Móvil) -->
-        <div class="hero-image-content">
-          <div class="hero-image-container">
-            <img
-              id="profile-img"
-              src="../img/ceo/ceo.webp"
-              alt="Carlos Colmenares A."
-              width="420"
-              height="420"
-              onerror="handleImageError(this)"
-            />
+    <main>
+      <!-- ===== HERO (ceo.html, tipografía del nombre en DancingScript) ===== -->
+      <div class="ceo-stage">
+        <div class="hero-container">
+          <div class="hero-text-content">
+            <h1 class="hero-name">Carlos Colmenares A.</h1>
+            <p class="hero-subtitle">Project and Software Engineer</p>
+          </div>
+
+          <div class="hero-image-content">
+            <div class="hero-image-container">
+              <img
+                id="profile-img"
+                src="../img/ceo/ceo.webp"
+                alt="Carlos Colmenares A."
+                width="420"
+                height="420"
+                onerror="handleImageError(this)"
+              />
+            </div>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+
+      <!-- ===== Cards de vidrio (reemplazan el article) ===== -->
+      <section class="cards" aria-label="Trayectoria">
+        <div class="cards__grid">
+          <article class="card">
+            <h2 class="card__title">Lo Que Hago...</h2>
+            <ul class="card__list">
+              <li>Especialista en proyectos de tecnología</li>
+              <li>Ingeniería y desarrollo de software</li>
+              <li>Automatizaciones y chatbots</li>
+              <li>Redes de microondas y radio bases</li>
+              <li>Seguridad electrónica de carácter industrial</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h2 class="card__title">Lo Que Ofrezco...</h2>
+            <ul class="card__list">
+              <li>Traduzco estándares corporativos en soluciones reales y rápidas</li>
+              <li>Asesoría, infraestructura, automatización con IA y desarrollo a medida</li>
+              <li>Continuidad operativa donde el fallo no es una opción</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h2 class="card__title">Lo Que Hice...</h2>
+            <ul class="card__list">
+              <li>40+ años de trayectoria</li>
+              <li>Especialista en Mainframe IBM (System Programming, Assembler, Cobol)</li>
+              <li>Primer cajero automático de Venezuela</li>
+              <li>Redes interbancarias que procesan millones de transacciones diarias</li>
+              <li>Asesor de 11 bancos nacionales, 2 internacionales y +60 empresas</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== Teléfono y redes (sin texto de copyright) ===== -->
+    <section>
+      <div class="copyrightTexto">
+        <div class="copyright__contact">
+          <a
+            class="copyright__phone"
+            href="tel:+584143246396"
+            aria-label="Llamar por teléfono"
+            ><i class="ri-phone-line" aria-hidden="true"></i> +58 0414 324.63.96</a
+          >
+          <a
+            href="https://www.instagram.com/cycs.ia"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Perfil de Instagram"
+            class="icon"
+            ><i class="ri-instagram-line"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/carloscolmenaresa/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Perfil de LinkedIn"
+            class="icon"
+            ><i class="ri-linkedin-fill"></i
+          ></a>
+        </div>
+      </div>
+    </section>
 
     <script>
       (function () {
