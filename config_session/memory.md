@@ -25,6 +25,9 @@
 - e2ac2e8 — checkpoint: pre-scrollReveal — estado actual antes de modificar scrollReveal.js (rollback de la Tarea 3).
 
 ## Commits de la sesión actual
+- 29c6705 — feat: ceo.html idéntico a index.html de referencia (proyecto CYCS) sin CTAs/tagcloud, copyright solo teléfono y redes. **Commit final de esta tarea.**
+- 86813c6 — checkpoint: estado actual antes de ceo.html ≡ index.html referencia.
+- f940c6c — chore: cierre de la tarea CEO (memory.md) y archivar plan del modal.
 - cc320b2 — chore: dependencia tagcloud + assets logo1/logo2.png (cambios ajenos a la tarea CEO).
 - 93b4970 — feat: página CEO reemplaza el modal (navegación normal, diseño hero, animación entrada/salida y botón × de retorno). **Commit final de la tarea CEO.**
 - f918696 — checkpoint: estado actual antes de animar entrada/salida CEO.
@@ -141,7 +144,12 @@
     - Entrada **fade+rise** (texto 1.2s, foto 1.4s) y salida **en círculo** sobre `.ceo-stage` (1.8s) al pulsar ×, con respaldo `history.back()`/`../../index.html` (timeout 3000ms) y soporte `prefers-reduced-motion`. La × quedó sutil (opacidad 0.4, hover 1).
     - El usuario pidió explícitamente ralentizar ambas (entrada "un poco", salida "mucho") y difuminar la ×. Planes: `docs/plan-ceo-pagina.md`, `docs/plan-ceo-anim.md`.
 
-## TAREA CEO (COMPLETADA)
+17. **ceo.html reescrito ≡ index.html del proyecto de referencia** (solo lectura `C:\Users\zcoder\Documents\CYCSWeb\GitHub\0-Netlify\CYCS` — NO modificar ese proyecto):
+    - **Solicitud:** ceo.html idéntico a `CYCS/index.html` con 3 exclusiones: sin CTAs, sin tagcloud/sphere, copyright sin texto (solo teléfono + IG + LinkedIn). Se conservan ×, animaciones (ceo-anim + ceoExit) y `handleImageError`.
+    - **Cambios:** head con meta description/título/favicon/RemixIcon 3.0.0 (CDN, ya en CSP) y `@font-face` DancingScript/OpenSans (rutas `../fonts/`); CSS de la referencia sin `.sphere`/CTAs, copyright centrado; body con × + `.floating-logo` (`../img/logo2.png`) + hero DancingScript degradado + 3 cards + copyright solo contacto.
+    - **Plan:** `docs/plan-ceo-index-ref.md`. Commits: checkpoint `86813c6`, final `29c6705`. **Verificado por el usuario: "Quedo muy Bien!"**
+
+
 > Estado: **completada y aprobada por el usuario**. Commit final `93b4970`. Rollback total del CEO = `git reset --hard 64e3beb`.
 
 ### Resultado
