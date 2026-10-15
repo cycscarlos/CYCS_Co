@@ -1,0 +1,66 @@
+/* CEO Modal - Subsistema autónomo */
+.ceo-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(4px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:ceo-fade .25s ease-out;
+}
+.ceo-window{
+  position:fixed;
+  inset:0;
+  margin:auto;
+  width:clamp(320px,50vw,680px);
+  height:clamp(240px,50vh,520px);
+  background:rgba(1,22,39,.92);
+  border:1px solid rgba(255,76,0,.4);
+  box-shadow:0 20px 60px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.02);
+  border-radius:14px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:row;
+  gap:1.5rem;
+  animation:ceo-scale .25s ease-out;
+}
+.ceo-content{
+  flex:1 1 45%;
+  padding:2rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  color:#fff;
+}
+.ceo-media{
+  flex:1 1 55%;
+  position:relative;
+}
+.ceo-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  border-radius:0 14px 14px 0;
+}
+.ceo-close{
+  position:absolute;
+  top:10px;
+  right:12px;
+  background:transparent;
+  border:none;
+  color:#fff;
+  font-size:22px;
+  cursor:pointer;
+  z-index:3;
+}
+@keyframes ceo-fade{from{opacity:0}to{opacity:1}}
+@keyframes ceo-scale{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:scale(1)}}
+@media (max-width:768px){
+  .ceo-window{display:block; gap:0}
+  .ceo-media{position:absolute;inset:0;z-index:0}
+  .ceo-media img{border-radius:14px;width:100%;height:100%;object-fit:cover;mask-image:linear-gradient(to right,black 45%,transparent 85%);-webkit-mask-image:linear-gradient(to right,black 45%,transparent 85%);filter:brightness(.8)saturate(.95)}
+  .ceo-content{position:relative;z-index:1;display:grid;place-items:center;height:100%;padding:2rem;text-align:center}
+}

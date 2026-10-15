@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CEO - CYCS & Co.</title>
+  <link rel="stylesheet" href="../css/ceo.css">
+</head>
+<body style="background:transparent">
+  <div class="ceo-backdrop" id="ceo-backdrop">
+    <div class="ceo-window">
+      <button class="ceo-close" id="ceo-close" aria-label="Cerrar">×</button>
+      <div class="ceo-content">
+        <h2 class="title">Carlos Colmenares A.</h2>
+        <h4 class="subtitle"><small>Ingeniero Electrónico | Certificado por prestigiosos institutos académicos y fabricantes</small></h4>
+        <p class="subtitle loque"><strong>Lo Que Hago...</strong></p>
+        <p class="description">● Especialista en proyectos de tecnología<br>● Ingeniería y desarrollo de software<br>● Automatizaciones y Chatbots<br>● Diseño e implementación de redes de microondas y radio bases<br>● Instalación de sistemas de seguridad electrónica con caracter industrial</p>
+        <p class="subtitle loque"><strong>Lo Que Ofrezco...</strong></p>
+        <p class="description">● Traduzco estándares corporativos en soluciones reales con resultados rápidos y sin complicaciones<br>● Asesoría, infraestructura, automatizaciones con IA y desarrollo a la medida para negocios<br>● Asegurar la continuidad operativa en entornos donde el fallo no es una opción</p>
+        <p class="subtitle loque"><strong>Lo Que Hice...</strong></p>
+        <p>40+ años de trayectoria<br>Especialista en equipos Mainframe de IBM <small><i>(System Programming, Assembler & Cobol)</i></small>, implementación del primer cajero automático en Venezuela, diseño e implementación de redes interbancarias que aún hoy continúan procesando millones de transacciones diarias en bancos nacionales e internacionales, y asesor tecnológico de 11 bancos nacionales, 2 internacionales y más de 60 empresas del sector industrial del país.</p>
+        <p class="description"><i>"La verdadera ingeniería no solo resuelve problemas, previene que ocurran"</i></p>
+      </div>
+      <div class="ceo-media">
+        <img src="../img/ceo/logo1a.webp" alt="Carlos Colmenares A.">
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var close=function(){
+        if(history.length>1){history.back();}else{window.location.href='contacto.html';}
+      };
+      document.getElementById('ceo-close').addEventListener('click',close);
+      document.getElementById('ceo-backdrop').addEventListener('click',function(e){if(e.target===this) close();});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape') close();});
+    })();
+  </script>
+</body>
+</html>
