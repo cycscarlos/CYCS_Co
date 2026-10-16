@@ -138,7 +138,7 @@
         align-items: center;
         gap: 0.35rem;
         font-family: "OpenSans", sans-serif;
-        font-size: 0.5635rem;
+        font-size: 0.8rem;
         font-weight: 600;
         letter-spacing: 0.02em;
         color: var(--ink-soft);
@@ -147,7 +147,7 @@
       }
 
       .copyright__phone i {
-        font-size: 0.56rem;
+        font-size: 0.9rem;
       }
 
       .copyright__phone:hover,
@@ -243,7 +243,7 @@
       .hero-name {
         font-family: "DancingScript", cursive;
         font-weight: 400;
-        font-size: clamp(3rem, 9vw, 6rem);
+        font-size: clamp(2.2rem, 5vw, 3.5rem);
         line-height: 1.15;
         letter-spacing: 0;
         text-transform: none;
@@ -258,7 +258,7 @@
       }
 
       .hero-subtitle {
-        font-size: clamp(0.85rem, 1.4vw, 1.2rem);
+        font-size: clamp(0.7rem, 0.9vw, 0.9rem);
         font-weight: 600;
         letter-spacing: 0.22em;
         text-transform: uppercase;
@@ -311,71 +311,27 @@
         transform: scale(1.03);
       }
 
-      /* ===== Cards de vidrio (sustituyen al article) ===== */
-      .cards {
-        padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 3rem) 0;
-      }
-
-      .cards__grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: clamp(1rem, 2.5vw, 1.75rem);
-        max-width: 1100px;
-        margin: 0 auto;
-      }
-
-      .card {
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 18px;
-        padding: clamp(1.4rem, 3vw, 2rem);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        box-shadow:
-          0 20px 50px rgba(0, 0, 0, 0.45),
-          inset 0 1px 0 rgba(255, 255, 255, 0.08);
-        transition:
-          transform 0.3s ease,
-          border-color 0.3s ease;
-      }
-
-      .card:hover {
-        transform: translateY(-6px);
-        border-color: rgba(157, 141, 108, 0.5);
-      }
-
-      .card__title {
-        font-size: clamp(1.15rem, 2vw, 1.4rem);
-        font-weight: 700;
-        color: var(--accent);
-        margin-bottom: 0.9rem;
-        letter-spacing: 0.01em;
-        text-wrap: balance;
-      }
-
-      .card__list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.55rem;
-      }
-
-      .card__list li {
-        position: relative;
-        padding-left: 1.35rem;
-        font-size: clamp(0.9rem, 1.4vw, 1rem);
-        line-height: 1.6;
-        color: #dfe6ee;
+      /* ===== Presentación del hero (reemplaza las cards) ===== */
+      .hero-bio {
+        max-width: 60ch;
+        margin-top: clamp(1.4rem, 2.6vw, 2rem);
+        font-size: clamp(0.65rem, 1.0vw, 1.0rem);
+        font-weight: 400;
+        line-height: 1.75;
+        color: var(--ink-soft);
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         text-wrap: pretty;
       }
 
-      .card__list li::before {
-        content: "\2726";
-        position: absolute;
-        left: 0;
-        top: 0;
+      .hero-tagline {
+        max-width: 56ch;
+        margin-top: 1.1rem;
+        font-size: clamp(0.65rem, 1.0vw, 1.0rem);
+        font-style: italic;
+        line-height: 1.6;
         color: var(--accent);
-        filter: drop-shadow(0 0 2px rgba(157, 141, 108, 0.4));
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        text-wrap: balance;
       }
 
       /* ===== Copyright (solo contacto: teléfono + redes) ===== */
@@ -389,7 +345,7 @@
         padding: 1.1rem clamp(1rem, 5vw, 2.5rem) 1rem;
         color: var(--muted);
         background-color: transparent;
-        font-size: 0.5rem;
+        font-size: 0.8rem;
         line-height: 1.5;
       }
 
@@ -404,12 +360,10 @@
 
       /* ===== Movimiento reducido ===== */
       @media (prefers-reduced-motion: reduce) {
-        .card,
         .floating-logo,
         .hero-image-container img {
           transition: none;
         }
-        .card:hover,
         .floating-logo:hover,
         .hero-image-container:hover img {
           transform: none;
@@ -446,6 +400,10 @@
           font-size: clamp(0.75rem, 3.2vw, 1rem);
         }
 
+        .hero-bio {
+          max-width: 56ch;
+        }
+
         .hero-image-content {
           position: absolute;
           inset: 0;
@@ -465,7 +423,7 @@
 
         .hero-image-container img {
           border-radius: 0;
-          opacity: 0.35;
+          opacity: 0.5;
           filter: grayscale(100%) contrast(110%);
           object-position: center 20%;
         }
@@ -476,8 +434,8 @@
           inset: 0;
           background: radial-gradient(
             circle,
-            rgba(5, 5, 5, 0.4) 0%,
-            rgba(5, 5, 5, 0.92) 80%
+            rgba(5, 5, 5, 0.25) 0%,
+            rgba(5, 5, 5, 0.85) 80%
           );
         }
 
@@ -624,10 +582,6 @@
           min-height: auto;
           padding: clamp(2rem, 5vh, 3.5rem) clamp(1.5rem, 4vw, 3.5rem);
         }
-
-        .cards {
-          padding-top: clamp(1.5rem, 4vw, 3rem);
-        }
       }
     </style>
   </head>
@@ -678,6 +632,18 @@
           <div class="hero-text-content">
             <h1 class="hero-name">Carlos Colmenares A.</h1>
             <p class="hero-subtitle">Project and Software Engineer</p>
+            <p class="hero-bio">
+              Ingeniero electrónico con más de 40 años de trayectoria,
+              especializado en proyectos: desde el Mainframe IBM hasta el
+              desarrollo web y la automatización con IA. Integró el equipo que
+              instaló el primer cajero automático de Venezuela y ha asesorado a
+              13 bancos y a más de 60 empresas, entre pymes y corporaciones.
+              Hoy convierte estándares corporativos en soluciones prácticas y a
+              la medida.
+            </p>
+            <p class="hero-tagline">
+              Continuidad operativa donde el fallo no es una opción.
+            </p>
           </div>
 
           <div class="hero-image-content">
@@ -694,41 +660,6 @@
           </div>
         </div>
 
-      <!-- ===== Cards de vidrio (reemplazan el article) ===== -->
-      <section class="cards" aria-label="Trayectoria">
-        <div class="cards__grid">
-          <article class="card">
-            <h2 class="card__title">Lo Que Hago...</h2>
-            <ul class="card__list">
-              <li>Especialista en proyectos de tecnología</li>
-              <li>Ingeniería y desarrollo de software</li>
-              <li>Automatizaciones y chatbots</li>
-              <li>Implementación de redes de microondas y radio bases</li>
-              <li>Integración de sistemas de seguridad electrónica de carácter industrial</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h2 class="card__title">Lo Que Ofrezco...</h2>
-            <ul class="card__list">
-              <li>Traduzco estándares corporativos en soluciones reales y rápidas</li>
-              <li>Asesoría, infraestructura, automatización con IA y desarrollo a medida</li>
-              <li>Continuidad operativa donde el fallo no es una opción</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h2 class="card__title">Lo Que Hice...</h2>
-            <ul class="card__list">
-              <li>Ingeniero Electrónico con 40+ años de trayectoria</li>            
-              <li>Asesor de 11 bancos nacionales, 2 internacionales y 60+ empresas</li>
-              <li>Especialista en Mainframe IBM <small><i>(System Programming, Assembler, Cobol)</small></i></li>
-              <li>Integrante del equipo que desarrolló el primer cajero automático de Venezuela</li>
-              <li>Implementación de Redes interbancarias que aún hoy procesan millones de transacciones diarias</li>              
-            </ul>
-          </article>
-        </div>
-      </section>
       <!-- ===== Teléfono y redes (sin texto de copyright) ===== -->
       <section>
       <div class="copyrightTexto">
