@@ -1,6 +1,17 @@
 # Contexto de Sesión
 
-## ⭐ SESIÓN ACTUAL — Vistas técnicas: velo, scrollbar y hover (COMPLETADA)
+## ⭐ SESIÓN ACTUAL — Enlaces "Contacto" → footer del index (COMPLETADA)
+- **Objetivo:** los enlaces que iban a la vista `contacto.html` ahora llevan a la sección `<div class="footer" id="footer">` del `index.html` (`#footer`). Se conserva el texto visible ("Contacto"/"Contáctanos").
+- **Cambios (6 enlaces):** `index.html:200` (nav) y `index.html:274` (botón hero "Contáctanos") → `#footer`; `assets/html/servicios.html:184` → `../../index.html#footer`; `assets/html/components/header.html:22` → `#footer`; `header-subpages.html:22` y `header-tech.html:28` → `/#footer`.
+- **No tocado:** `mailto:`, WhatsApp, `og:url`, `vite.config.mjs`, ni el contenido de `contacto.html` (la página sigue existiendo).
+- **Ajustes del usuario incluidos en el commit:** `ceo.html` (bio reescrita con `<small><i>`, subtítulo "Project and Software Engineer" comentado, formateo) e `index.html` (párrafo "Nosotros" del footer reescrito con cursivas resaltadas).
+- **Verificación:** `npm run build` OK (`✓ built in 5.42s`). Sin restos de `href` de navegación a `contacto` (solo `mailto`, `og:url` y CSS).
+- **Rollback:** HEAD previo `a5aa22d` (árbol limpio; no se creó checkpoint por no haber cambios sin commitear).
+- **Commits:** `60d58ff` — feat: enlaces Contacto al footer del index y ajustes de contenido en ceo/index. Commit de cierre de sesión: memory.md.
+- **Plan:** `docs/plan-enlaces-contacto-footer.md` (gitignored).
+- **Pendiente:** prueba visual del usuario en `npm run dev` (Contacto/Contáctanos → footer; subpáginas → `/#footer`). El `push` a main lo ejecuta el usuario (Netlify publica al hacer push).
+
+## SESIÓN ANTERIOR — Vistas técnicas: velo, scrollbar y hover (COMPLETADA)
 - **Velo de fondo:** `.view-bg::after` oscurecido de `0.75/0.45/0.25` → `0.85/0.60/0.40` (Opción A) en `security.css` y `redes.css` (cubre las 4 vistas: seguridad, sistemasCriticos, automatizaciones, redes). El hero del index (`.slideshow1::after`) no se tocó.
 - **Barra lateral inútil:** era la scrollbar de `.view-content` (`overflow-y:auto` + `pointer-events:none` → se dibujaba pero no era interactiva). Se ocultó solo esa barra con `scrollbar-width:none`, `-ms-overflow-style:none` y `.view-content::-webkit-scrollbar{display:none}` (Opción A); el scroll interno se conserva.
 - **Hover de cards:** `rgba(8,14,24,0.42)` → `0.62` (desktop); `0.96` → `0.99` (≤1024px); light `#052A45` → `#001019`.
@@ -38,7 +49,9 @@
 - e2ac2e8 — checkpoint: pre-scrollReveal — estado actual antes de modificar scrollReveal.js (rollback de la Tarea 3).
 
 ## Commits de la sesión actual
-- 28bcd11 — fix: ocultar scrollbar de .view-content y oscurecer hover de cards en vistas técnicas. **Commit final de la actividad.**
+- 60d58ff — feat: enlaces Contacto al footer del index y ajustes de contenido en ceo/index. **Commit final de la actividad.**
+- a5aa22d — chore: cierre de sesion (memory.md) - velo, scrollbar y hover en vistas tecnicas (estado previo a esta actividad).
+- 28bcd11 — fix: ocultar scrollbar de .view-content y oscurecer hover de cards en vistas técnicas.
 - 740067f — checkpoint: estado actual (velo .view-bg Opción A) antes de ocultar scrollbar y oscurecer hover.
 - 3621ce0 — checkpoint: estado actual antes de oscurecer velo .view-bg en vistas técnicas (Opción A).
 - 29c6705 — feat: ceo.html idéntico a index.html de referencia (proyecto CYCS) sin CTAs/tagcloud, copyright solo teléfono y redes. **Commit final de esta tarea.**
@@ -198,6 +211,7 @@
 - **CSP:** sin cambios (`fonts.googleapis.com/gstatic.com` y `placehold.co` ya cubiertos).
 
 ## Pendiente
+- **Cierre de sesión (enlaces Contacto → footer):** implementado; commit final `60d58ff` + cierre de memory.md. **Pendiente de prueba visual por el usuario** en `npm run dev` (index: Contacto/Contáctanos bajan al footer; servicios y vistas técnicas: navegan a `/#footer`). El **push** a main lo ejecuta el usuario.
 - **Cierre de sesión (vistas técnicas: velo, scrollbar y hover):** implementado; checkpoints `3621ce0`/`740067f` → final `28bcd11`. **Pendiente de prueba visual por el usuario** (barra derecha ausente, hover más oscuro, cards accesibles). El **push** a main lo ejecuta el usuario (Netlify publica al hacer push).
 - **Cierre de sesión (ceo.html panel flotante):** implementado; commits `bdd3323` (checkpoint) → `31d3275` (final). **Pendiente de prueba visual por el usuario** (desktop ≥901px: panel centrado con scroll interno; ≤900px idéntico). El **push** a main lo ejecuta el usuario (Netlify publica al hacer push).
 - **Cierre de sesión (ceo.html ≡ index.html referencia):** implementado y aprobado por el usuario ("Quedo muy Bien!"). Commit final `29c6705` (checkpoint `86813c6`). Plan en `docs/plan-ceo-index-ref.md`.
