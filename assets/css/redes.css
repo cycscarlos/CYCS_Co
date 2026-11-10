@@ -81,6 +81,14 @@ section.telco.hero-wrapper {
   padding: calc(var(--header-height) + var(--space-12)) var(--space-6) var(--space-10);
   overflow-y: auto;
   pointer-events: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.view-content::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 /* Re-habilitar clicks en elementos interactivos del contenido */
@@ -160,7 +168,7 @@ section.telco.hero-wrapper {
 
 .view-cards .card:hover {
   transform: translateY(-6px);
-  background: rgba(8, 14, 24, 0.42);
+  background: rgba(8, 14, 24, 0.62);
   box-shadow: var(--shadow-lg), 0 0 20px rgba(255, 76, 0, 0.3);
   border-color: var(--brand-primary);
 }
@@ -244,13 +252,13 @@ section.telco.hero-wrapper {
     background: rgba(8, 14, 24, 0.9);
   }
   .view-cards .card:hover {
-    background: rgba(8, 14, 24, 0.96);
+    background: rgba(8, 14, 24, 0.99);
   }
   body.light-theme .view-cards .card {
     background: #011627;
   }
   body.light-theme .view-cards .card:hover {
-    background: #052A45;
+    background: #001019;
   }
   body.light-theme .view-content .title h2 {
     color: #011627;
