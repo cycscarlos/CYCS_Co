@@ -57,9 +57,9 @@ section.security.hero-wrapper {
   inset: 0;
   background: linear-gradient(
     105deg,
-    rgba(8, 14, 24, 0.75) 0%,
-    rgba(8, 14, 24, 0.45) 50%,
-    rgba(8, 14, 24, 0.25) 100%
+    rgba(8, 14, 24, 0.85) 0%,
+    rgba(8, 14, 24, 0.60) 50%,
+    rgba(8, 14, 24, 0.40) 100%
   );
   z-index: 1;
   pointer-events: none;
