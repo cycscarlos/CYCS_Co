@@ -8,11 +8,7 @@
       content="Carlos Colmenares A. — Ingeniero en proyectos y software. 40+ años en Mainframe IBM, redes interbancarias y soluciones corporativas."
     />
     <title>Carlos Colmenares A. | Design and Development</title>
-    <link
-      rel="shortcut icon"
-      href="../img/favicon.png"
-      type="image/png"
-    />
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/png" />
 
     <!-- Iconografía (RemixIcon) -->
     <link
@@ -201,7 +197,10 @@
         opacity: 0.92;
         padding: 6px;
         animation: fadeInLogo 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-        transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease,
+          filter 0.3s ease;
         cursor: default;
         pointer-events: none;
       }
@@ -315,7 +314,7 @@
       .hero-bio {
         max-width: 60ch;
         margin-top: clamp(1.4rem, 2.6vw, 2rem);
-        font-size: clamp(0.65rem, 1.0vw, 1.0rem);
+        font-size: clamp(0.65rem, 1vw, 1rem);
         font-weight: 400;
         line-height: 1.75;
         color: var(--ink-soft);
@@ -326,7 +325,7 @@
       .hero-tagline {
         max-width: 56ch;
         margin-top: 1.1rem;
-        font-size: clamp(0.65rem, 1.0vw, 1.0rem);
+        font-size: clamp(0.65rem, 1vw, 1rem);
         font-style: italic;
         line-height: 1.6;
         color: var(--accent);
@@ -545,10 +544,11 @@
           justify-content: center;
           padding: clamp(1rem, 4vh, 2.5rem) 1rem;
           background: radial-gradient(
-            circle at 50% 38%,
-            #0b1017 0%,
-            #050505 72%
-          ) fixed;
+              circle at 50% 38%,
+              #0b1017 0%,
+              #050505 72%
+            )
+            fixed;
         }
 
         .ceo-stage {
@@ -617,15 +617,18 @@
         <div class="hero-container">
           <div class="hero-text-content">
             <h1 class="hero-name">Carlos Colmenares A.</h1>
-            <p class="hero-subtitle">Project and Software Engineer</p>
+            <!-- <p class="hero-subtitle">Project and Software Engineer</p> -->
             <p class="hero-bio">
-              Ingeniero electrónico con más de 40 años de trayectoria,
-              especializado en proyectos: desde el Mainframe IBM hasta el
-              desarrollo web y la automatización con IA. Integró el equipo que
-              instaló el primer cajero automático de Venezuela y ha asesorado a
-              13 bancos y a más de 60 empresas, entre pymes y corporaciones.
-              Hoy convierte estándares corporativos en soluciones prácticas y a
-              la medida.
+              Ingeniero electrónico con más de 40 años de trayectoria.
+              Especializado en ingeniería de software, desde el Mainframe IBM
+              hasta el desarrollo web y automatización con IA. Integró el equipo
+              que instaló el primer cajero automático de Venezuela y ha
+              asesorado a 12 bancos
+              <small><i>(nacionales e internacionales)</i></small> y a más de 60
+              empresas
+              <small><i>(entre pymes, industria y corporaciones)</i></small
+              >. Hoy convierte estándares corporativos en soluciones prácticas y
+              a la medida.
             </p>
             <p class="hero-tagline">
               Continuidad operativa donde el fallo no es una opción.
@@ -646,35 +649,36 @@
           </div>
         </div>
 
-      <!-- ===== Teléfono y redes (sin texto de copyright) ===== -->
-      <section>
-      <div class="copyrightTexto">
-        <div class="copyright__contact">
-          <a
-            class="copyright__phone"
-            href="tel:+584143246396"
-            aria-label="Llamar por teléfono"
-            ><i class="ri-phone-line" aria-hidden="true"></i> +58 0414 324.63.96</a
-          >
-          <a
-            href="https://www.instagram.com/cycs.ia"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Perfil de Instagram"
-            class="icon"
-            ><i class="ri-instagram-line"></i
-          ></a>
-          <a
-            href="https://www.linkedin.com/in/carloscolmenaresa/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Perfil de LinkedIn"
-            class="icon"
-            ><i class="ri-linkedin-fill"></i
-          ></a>
-        </div>
-      </div>
-      </section>
+        <!-- ===== Teléfono y redes (sin texto de copyright) ===== -->
+        <section>
+          <div class="copyrightTexto">
+            <div class="copyright__contact">
+              <a
+                class="copyright__phone"
+                href="tel:+584143246396"
+                aria-label="Llamar por teléfono"
+                ><i class="ri-phone-line" aria-hidden="true"></i> +58 0414
+                324.63.96</a
+              >
+              <a
+                href="https://www.instagram.com/cycs.ia"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Perfil de Instagram"
+                class="icon"
+                ><i class="ri-instagram-line"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/carloscolmenaresa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Perfil de LinkedIn"
+                class="icon"
+                ><i class="ri-linkedin-fill"></i
+              ></a>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
 
