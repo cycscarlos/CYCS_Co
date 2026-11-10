@@ -1,11 +1,22 @@
 # Contexto de Sesión
 
+## ⭐ SESIÓN ACTUAL — Vistas técnicas: velo, scrollbar y hover (COMPLETADA)
+- **Velo de fondo:** `.view-bg::after` oscurecido de `0.75/0.45/0.25` → `0.85/0.60/0.40` (Opción A) en `security.css` y `redes.css` (cubre las 4 vistas: seguridad, sistemasCriticos, automatizaciones, redes). El hero del index (`.slideshow1::after`) no se tocó.
+- **Barra lateral inútil:** era la scrollbar de `.view-content` (`overflow-y:auto` + `pointer-events:none` → se dibujaba pero no era interactiva). Se ocultó solo esa barra con `scrollbar-width:none`, `-ms-overflow-style:none` y `.view-content::-webkit-scrollbar{display:none}` (Opción A); el scroll interno se conserva.
+- **Hover de cards:** `rgba(8,14,24,0.42)` → `0.62` (desktop); `0.96` → `0.99` (≤1024px); light `#052A45` → `#001019`.
+- **Archivos:** `assets/css/security.css`, `assets/css/redes.css`. Build OK (`✓ 4.00s`).
+- **Commits:** checkpoints `3621ce0` (antes del velo) y `740067f` (estado con velo antes de scrollbar/hover); final `28bcd11`. Commit de cierre de esta sesión: memory.md.
+- **Planes:** `docs/plan-velo-vistas.md`, `docs/plan-velo-hover-scrollbar.md` (gitignored).
+- **Pendiente:** prueba visual del usuario (barra ausente + hover más oscuro + cards accesibles). Si alguna card queda inalcanzable, aplicar la Opción B del plan (quitar scroll interno y pasar el contenido a flujo normal).
+
 ## ⭐ TAREA CEO — COMPLETADA
 - Punto de rollback original (si se quisiera descartar TODO el CEO): **64e3beb** → `git reset --hard 64e3beb` (lo ejecuta el usuario).
 - **Estado:** completada y aprobada. El link **CEO** del index ya no abre un modal: **navega** a `assets/html/ceo.html` (página completa). Commit final `93b4970`.
 - Los commits WIP del modal (1b998c8, b329197, c0cf8ac, 30eb501, 46cd62e) quedaron **superseded** por `93b4970`.
 
 ## Checkpoints
+- 740067f — checkpoint: estado actual (velo .view-bg Opción A) antes de ocultar scrollbar de .view-content y oscurecer hover de cards.
+- 3621ce0 — checkpoint: estado actual antes de oscurecer velo .view-bg en vistas técnicas (Opción A).
 - bdd3323 — checkpoint: estado actual antes de ceo.html como panel flotante (incluye el +15% fontsize del teléfono del copyright de ceo.html).
 - 3307bb1 — checkpoint: estado actual antes de aumentar 15% fontsize teléfono copyright ceo.html.
 - 4a7df87 — fix: normalizar mayúsculas en telco11/13/14/15 para que coincidan con refs HTML (Telco → telco).
@@ -27,6 +38,9 @@
 - e2ac2e8 — checkpoint: pre-scrollReveal — estado actual antes de modificar scrollReveal.js (rollback de la Tarea 3).
 
 ## Commits de la sesión actual
+- 28bcd11 — fix: ocultar scrollbar de .view-content y oscurecer hover de cards en vistas técnicas. **Commit final de la actividad.**
+- 740067f — checkpoint: estado actual (velo .view-bg Opción A) antes de ocultar scrollbar y oscurecer hover.
+- 3621ce0 — checkpoint: estado actual antes de oscurecer velo .view-bg en vistas técnicas (Opción A).
 - 29c6705 — feat: ceo.html idéntico a index.html de referencia (proyecto CYCS) sin CTAs/tagcloud, copyright solo teléfono y redes. **Commit final de esta tarea.**
 - 86813c6 — checkpoint: estado actual antes de ceo.html ≡ index.html referencia.
 - f940c6c — chore: cierre de la tarea CEO (memory.md) y archivar plan del modal.
@@ -184,6 +198,7 @@
 - **CSP:** sin cambios (`fonts.googleapis.com/gstatic.com` y `placehold.co` ya cubiertos).
 
 ## Pendiente
+- **Cierre de sesión (vistas técnicas: velo, scrollbar y hover):** implementado; checkpoints `3621ce0`/`740067f` → final `28bcd11`. **Pendiente de prueba visual por el usuario** (barra derecha ausente, hover más oscuro, cards accesibles). El **push** a main lo ejecuta el usuario (Netlify publica al hacer push).
 - **Cierre de sesión (ceo.html panel flotante):** implementado; commits `bdd3323` (checkpoint) → `31d3275` (final). **Pendiente de prueba visual por el usuario** (desktop ≥901px: panel centrado con scroll interno; ≤900px idéntico). El **push** a main lo ejecuta el usuario (Netlify publica al hacer push).
 - **Cierre de sesión (ceo.html ≡ index.html referencia):** implementado y aprobado por el usuario ("Quedo muy Bien!"). Commit final `29c6705` (checkpoint `86813c6`). Plan en `docs/plan-ceo-index-ref.md`.
 - **Commit de cierre previo:** `93b4970` (CEO) + `cc320b2` (ajenos). El **push** a main lo ejecuta el usuario (Netlify publica al hacer push).
