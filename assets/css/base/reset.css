@@ -73,6 +73,13 @@ input { outline: none; }
 [id="home"] { scroll-margin-top: 7ex; }
 [id="galeria"] { scroll-margin-top: 7ex; }
 
+/* Footer bajo el header fijo en móvil (header = --header-height + 2.5rem) */
+@media screen and (max-width: 768px) {
+  [id="footer"] {
+    scroll-margin-top: calc(var(--header-height) + 2.5rem + var(--space-4));
+  }
+}
+
 .container {
   width: 100%;
   max-width: 1200px;
